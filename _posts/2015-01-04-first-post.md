@@ -4,4 +4,4 @@ title: First post!
 image: /img/hello_world.jpeg
 ---
 
-This is my first post, how exciting!
+Ok so, this is not much actually, just a silly hello world (tbh, I'm keeping it so I remember how to put images in posts in the homapage)
