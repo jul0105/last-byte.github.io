@@ -29,7 +29,6 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
       o.parentNode.insertBefore(s, o);
       })();
   </script>
-
 In case you need, it here's my public key:
 
 ```
