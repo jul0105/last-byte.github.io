@@ -17,6 +17,7 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
       o.parentNode.insertBefore(s, o);
       })();
   </script>
+</div>
     <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="84059a2c-9ac4-48e7-9bf4-2726cfc3ab6b"></div>
   <script type="text/javascript">
     (function() {
@@ -28,6 +29,7 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
       o.parentNode.insertBefore(s, o);
       })();
   </script>
+</div>
 
 
 In case you need it here's my public key:
