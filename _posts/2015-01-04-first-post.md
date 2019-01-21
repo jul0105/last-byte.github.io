@@ -2,6 +2,8 @@
 layout: post
 title: First post!
 image: /img/hello_world.jpeg
+published: true
+date: '2019-01-21'
 ---
 
-Ok so, this is not much actually, just a silly hello world (tbh, I'm keeping it so I remember how to put images in posts in the homapage)
+Ok so, this is not much actually, just a silly hello world (tbh, I'm keeping it so I remember how to put images in posts in the homepage)
