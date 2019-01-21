@@ -4,7 +4,7 @@ title: About me
 subtitle: You really don't want to know this stuff
 ---
 
-My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I don't have much to showcase to be honest so ¯\\\_(ツ)\_/¯
+My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I went through both OSCP and OSCE (planning on doing the OSEE as soon as I get enough money to). Other than that I don't have much to showcase to be honest so ¯\\\_(ツ)\_/¯
 
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="9bc5e91b-6096-457f-bc1b-8a9ec87416d9"></div>
   <script type="text/javascript">
