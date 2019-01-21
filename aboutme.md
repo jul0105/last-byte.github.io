@@ -6,6 +6,18 @@ subtitle: You really don't want to know this stuff
 
 My name is last, I'm an Italian security researcher. I don't have much to showcase to be honest so ¯\\\_(ツ)\_/¯
 
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="9bc5e91b-6096-457f-bc1b-8a9ec87416d9"></div>
+  <script type="text/javascript">
+    (function() {
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//cdn.youracclaim.com/assets/utilities/embed.js';
+      var o = document.getElementsByTagName('script')[0];
+      o.parentNode.insertBefore(s, o);
+      })();
+  </script>
+
 In case you need it here's my public key:
 
 ```
@@ -119,3 +131,4 @@ uUKgkyMoeQhy0GjfRqQbwHKFGE3SwjvKJsKBlA==
 =NmwW
 -----END PGP PUBLIC KEY BLOCK-----
 ```
+
