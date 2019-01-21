@@ -3,7 +3,7 @@ layout: post
 published: false
 title: Securing your Macbook
 ---
-## Introduction
+# Introduction
 
 This is a blogpost about how I keep my Macbook Pro ~~in~~secure. This post takes a lot from the following resources so kudos to them first:
 
