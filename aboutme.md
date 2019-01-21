@@ -17,6 +17,18 @@ My name is last, I'm an Italian security researcher. I don't have much to showca
       o.parentNode.insertBefore(s, o);
       })();
   </script>
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="84059a2c-9ac4-48e7-9bf4-2726cfc3ab6b"></div>
+  <script type="text/javascript">
+    (function() {
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//cdn.youracclaim.com/assets/utilities/embed.js';
+      var o = document.getElementsByTagName('script')[0];
+      o.parentNode.insertBefore(s, o);
+      })();
+  </script>
+
 
 In case you need it here's my public key:
 
