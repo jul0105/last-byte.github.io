@@ -48,7 +48,7 @@ root		ALL = (ALL) ALL
 %admin		ALL = (ALL) ALL
 ```
 
-where the line `root		ALL = (ALL) ALL` means that root can do everything (well, you know... it's root) and the line `%admin		ALL = (ALL) ALL` means that all the groups beloging to the `admin` group can use sudo (admin group != admin account, the admin account is part of the admin group)
+where the line `root		ALL = (ALL) ALL` means that root can do everything (well, you know... it's root) and the line `%admin		ALL = (ALL) ALL` means that all the groups beloging to the `admin` group can use sudo (admin group != admin account, the admin account is part of the admin group). Just make sure that <mark>no other account except for root and the admin group shows up in the sudoers file unless you specifically intended so</mark>.
 
 
 
