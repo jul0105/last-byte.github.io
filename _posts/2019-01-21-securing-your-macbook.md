@@ -3,6 +3,7 @@ layout: post
 published: true
 image: /img/IMG_6264.jpg
 title: 'Securing Your Macbook Part 1: Separating Privileges (1)'
+subtitle: 'Different passwords for decryption and authentication'
 ---
 # Introduction
 This is a blogpost serie on how I keep my Macbook ~~in~~secure. These posts take a lot from the following resources so kudos to them first:
