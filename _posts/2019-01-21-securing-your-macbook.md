@@ -2,6 +2,7 @@
 layout: post
 published: true
 image: /img/IMG_6264.jpg
+date: '2019-01-21'
 title: 'Securing Your Macbook Part 1'
 subtitle: 'Separating Privileges (1): different passwords for decryption and authentication'
 ---
