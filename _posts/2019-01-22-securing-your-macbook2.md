@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 image: /img/IMG_6264.jpg
 date: '2019-01-21'
 title: Securing Your Macbook Part 2
@@ -14,7 +14,7 @@ In this short post we will see how to segregate privileges and have an account O
 These are the actions we will take:
 1. Add a new account with administrative privileges
 2. Demote our everyday account to standard privileges
-3. Edit /etc/sudoers to make sure our standard account is not listed there
+3. Cast some spells using the terminal to clean everything up
 
 <p class="alert alert-warning">
     <span class="label label-warning">CAUTION:</span> if not done right this procedure can lead you to losing administrative privileges of your Macbook and it will be a royal pain in the butt to gain them back so follow carefully. As always, what you do with your machine is all under your responsibility, don't blame me if your Macbook freezes, catches fire, becomes a Decepticon and starts attacking you with lasers for seemingly no reason.
@@ -25,6 +25,9 @@ This is pretty straightforward: open up <mark>System Preferences</mark>, then go
 <p class="alert alert-warning">
     <span class="label label-warning">CAUTION:</span> remember the password of this account and make sure you don't lose it. I know it should be obvious but you never know.
 </p>
+<br>
+### 2. Demote our everyday account to standard privileges
+Now it's time to say goodbye to your powers. But first, you have to log off your soon-to-be standard account and log into your newly created admin account. This serves two purposes: first, to make sure you didn't mistype the password at user creation; second, because macOS doesn't allow user privilege demoting while the user is logged on. Once your user is setup go back to <mark>System Preferences</mark> and then to <mark>Users & Groups</mark>. From there <mark>left click on your everyday account and uncheck "Allow user to administer this computer"</mark> at the bottom.
 
 
 
