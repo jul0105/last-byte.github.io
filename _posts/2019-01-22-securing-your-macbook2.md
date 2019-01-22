@@ -36,6 +36,20 @@ Nice and easy until now right? And it will stay that way, only that now it's tim
 
 `sudo cat /etc/sudoers`
 
+The part under `# User specification` should look like the following:
+
+```
+##
+# User specification
+##
+
+# root and users in group wheel can run anything on any machine as any user
+root		ALL = (ALL) ALL
+%admin		ALL = (ALL) ALL
+```
+
+where the line `root		ALL = (ALL) ALL` means that root can do everything (well, you know... it's root) and the line `%admin		ALL = (ALL) ALL` means that all the groups beloging to the `admin` group can use sudo (admin group != admin account, the admin account is part of the admin group)
+
 
 
 
