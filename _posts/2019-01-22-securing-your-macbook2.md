@@ -17,7 +17,7 @@ These are the actions we will take:
 3. Cast some spells using the terminal to clean everything up
 
 <p class="alert alert-warning">
-    <span class="label label-warning">CAUTION:</span> if not done right this procedure can lead you to losing administrative privileges of your Macbook and it will be a royal pain in the butt to gain them back so follow carefully. As always, what you do with your machine is all under your responsibility, don't blame me if your Macbook freezes, catches fire, becomes a Decepticon and starts attacking you with lasers for seemingly no reason.
+    <span class="label label-warning">CAUTION:</span> if not done right this procedure can lead you to lose administrative privileges of your Macbook and it will be a royal pain in the butt to gain them back so follow carefully. As always, what you do with your machine is all under your responsibility, don't blame me if your Macbook freezes, catches fire, becomes a Decepticon and starts attacking you with lasers for seemingly no reason.
 </p>
 <br>
 ### 1. Add a new account with administrative privileges
@@ -28,7 +28,13 @@ This is pretty straightforward: open up <mark>System Preferences</mark>, then go
 <br>
 ### 2. Demote our everyday account to standard privileges
 Now it's time to say goodbye to your powers. But first, you have to log off your soon-to-be standard account and log into your newly created admin account. This serves two purposes: first, to make sure you didn't mistype the password at user creation; second, because macOS doesn't allow user privilege demoting while the user is logged on. Once your user is setup go back to <mark>System Preferences</mark> and then to <mark>Users & Groups</mark>. From there <mark>left click on your everyday account and uncheck "Allow user to administer this computer"</mark> at the bottom.
+<br>
+### 3. Cast some spells using the terminal to clean everything up
+Nice and easy until now right? And it will stay that way, only that now it's time to fire up the terminal to clean one or two things. Assuming your administrator account is named `admin`, run the following command to make sure `/etc/sudoers` file is alright:
 
+`su admin`
+
+`sudo cat /etc/sudoers`
 
 
 
