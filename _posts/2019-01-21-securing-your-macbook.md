@@ -24,7 +24,7 @@ In this first part we are going to take a look at privilege separation in macOS 
     <span class="label label-warning">CAUTION:</span> be very careful, especially in the part where we will be giving FV2 decryption capabilities to just one account. If you manage to lose the decryption password or something bad happens you better have backups. In case you didn't figure it out by yourself, I take no responsibility if you f**k up your machine :)
 </p>
 
-<br><br><br>
+<br><br>
 ### Different passwords for FV2 decryption and user authentication
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> I'm assuming you have already enabled FileVault2 (FV2 from here on) encryption on your device. If it's not your case, google how to enable it NOW.
@@ -37,7 +37,7 @@ This is technically the easiest section so we will start with it. These are the 
 2. Disabling FV2 autologin feature
 3. Disabling FV2 decryption capabilities for standard users
 
-<br><br><br>
+<br><br>
 #### Creating a new user
 In order to create a new user you should go into the <mark>System Preferences</mark>, then <mark>Users & Groups</mark> and click on the <mark>little plus sign</mark> on the left.
 
@@ -52,14 +52,14 @@ After creating the new user, click on the <mark>Login Options</mark> and uncheck
 
 Once you have created the account fire up the terminal and write the following commands (remember to change the name of the account if you did not use "DecryptFV" like me):
 
-<br><br>
+<br>
 `sudo dscl . create /Users/DecryptFV IsHidden 1`  
 <br>
 `sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool NO`  
 
 In this way we have made the new user hidden so that it's not visible at login and we have also hidden the "Other Users" button which would have shown up because of the presence of hidden users.
 
-<br><br><br>
+<br><br>
 #### Disabling FV2 autologin
 Out of the box macOS does not allow different accounts for FV2 decryption and user login. However this feature can be enabled by running the following command:  
   
@@ -68,11 +68,11 @@ Out of the box macOS does not allow different accounts for FV2 decryption and us
   
 Now, before we disable the other users, reboot your machine and make sure you can decrypt FV2 and login with the new account.
 
-<br><br><br>
+<br><br>
 #### Disabling FV2 decryption capabilities for standard users
 Ok, now it's time to allow only the new user to decrypt FV2, to do it run the following command for every user except for the one we just created:
 
-<br><br>
+<br>
 `sudo fdesetup remove -user <insert here the username>`  
   
 <p class="alert alert-info">
