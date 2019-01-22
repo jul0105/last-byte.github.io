@@ -74,7 +74,7 @@ Ok, now it's time to allow only the new user to decrypt FV2, to do it run the fo
 
 <br>
 `sudo fdesetup remove -user <insert here the username>`  
-  
+
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> Be sure to remove the <> brackets from the command.
 </p>
