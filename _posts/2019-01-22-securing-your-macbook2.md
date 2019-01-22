@@ -32,10 +32,10 @@ Now it's time to say goodbye to your powers. But first, you have to log off your
 Notice that now, if you open up the terminal and try running `sudo su`, after entering the password, the terminal will get mad at you, insult you and tell you you aren't worthy of possessing the power of ~~Thor~~ root.
 <br>
 ### 3. Cast some spells using the terminal to clean everything up
-Nice and easy until now right? And it will stay that way, only that now it's time to fire up the terminal to clean one or two things. Assuming your administrator account is named `admin`, run the following command to make sure `/etc/sudoers` file is alright:
+Nice and easy until now right? And it will stay that way, only that now it's time to fire up the terminal to clean one or two things. Assuming your administrator account is named `antani`, run the following command to make sure `/etc/sudoers` file is alright:
 
 ```
-$ su admin
+$ su antani
 $ sudo cat /etc/sudoers
 ```
 
@@ -51,16 +51,16 @@ root		ALL = (ALL) ALL
 %admin		ALL = (ALL) ALL
 ```
 
-where the line `root		ALL = (ALL) ALL` means that root can do everything (well, you know... it's root) and the line `%admin		ALL = (ALL) ALL` means that all the groups beloging to the `admin` group can use sudo to run anything (admin group != admin account, the admin account is part of the admin group). Just make sure that <mark>no other account except for root and the admin group shows up in the sudoers file unless you specifically intended so</mark>.
+where the line `root		ALL = (ALL) ALL` means that root can do everything (well, you know... it's root) and the line `%admin		ALL = (ALL) ALL` means that all the accounts beloging to the `admin` group (and that means `antani` too) can use sudo to run anything. Just make sure that <mark>no other account except for root and the admin group shows up in the sudoers file unless you specifically intended so</mark>.
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> the following part is for those who went through the first part of this serie as your new account can now decrypt FV2.
 </p>
 
-In case you don't want your newly created admin account to be able to decrypt FV2 run the following command (again, I'm assuming your newly created account's username is `admin`):
+In case you don't want your newly created admin account to be able to decrypt FV2 run the following command (again, I'm assuming your newly created account's username is `antani`):
 
 ```
-$ su admin
-$ sudo fdesetup remove -user admin
+$ su antani
+$ sudo fdesetup remove -user antani
 ```
 <p class="alert alert-warning">
     <span class="label label-warning">CAUTION:</span> the whole point of this part was to make sure the admin account is used strictly for administrative purposes and NOTHING else. That means not even decrypting FV2. This is to avoid that an attacker that may have seen you while decrypting FV2 using your admin account can use that information to later escalate privileges on your machine.
