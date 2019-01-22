@@ -85,7 +85,5 @@ $ sudo fdesetup remove -user <insert here the username>
     <span class="label label-info">NOTE:</span> Be sure to remove the <> brackets from the command.
 </p>
 <p class="alert alert-success">
-    <span class="label label-success">SUCCESS:</span> now you have different passwords for FV2 decryption and user authentication. In part 2 we will be further improving on privilege separation by creating an administrative account that will be the only one able to use privileged commands like <code>sudo</code>. 
+    <span class="label label-success">SUCCESS:</span> now you have different passwords for FV2 decryption and user authentication. In [part 2](https://blog.notso.pro/2019-01-21-securing-your-macbook/) we will be further improving on privilege separation by creating an administrative account that will be the only one able to use privileged commands like <code>sudo</code>. 
 </p>
-In the [next](https://blog.notso.pro/2019-01-21-securing-your-macbook/) post of this serie we will see how to restrict administrative privileges on your Macbook.
-
