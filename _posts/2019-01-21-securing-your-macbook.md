@@ -3,8 +3,10 @@ layout: post
 published: true
 image: /img/IMG_6264.jpg
 date: '2019-01-21'
-title: 'Securing Your Macbook Part 1'
-subtitle: 'Separating Privileges (1): different passwords for decryption and authentication'
+title: Securing Your Macbook Part 1
+subtitle: >-
+  Separating Privileges (1): different passwords for decryption and
+  authentication
 ---
 # Introduction
 This is a blogpost serie on how I keep my Macbook ~~in~~secure. These posts take a lot from the following resources so kudos to them first:
@@ -20,7 +22,7 @@ The idea behind this is to make it ~~impossible~~ very difficult for an attacker
 
 That does not mean you have to make it easier for him to compromise you: the more time you buy, the less likely the information he will retrieve will be of any use.
   
-In this first part we are going to take a look at privilege separation in macOS (I will be using macOS 10.14 Mojave but the same principles theoretically apply for the other versions). The idea is to have separate accounts for separate "privilege levels" and by that I mean having AT LEAST two accounts and AT BEST three accounts: one for administrative purposes which can use `sudo`, one for everyday tasks and one capable of decrypting FileVault2 (you do encrypt your laptop, right?). We will separate user accounts from administrative ones in the next part of this serie.
+In this first part we are going to take a look at privilege separation in macOS (I will be using macOS 10.14 Mojave but the same principles theoretically apply for the other versions). The idea is to have separate accounts for separate "privilege levels" and by that I mean having AT LEAST two accounts and AT BEST three accounts: one for administrative purposes which can use `sudo`, one for everyday tasks and one capable of decrypting FileVault2 (you do encrypt your laptop, right?). We will separate user accounts from administrative ones in the [next](https://blog.notso.pro/2019-01-21-securing-your-macbook/) part of this serie.
   
 <p class="alert alert-warning">
     <span class="label label-warning">CAUTION:</span> be very careful, especially in the part where we will be giving FV2 decryption capabilities to just one account. If you manage to lose the decryption password or something bad happens you better have backups. In case you didn't figure it out by yourself, I take no responsibility if you f**k up your machine :)
@@ -85,7 +87,5 @@ $ sudo fdesetup remove -user <insert here the username>
 <p class="alert alert-success">
     <span class="label label-success">SUCCESS:</span> now you have different passwords for FV2 decryption and user authentication. In part 2 we will be further improving on privilege separation by creating an administrative account that will be the only one able to use privileged commands like <code>sudo</code>. 
 </p>
-
-
-
+In the [next](https://blog.notso.pro/2019-01-21-securing-your-macbook/) post of this serie we will see how to restrict administrative privileges on your Macbook.
 
