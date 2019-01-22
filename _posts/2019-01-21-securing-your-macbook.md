@@ -43,15 +43,17 @@ This is technically the easiest section so we will start with it. These are the 
 In order to create a new user you should go into the <mark>System Preferences</mark>, then <mark>Users & Groups</mark> and click on the <mark>little plus sign</mark> on the left.
 
 <p class="alert alert-info">
-    <span class="label label-info">NOTE:</span> remember the "Account Name" you are setting, we will need it later. In "Full Name" you can write whatever you want, it will be the name displayed when you decrypt FV2. Set it to something like "Decrypt FileVault".
+    <span class="label label-info">NOTE:</span> remember the "Account Name" you are setting, we will need it later. For this guide we will use "DecryptFV" as Account Name, remember in macOS usernames are case sensitive. In "Full Name" you can write whatever you want, it will be the name displayed when you decrypt FV2. Set it to something like "Decrypt FileVault".
 </p>
 
 <p class="alert alert-warning">
     <span class="label label-warning">CAUTION:</span> be sure to remember the password you are setting for this account as it will be the password you will use to decrypt FV2.
 </p>
 
+After creating the new user, click on the <mark>Login Options</mark> and uncheck <mark>Show fast user switching menu as... </mark>.
+
 Once you have created the account fire up the terminal and write the following command:
-``
+`sudo dscl . create /Users/DecryptFV IsHidden 1`
 
 
 
