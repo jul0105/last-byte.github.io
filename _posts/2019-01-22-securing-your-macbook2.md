@@ -62,3 +62,8 @@ $ sudo fdesetup remove -user admin
 <p class="alert alert-warning">
     <span class="label label-warning">CAUTION:</span> the whole point of this part was to make sure the admin account is used strictly for administrative purposes and NOTHING else. That means not even decrypting FV2. This is to avoid that an attacker that may have seen you while decrypting FV2 using your admin account can use that information to later escalate privileges on your machine.
 </p>
+<p class="alert alert-success">
+    <span class="label label-success">SUCCESS:</span> now you have different accounts with different privileges. It's less likely that an attacker compromising your everyday account can escalate privileges by just running <code>sudo su</code>. 
+</p>
+
+In the following posts we will see how to add a sort of two factor authentication to user login using a Yubikey.
