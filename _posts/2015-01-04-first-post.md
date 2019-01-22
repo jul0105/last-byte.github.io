@@ -1,6 +1,6 @@
 ---
 layout: post
-title: First post!
+title: Hello world!
 image: /img/hello_world.jpeg
 published: true
 date: '2019-01-21'
