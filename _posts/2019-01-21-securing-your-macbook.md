@@ -48,11 +48,10 @@ In order to create a new user you should go into the <mark>System Preferences</m
     <span class="label label-warning">CAUTION:</span> be sure to remember the password you are setting for this account as it will be the password you will use to decrypt FV2.
 </p>
 
-After creating the new user, click on the <mark>Login Options</mark> and uncheck <mark>Show fast user switching menu as... </mark>.
-
-Once you have created the account fire up the terminal and write the following commands (remember to change the name of the account if you did not use "DecryptFV" like me):
-
-<br>
+After creating the new user, click on the <mark>Login Options</mark> and uncheck <mark>Show fast user switching menu as... </mark>.  
+  
+Once you have created the account fire up the terminal and write the following commands (remember to change the name of the account if you did not use "DecryptFV" like me):  
+  
 `sudo dscl . create /Users/DecryptFV IsHidden 1`  
 <br>
 `sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool NO`  
@@ -70,9 +69,8 @@ Now, before we disable the other users, reboot your machine and make sure you ca
 
 <br><br>
 #### Disabling FV2 decryption capabilities for standard users
-Ok, now it's time to allow only the new user to decrypt FV2, to do it run the following command for every user except for the one we just created:
-
-<br>
+Ok, now it's time to allow only the new user to decrypt FV2, to do it run the following command for every user except for the one we just created:  
+  
 `sudo fdesetup remove -user <insert here the username>`  
 
 <p class="alert alert-info">
