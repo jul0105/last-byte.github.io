@@ -57,9 +57,7 @@ Once you have created the account fire up the terminal and write the following c
   
 In this way we have made the new user hidden so that it's not visible at login and we have also hidden the "Other Users" button which would have shown up because of the presence of hidden users.
   
-  
-  
-  
+<br>
 #### Disabling FV2 autologin
 Out of the box macOS does not allow different accounts for FV2 decryption and user login. However this feature can be enabled by running the following command:  
   
@@ -68,7 +66,7 @@ Out of the box macOS does not allow different accounts for FV2 decryption and us
   
 Now, before we disable the other users, reboot your machine and make sure you can decrypt FV2 and login with the new account.  
   
-  
+<br>
 #### Disabling FV2 decryption capabilities for standard users
 Ok, now it's time to allow only the new user to decrypt FV2, to do it run the following command for every user except for the one we just created:  
   
