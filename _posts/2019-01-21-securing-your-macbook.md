@@ -4,7 +4,6 @@ published: true
 title: 'Securing Your Macbook Part 1: Separating Privileges'
 ---
 # Introduction
-
 This is a blogpost serie on how I keep my Macbook ~~in~~secure. These posts take a lot from the following resources so kudos to them first:
 
 - [MacOS Security and Privacy Guide ](https://github.com/drduh/macOS-Security-and-Privacy-Guide)
@@ -26,6 +25,7 @@ In this first part we are going to take a look at privilege separation in macOS 
 </p>
 
 
+
 ## Different passwords for FV2 decryption and user authentication
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> I'm assuming you have already enabled FileVault2 (FV2 from here on) encryption on your device. If it's not your case, google how to enable it NOW.
@@ -36,6 +36,7 @@ This is technically the easiest section so we will start with it. These are the 
 1. Creating a new user
 2. Disabling FV2 autologin feature
 3. Disabling FV2 decryption capabilities for standard users
+
 
 
 #### Creating a new user
@@ -58,11 +59,13 @@ Once you have created the account fire up the terminal and write the following c
 In this way we have made the new user hidden so that it's not visible at login and we have also hidden the "Other Users" button which would have shown up because of the presence of hidden users.
 
 
+
 #### Disabling FV2 autologin
 Out of the box MacOS does not allow different accounts for FV2 decryption and user login. However this feature can be enabled by running the following command:  
 `sudo defaults write /Library/Preferences/com.apple.loginwindow DisableFDEAutoLogin -bool YES`  
 
 Now, before we disable the other users, reboot your machine and make sure you can decrypt FV2 and login with the new account.
+
 
 
 #### Disabling FV2 decryption capabilities for standard users
