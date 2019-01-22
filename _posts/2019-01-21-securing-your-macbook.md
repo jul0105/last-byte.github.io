@@ -14,7 +14,6 @@ The idea behind this is to make it ~~impossible~~ very difficult for an attacker
 
 In this first part we are going to take a look at privilege separation in macOS (I will be using macOS 10.14 Mojave but the same principles theoretically apply for the other versions). The idea is to have separate accounts for separate "privilege levels" and by that I mean having AT LEAST two accounts and AT BEST three accounts: one for administrative purposes which can use `sudo`, one for everyday tasks and one capable of decrypting FileVault2 (you do encrypt your laptop, right?).
 
->NOTE: be very careful, especially in the part where we will be giving FV2 decryption capabilities to just one account. If you manage to lose the decryption password or something bad happens you better have backups.
 
 <p class="alert alert-warning">
     <span class="label label-warning">CAUTION:</span> be very careful, especially in the part where we will be giving FV2 decryption capabilities to just one account. If you manage to lose the decryption password or something bad happens you better have backups.
