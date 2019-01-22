@@ -17,12 +17,7 @@ In this first part we are going to take a look at privilege separation in macOS 
 >NOTE: be very careful, especially in the part where we will be giving FV2 decryption capabilities to just one account. If you manage to lose the decryption password or something bad happens you better have backups.
 
 <p class="alert alert-warning">
-    <span class="label label-warning">CAUTION:</span> this procedure
-    can potentially lead us to lose <code>sudo</code>
-    access from our account, as well as lock us out of our computer.
-    I take no responsibility: try it in a
-    <abbr title="Virtual Machine">VM</abbr>
-    first, if you do not feel confident.
+    <span class="label label-warning">CAUTION:</span> be very careful, especially in the part where we will be giving FV2 decryption capabilities to just one account. If you manage to lose the decryption password or something bad happens you better have backups.
 </p>
 
 
