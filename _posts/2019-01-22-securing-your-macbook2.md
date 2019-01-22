@@ -58,7 +58,6 @@ In case you don't want your newly created admin account to be able to decrypt FV
 
 ```
 $ sudo fdesetup remove -user admin
-
 ```
 <p class="alert alert-warning">
     <span class="label label-warning">CAUTION:</span> the whole point of this part was to make sure the admin account is used strictly for administrative purposes and NOTHING else. That means not even decrypting FV2. This is to avoid that an attacker that may have seen you while decrypting FV2 using your admin account can use that information to later escalate privileges on your machine.
