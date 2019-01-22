@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-image: /img/macbook.jpeg
+image: /img/IMG_6264.jpg
 title: 'Securing Your Macbook Part 1: Separating Privileges (1)'
 ---
 # Introduction
