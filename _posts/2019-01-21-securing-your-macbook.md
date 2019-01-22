@@ -6,8 +6,8 @@ title: 'Securing Your Macbook Part 1: Separating Privileges'
 # Introduction
 This is a blogpost serie on how I keep my Macbook ~~in~~secure. These posts take a lot from the following resources so kudos to them first:
 
-- [MacOS Security and Privacy Guide ](https://github.com/drduh/macOS-Security-and-Privacy-Guide)
-- [Configuring MacOS Sierra to authenticate with YubiKey 4](https://medium.com/@ellenbeldner/configuring-macos-sierra-to-authenticate-with-yubikey-4-876a8ab81e07)
+- [macOS Security and Privacy Guide ](https://github.com/drduh/macOS-Security-and-Privacy-Guide)
+- [Configuring macOS Sierra to authenticate with YubiKey 4](https://medium.com/@ellenbeldner/configuring-macos-sierra-to-authenticate-with-yubikey-4-876a8ab81e07)
 
 The idea behind this is to make it ~~impossible~~ very difficult for an attacker to take control of your device even with physical access. Impossible is nothing, and that's even more true in the security industry. 
 
@@ -36,11 +36,7 @@ This is technically the easiest section so we will start with it. These are the 
 1. Creating a new user
 2. Disabling FV2 autologin feature
 3. Disabling FV2 decryption capabilities for standard users
-  
-  
-  
-  
-  
+<br><br><br>
 #### Creating a new user
 In order to create a new user you should go into the <mark>System Preferences</mark>, then <mark>Users & Groups</mark> and click on the <mark>little plus sign</mark> on the left.
 
@@ -64,7 +60,7 @@ In this way we have made the new user hidden so that it's not visible at login a
   
   
 #### Disabling FV2 autologin
-Out of the box MacOS does not allow different accounts for FV2 decryption and user login. However this feature can be enabled by running the following command:  
+Out of the box macOS does not allow different accounts for FV2 decryption and user login. However this feature can be enabled by running the following command:  
   
 `sudo defaults write /Library/Preferences/com.apple.loginwindow DisableFDEAutoLogin -bool YES`  
   
