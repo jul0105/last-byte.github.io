@@ -24,6 +24,7 @@ In this first part we are going to take a look at privilege separation in macOS 
 </p>  
   
   
+  
 ### Different passwords for FV2 decryption and user authentication
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> I'm assuming you have already enabled FileVault2 (FV2 from here on) encryption on your device. If it's not your case, google how to enable it NOW.
