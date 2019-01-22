@@ -36,6 +36,7 @@ This is technically the easiest section so we will start with it. These are the 
 1. Creating a new user
 2. Disabling FV2 autologin feature
 3. Disabling FV2 decryption capabilities for standard users
+
 <br><br><br>
 #### Creating a new user
 In order to create a new user you should go into the <mark>System Preferences</mark>, then <mark>Users & Groups</mark> and click on the <mark>little plus sign</mark> on the left.
