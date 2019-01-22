@@ -75,7 +75,7 @@ Ok, now it's time to allow only the new user to decrypt FV2, to do it run the fo
     <span class="label label-info">NOTE:</span> Be sure to remove the <> brackets from the command.
 </p>
 <p class="alert alert-success">
-    <span class="label label-success">SUCCESS:</span> now you have different passwords for FV2 decryption and user authentication. In part 2 we will be further improving on privilege separation by creating an administrative account that will be the only one able to use privileged commands like `sudo`. 
+    <span class="label label-success">SUCCESS:</span> now you have different passwords for FV2 decryption and user authentication. In part 2 we will be further improving on privilege separation by creating an administrative account that will be the only one able to use privileged commands like <code>sudo</code>. 
 </p>
 
 
