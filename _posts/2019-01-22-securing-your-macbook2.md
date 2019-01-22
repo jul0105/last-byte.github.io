@@ -50,6 +50,19 @@ root		ALL = (ALL) ALL
 ```
 
 where the line `root		ALL = (ALL) ALL` means that root can do everything (well, you know... it's root) and the line `%admin		ALL = (ALL) ALL` means that all the groups beloging to the `admin` group can use sudo (admin group != admin account, the admin account is part of the admin group). Just make sure that <mark>no other account except for root and the admin group shows up in the sudoers file unless you specifically intended so</mark>.
+<p class="alert alert-info">
+    <span class="label label-info">NOTE:</span> the following part is for those who went through the first part of this serie as your new account can now decrypt FV2.
+</p>
+
+In case you don't want your newly created admin account to be able to decrypt FV2 run the following command (again, I'm assuming your newly created account's username is `admin`):
+
+```
+$ sudo fdesetup remove -user admin
+
+```
+<p class="alert alert-warning">
+    <span class="label label-warning">CAUTION:</span> the whole point of this part was to make sure the admin account is used strictly for administrative purposes and NOTHING else and that means not even decrypting FV2. This is to avoid that an attacker sees you while decrypting FV2 using your admin account and uses that information to later escalate privileges on your machine.
+</p>  
 
 
 
