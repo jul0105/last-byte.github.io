@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-title: 'Securing Your Macbook Part 1: Separating Privileges'
+title: 'Securing Your Macbook Part 1: Separating Privileges (1)'
 ---
 # Introduction
 This is a blogpost serie on how I keep my Macbook ~~in~~secure. These posts take a lot from the following resources so kudos to them first:
