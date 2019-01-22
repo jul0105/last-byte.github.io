@@ -32,9 +32,10 @@ Now it's time to say goodbye to your powers. But first, you have to log off your
 ### 3. Cast some spells using the terminal to clean everything up
 Nice and easy until now right? And it will stay that way, only that now it's time to fire up the terminal to clean one or two things. Assuming your administrator account is named `admin`, run the following command to make sure `/etc/sudoers` file is alright:
 
-`su admin`
-
-`sudo cat /etc/sudoers`
+```
+$ su admin
+$ sudo cat /etc/sudoers
+```
 
 The part under `# User specification` should look like the following:
 
