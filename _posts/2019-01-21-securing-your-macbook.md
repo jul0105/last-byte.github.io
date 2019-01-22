@@ -53,6 +53,7 @@ In order to create a new user you should go into the <mark>System Preferences</m
 After creating the new user, click on the <mark>Login Options</mark> and uncheck <mark>Show fast user switching menu as... </mark>.
 
 Once you have created the account fire up the terminal and write the following commands (remember to change the name of the account if you did not use "DecryptFV" like me):  
+
 `sudo dscl . create /Users/DecryptFV IsHidden 1`  
 `sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool NO`  
 
@@ -62,15 +63,20 @@ In this way we have made the new user hidden so that it's not visible at login a
   
 #### Disabling FV2 autologin
 Out of the box MacOS does not allow different accounts for FV2 decryption and user login. However this feature can be enabled by running the following command:  
+  
 `sudo defaults write /Library/Preferences/com.apple.loginwindow DisableFDEAutoLogin -bool YES`  
-
+  
+  
 Now, before we disable the other users, reboot your machine and make sure you can decrypt FV2 and login with the new account.  
   
   
   
 #### Disabling FV2 decryption capabilities for standard users
 Ok, now it's time to allow only the new user to decrypt FV2, to do it run the following command for every user except for the one we just created:  
+  
+  
 `sudo fdesetup remove -user <insert here the username>`  
+  
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> Be sure to remove the <> brackets from the command.
 </p>
