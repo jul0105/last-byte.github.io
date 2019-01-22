@@ -25,9 +25,33 @@ In this first part we are going to take a look at privilege separation in macOS 
     <span class="label label-warning">CAUTION:</span> be very careful, especially in the part where we will be giving FV2 decryption capabilities to just one account. If you manage to lose the decryption password or something bad happens you better have backups. In case you didn't figure it out by yourself, I take no responsibility if you f**k up your machine :)
 </p>
 
-### Different passwords for FV2 decryption and user authentication
+## Different passwords for FV2 decryption and user authentication
 
-Placeholder :)
+<p class="alert alert-info">
+    <span class="label label-info">NOTE:</span> I'm assuming you have already enabled FileVault2 (FV2 from here on) encryption on your device. If it's not your case, google how to enable it NOW.
+</p>
+
+This is technically the easiest section so we will start with it. These are the steps we will follow in order to achieve our goal: having different passwords for FV2 decryption and user authentication.
+
+1. Creating a new user
+	* Setting the user as hidden
+2. Disabling FV2 autologin feature
+3. Disabling FV2 decryption capabilities for other users
+
+#### Creating a new user
+
+In order to create a new user you should go into the <mark>System Preferences</mark>, then <mark>Users & Groups</mark> and click on the <mark>little plus sign</mark> on the left.
+
+<p class="alert alert-info">
+    <span class="label label-info">NOTE:</span> remember the "Account Name" you are setting, we will need it later. In "Full Name" you can write whatever you want, it will be the name displayed when you decrypt FV2. Set it to something like "Decrypt FileVault".
+</p>
+
+<p class="alert alert-warning">
+    <span class="label label-warning">CAUTION:</span> be sure to remember the password you are setting for this account as it will be the password you will use to decrypt FV2.
+</p>
+
+Once you have created the account fire up the terminal and write the following command:
+``
 
 
 
