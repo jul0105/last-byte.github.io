@@ -3,6 +3,6 @@
   {% if words < 270 %}
     1 min
   {% else %}
-    {{ words | divided_by:130 }} mins
+  <i>Estimated reading time: {{ words | divided_by:130 }} minutes</i>
   {% endif %}
 </span>
