@@ -32,6 +32,7 @@ layout: base
       <article role="main" class="blog-post">
         {{ content }}
       </article>
+      {% include read-time.html %}
 
       {% if page.tags.size > 0 %}
         <div class="blog-tags">
