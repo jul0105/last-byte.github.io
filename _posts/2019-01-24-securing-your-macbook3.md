@@ -58,7 +58,7 @@ $ mkdir -m0700 .yubico<br>
 $ cd .yubico<br>
 $ sudo ykpamcfg -2<br>
 $ cp /var/root/.yubico/challenge-* ./<br>
-$ sudo chown $(pwd | cut -d/ -f 3) ./challenge-*<br>
+$ sudo chown $(pwd | cut -d/ -f 3) ./challenge-*
 </code>
 <br>
 These commands basically <code>cd</code> in your home directory, create the <code>.yubico</code> directory where the files for your challenge-response will be stored, <code>cd</code> inside the directory, create the challenge-response files with <code>sudo ykpamcfg -2</code>, move them from where they are first created to the users's <code>.yubico</code> directory and change the owner of the files from root to the user that owns the directory.
