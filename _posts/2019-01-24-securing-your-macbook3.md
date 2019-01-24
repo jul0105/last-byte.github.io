@@ -54,7 +54,6 @@ $ ykpamcfg -2
 	<br>
 	If that's the case run the following commands:
 	<br>
-
 	<pre>
 		<code>
 			$ cd
@@ -66,7 +65,7 @@ $ ykpamcfg -2
 		</code>
 	</pre>
 	<br>
-These commands basically <code>cd</code> in your home directory, create the <code>.yubico</code> directory where the files for your challenge-response will be stored, <code>cd</code> inside the directory, create the challenge-response files with <code>sudo ykpamcfg -2</code>, move them from where they are first created to the users's <code>.yubico</code> directory and change the owner of the files from root to the user that owns the directory.
+	These commands basically <code>cd</code> in your home directory, create the <code>.yubico</code> directory where the files for your challenge-response will be stored, <code>cd</code> inside the directory, create the challenge-response files with <code>sudo ykpamcfg -2</code>, move them from where they are first created to the users's <code>.yubico</code> directory and change the owner of the files from root to the user that owns the directory.
 </p>
 
 
