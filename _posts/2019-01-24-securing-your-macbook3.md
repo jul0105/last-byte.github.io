@@ -25,7 +25,7 @@ These are the steps we will follow in order to achive our goal:
 
 <br>
 ### 1. Configure the Yubikey second slot to provide a challenge-response authentication mechanism
-First things first, we need the right software. We will install the [**Yubikey Manager**](https://www.yubico.com/products/services-software/download/yubikey-manager/) tool by Yubico and the Yubikey module for Pluggable Authentication Modules (PAM). The first can be downloaded by the link provided above and installed through the GUI while the second requires the installation through [MacPorts](https://www.macports.org/).
+First things first, we need the right software. We will install the [Yubikey Manager](https://www.yubico.com/products/services-software/download/yubikey-manager/) tool by Yubico and the Yubikey module for Pluggable Authentication Modules (PAM). The first can be downloaded by the link provided above and installed through the GUI while the second requires the installation through [MacPorts](https://www.macports.org/).
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> if you haven't installed MacPorts yet go to the link and install it. I've had a bad experience on Mojave using brew to install the yubico-pam module so I suggest you use MacPorts.
 </p>
