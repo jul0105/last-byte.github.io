@@ -82,5 +82,19 @@ $ ykpamcfg -2
 	These commands basically <code>cd</code> in your home directory, create the <code>.yubico</code> directory where the files for your challenge-response will be stored, <code>cd</code> inside the directory, create the challenge-response files with <code>sudo ykpamcfg -2</code>, move them from where they are first created to the users's <code>.yubico</code> directory and change the owner of the files from root to the user that owns the directory.
 </p>
 
+Alright, now you have the challenge files in the `.yubico` directory inside your home directory. Repeat the procedure for every account in your laptop (this <mark>INCLUDES</mark> the administrative account and the decryption account). Once you have done that it's time to move to the third step.
+<br>
+### 3. Modify PAM configuration files to require the Yubikey.
+This is the most delicate part of this tutorial, be sure to double check what you write because there's a high chance of getting locked out of your account(s) if you get sloppy. Before modifying the most important files we are going to test if the configuration has been done correctly. Fire up the terminal and write the following commands
+```
+sudo nano /etc/screensaver
+```
+
+A CLI editor will show up, navigate to the line that says `auth       required       pam_opendirectory.so use_first_pass nullok` and add the following code on a newline
+```
+auth       required       /opt/local/lib/pam/pam_yubico.so mode=challenge-response
+```
+
+
 
 
