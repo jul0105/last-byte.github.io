@@ -60,19 +60,19 @@ $ ykpamcfg -2
 	</code>
   	<br>
     <code>
-  		$ mkdir -m0700 .yubico<br>
+  		$ mkdir -m0700 .yubico
 	</code>	
   	<br>
     <code>
-  		$ cd .yubico<br>
+  		$ cd .yubico
 	</code>
   	<br>
   	<code>
-      	$ sudo ykpamcfg -2<br>
+      	$ sudo ykpamcfg -2
 	</code>
   	<br>
   	<code>
-      	$ cp /var/root/.yubico/challenge-* ./<br>
+      	$ cp /var/root/.yubico/challenge-* ./
 	</code>
   	<br>
   	<code>
