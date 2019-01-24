@@ -6,11 +6,6 @@ date: '2019-01-24'
 title: Securing Your Macbook Part 3
 subtitle: '2FA at login: using Yubikeys as a second authentication layer'
 ---
-code {
-  display: block;
-  white-space: pre-wrap   
-}
-
 # Introduction
 Quick recap of what we saw in the [first](https://blog.notso.pro/2019-01-21-securing-your-macbook/) and [second](https://blog.notso.pro/2019-01-23-securing-your-macbook2/) parts of this serie. We started out by seeing how to setup your Macbook so that only one account is allowed to decrypt FileVault2, effectively creating two different passwords for mass storage decryption and user login authentication. After that we saw how to further compartmentalize by creating an account with administrative privileges, used only for administrative tasks like installing new software, adding new accounts or changing system preferences, and demoting our own user to standard account in order to make it harder for an attacker that has comprimised it to escalate privileges and gain full control of the device.
 
@@ -49,23 +44,23 @@ $ ykpamcfg -2
 ```
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> there's a good chance the command will fail with the following error if you have demoted your user to standard account:
-  
+<br>
 <code>
-last@lastBook: ~ $ ykpamcfg -2
-USB error: kIOReturnSuccess
+last@lastBook: ~ $ ykpamcfg -2<br>
+USB error: kIOReturnSuccess<br>
 </code>
-  
+<br>
 If that's the case run the following commands:
-  
+<br>
 <code>
-$ cd
-$ mkdir -m0700 .yubico
-$ cd .yubico
-$ sudo ykpamcfg -2
-$ cp /var/root/.yubico/challenge-* ./
-$ sudo chown $(pwd | cut -d/ -f 3) ./challenge-*
+$ cd<br>
+$ mkdir -m0700 .yubico<br>
+$ cd .yubico<br>
+$ sudo ykpamcfg -2<br>
+$ cp /var/root/.yubico/challenge-* ./<br>
+$ sudo chown $(pwd | cut -d/ -f 3) ./challenge-*<br>
 </code>
-  
+<br>
 These commands basically <code>cd</code> in your home directory, create the <code>.yubico</code> directory where the files for your challenge-response will be stored, <code>cd</code> inside the directory, create the challenge-response files with <code>sudo ykpamcfg -2</code>, move them from where they are first created to the users's <code>.yubico</code> directory and change the owner of the files from root to the user that owns the directory.
 </p>
 
