@@ -99,9 +99,16 @@ auth       required       /opt/local/lib/pam/pam_yubico.so mode=challenge-respon
 ```
 Save and exit (CTRL-O and then CTRL-X). In this way we have required the Yubikey only for unlocking the lockscreen of your laptop, now it's time to test it: remove the Yubikey, then lock the screen (either wait or press CTRL-CMD-Q) and try to login again <mark>WITHOUT</mark> inserting the Yubikey. If you didn't make any errors you should not be able to login. Now try inserting the Yubikey and logging in again, it should allow you in (remember to touch the Yubikey if you checked the "Require touch" option back in Step 1). 
 
-If all worked flawlessly, fire up another terminal and spawn a root shell. Then go back to the other terminal and add the same line you added to `/etc/pam.d/screensaver` to `/etc/pam.d/authorization` and `/etc/pam.d/sudo`. Keep the root shell open, we will need it to edit the files if something goes wrong.
+If all worked flawlessly, fire up another terminal and spawn a root shell. Then go back to the other terminal and add the same line you added to `/etc/pam.d/screensaver` to `/etc/pam.d/authorization` and `/etc/pam.d/sudo`. Keep the root shell open, we will need it to edit the files in case something goes wrong.
 
-Now, remove the Yubikey, open a third terminal and try first logging into the administrative account through `su <username>`. If it failed, good. Insert the Yubikey and try again, if it worked it means you have successfully edited `/etc/pam.d/authorization`. Now remove the Yubikey and try from there `sudo su`. If it failed, good. Insert it again and run the command again, if it worked it means that `/etc/pam.d/sudo` has been edited successfully too. You can now close the root shell.
+Now, remove the Yubikey, open a third terminal and try first logging into the administrative account through `su <username>`. If it fails, good. Insert the Yubikey and try again, if it works it means you have successfully edited `/etc/pam.d/authorization`. Now remove the Yubikey and try from there `sudo su`. If it fails, good. Insert it again and run the command again, if it works it means that `/etc/pam.d/sudo` has been edited successfully too. You can now close the root shell.
+
+<p class="alert alert-warning">
+    <span class="label label-warning">CAUTION:</span> remember to go through this process again with a second Yubikey. The steps until the creation of <code>.yubico</code> included must not be repeated, only the <code>sudo ykpamcfg -2</code> and the following ones. Remember that the Yubikey will be required even for GUI authorization, when it's required for application installation and system preferences editing.
+</p>
+<p class="alert alert-success">
+    <span class="label label-success">SUCCESS:</span> you have successfully enabled 2FA for unlocking the screen, running <code>sudo</code> and logging in with users. 
+</p>
 
 
 
