@@ -39,6 +39,7 @@ sudo port install yubico-pam
 We have got all the software we need, now we will proceed to setup the Yubikey. It can be done via the CLI but I think using Yubikey Manager is a bit more intuitive.
 
 Insert the Yubikey in your Macbook, then open up Yubikey Manager. Click on <mark>Applications</mark> and select <mark>OTP</mark>. Where it says <mark>Long Touch (Slot 2)</mark> click <mark>Configure</mark>. Select <mark>Challenge-response</mark> and click <mark>Next</mark>. Now click <mark>Generate</mark> in order to generate a new secret that will be stored on your Yubikey. Optionally you can select <mark>Require touch</mark> if you want your Yubikey to be triggered and answer the challenge only if you touch the button on it.
+
 <br>
 ### 2. Setup the challenge-response for every account
 Now it's time to setup the challenge-response mechanism for every user. Remove and insert again your Yubikey, then fire up the terminal and write the following command:
@@ -86,6 +87,7 @@ $ ykpamcfg -2
 </p>
 
 Alright, now you have the challenge files in the `.yubico` directory inside your home directory. Repeat the procedure for every account in your laptop (this <mark>INCLUDES</mark> the administrative account and the decryption account). Once you have done that it's time to move to the third step.
+
 <br>
 ### 3. Modify PAM configuration files to require the Yubikey.
 This is the most delicate part of this tutorial, be sure to double check what you write because there's a high chance of getting locked out of your account(s) if you get sloppy. Before modifying the most important files we are going to test if the configuration has been done correctly. Fire up the terminal and write the following commands
