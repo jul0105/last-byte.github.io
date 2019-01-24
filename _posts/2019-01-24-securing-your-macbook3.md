@@ -104,7 +104,7 @@ If all worked flawlessly, fire up another terminal and spawn a root shell. Then 
 Now, remove the Yubikey, open a third terminal and try first logging into the administrative account through `su <username>`. If it fails, good. Insert the Yubikey and try again, if it works it means you have successfully edited `/etc/pam.d/authorization`. Now remove the Yubikey and try from there `sudo su`. If it fails, good. Insert it again and run the command again, if it works it means that `/etc/pam.d/sudo` has been edited successfully too. You can now close the root shell.
 
 <p class="alert alert-warning">
-    <span class="label label-warning">CAUTION:</span> remember to go through this process again with a second Yubikey. The steps until the creation of <code>.yubico</code> included must not be repeated, only the <code>sudo ykpamcfg -2</code> and the following ones. Remember that the Yubikey will be required even for GUI authorization, when it's required for application installation and system preferences editing.
+    <span class="label label-warning">CAUTION:</span> remember to go through this process again with a second Yubikey. The steps until the creation of <code>.yubico</code> included must not be repeated, only the <code>sudo ykpamcfg -2</code> and the following ones. Remember that the Yubikey will be required even for GUI authorization, when installing applications and editing system preferences for example.
 </p>
 <p class="alert alert-success">
     <span class="label label-success">SUCCESS:</span> you have successfully enabled 2FA for unlocking the screen, running <code>sudo</code> and logging in with users. 
