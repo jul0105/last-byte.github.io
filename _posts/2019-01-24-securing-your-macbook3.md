@@ -35,9 +35,30 @@ sudo port install yubico-pam
 ```
 We have got all the software we need, now we will proceed to setup the Yubikey. It can be done via the CLI but I think using Yubikey Manager is a bit more intuitive.
 
-Open up Yubikey Manager, click on <mark>Applications</mark> and select <mark>OTP</mark>. Where it says <mark>Long Touch (Slot 2)</mark> click <mark>Configure</mark>. Select <mark>Challenge-response</mark> and click <mark>Next</mark>. Now click <mark>Generate</mark> in order to generate a new secret that will be stored on your Yubikey. Optionally you can select <mark>Require touch</mark> if you want your Yubikey to be triggered and answer the challenge only if you touch the button on it.
-
+Insert the Yubikey in your Macbook, then open up Yubikey Manager. Click on <mark>Applications</mark> and select <mark>OTP</mark>. Where it says <mark>Long Touch (Slot 2)</mark> click <mark>Configure</mark>. Select <mark>Challenge-response</mark> and click <mark>Next</mark>. Now click <mark>Generate</mark> in order to generate a new secret that will be stored on your Yubikey. Optionally you can select <mark>Require touch</mark> if you want your Yubikey to be triggered and answer the challenge only if you touch the button on it.
 <br>
 ### 2. Setup the challenge-response for every account
+Now it's time to setup the challenge-response mechanism for every user. Remove and insert again your Yubikey, then fire up the terminal and write the following command:
+```
+$ ykpamcfg -2 
+```
+<p class="alert alert-info">
+    <span class="label label-info">NOTE:</span> there's a good chance the command will fail with the following error if you have demoted your user to standard account:
+```
+last@lastBook: ~ $ ykpamcfg -2
+USB error: kIOReturnSuccess
+```
+If that's the case run the following commands:
+```
+$ cd
+$ mkdir -m0700 .yubico
+$ cd .yubico
+$ sudo ykpamcfg -2
+$ cp /var/root/.yubico/challenge-* ./
+$ sudo chown $(pwd | cut -d/ -f 3) ./challenge-*
+```
+These commands basically `cd` in your home directory, create the `.yubico` directory where the files for your challenge-response will be stored, `cd` inside the directory, create the challenge-response files with `sudo ykpamcfg -2`, move them from where they are first created to the users's `.yubico` directory and change the owner of the files from root to the user that owns the directory.
+</p>
+
 
 
