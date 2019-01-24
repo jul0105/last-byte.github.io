@@ -47,7 +47,7 @@ $ ykpamcfg -2
 <br>
 <code>
 last@lastBook: ~ $ ykpamcfg -2<br>
-USB error: kIOReturnSuccess<br>
+USB error: kIOReturnSuccess
 </code>
 <br>
 If that's the case run the following commands:
