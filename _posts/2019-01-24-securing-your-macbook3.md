@@ -25,6 +25,9 @@ These are the steps we will follow in order to achive our goal:
 
 <br>
 ### 1. Configure the Yubikey second slot to provide a challenge-response authentication mechanism
+<p class="alert alert-info">
+    <span class="label label-info">NOTE:</span> if you went through the second part of this serie you shouldn't be able to run <code>sudo</code> directly from the terminal. That means that everytime you will read a command prepended by <code>sudo</code> you will need to run <code>su \<admin account\></code> in order to then run the command with <code>sudo</code>
+</p>
 First things first, we need the right software. We will install the [Yubikey Manager](https://www.yubico.com/products/services-software/download/yubikey-manager/) tool by Yubico and the Yubikey module for Pluggable Authentication Modules (PAM). The first can be downloaded by the link provided above and installed through the GUI while the second requires the installation through [MacPorts](https://www.macports.org/).
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> if you haven't installed MacPorts yet go to the link and install it. I've had a bad experience on Mojave using brew to install the yubico-pam module so I suggest you use MacPorts.
@@ -87,13 +90,18 @@ Alright, now you have the challenge files in the `.yubico` directory inside your
 ### 3. Modify PAM configuration files to require the Yubikey.
 This is the most delicate part of this tutorial, be sure to double check what you write because there's a high chance of getting locked out of your account(s) if you get sloppy. Before modifying the most important files we are going to test if the configuration has been done correctly. Fire up the terminal and write the following commands
 ```
-sudo nano /etc/screensaver
+sudo nano /etc/pam.d/screensaver
 ```
 
 A CLI editor will show up, navigate to the line that says `auth       required       pam_opendirectory.so use_first_pass nullok` and add the following code on a newline
 ```
 auth       required       /opt/local/lib/pam/pam_yubico.so mode=challenge-response
 ```
+Save and exit (CTRL-O and then CTRL-X). In this way we have required the Yubikey only for unlocking the lockscreen of your laptop, now it's time to test it: remove the Yubikey, then lock the screen (either wait or press CTRL-CMD-Q) and try to login again <mark>WITHOUT</mark> inserting the Yubikey. If you didn't make any errors you should not be able to login. Now try inserting the Yubikey and logging in again, it should allow you in (remember to touch the Yubikey if you checked the "Require touch" option back in Step 1). 
+
+If all worked flawlessly, fire up another terminal and spawn a root shell. Then go back to the other terminal and add the same line you added to `/etc/pam.d/screensaver` to `/etc/pam.d/authorization` and `/etc/pam.d/sudo`. Keep the root shell open, we will need it to edit the files if something goes wrong.
+
+Now, remove the Yubikey, open a third terminal and try first logging into the administrative account through `su <username>`. If it failed, good. Insert the Yubikey and try again, if it worked it means you have successfully edited `/etc/pam.d/authorization`. Now remove the Yubikey and try from there `sudo su`. If it failed, good. Insert it again and run the command again, if it worked it means that `/etc/pam.d/sudo` has been edited successfully too. You can now close the root shell.
 
 
 
