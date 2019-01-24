@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 image: /img/IMG_6264.jpg
 date: '2019-01-24'
 title: Securing Your Macbook Part 3
