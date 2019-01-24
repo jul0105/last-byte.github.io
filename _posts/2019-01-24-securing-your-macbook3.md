@@ -47,18 +47,36 @@ $ ykpamcfg -2
 	<br>
   	<code>
 		last@lastBook: ~ $ ykpamcfg -2
-		USB error: kIOReturnSuccess
+	</code>
+  	<br>
+  	<code>
+      	USB error: kIOReturnSuccess
 	</code>
 	<br>
 	If that's the case run the following commands:
 	<br>
 	<code>
 		$ cd
-		$ mkdir -m0700 .yubico
-		$ cd .yubico
-		$ sudo ykpamcfg -2
-		$ cp /var/root/.yubico/challenge-* ./
-		$ sudo chown $(pwd | cut -d/ -f 3) ./challenge-*
+	</code>
+  	<br>
+    <code>
+  		$ mkdir -m0700 .yubico<br>
+	</code>	
+  	<br>
+    <code>
+  		$ cd .yubico<br>
+	</code>
+  	<br>
+  	<code>
+      	$ sudo ykpamcfg -2<br>
+	</code>
+  	<br>
+  	<code>
+      	$ cp /var/root/.yubico/challenge-* ./<br>
+	</code>
+  	<br>
+  	<code>
+      $ sudo chown $(pwd | cut -d/ -f 3) ./challenge-*
 	</code>
 	<br>
 	These commands basically <code>cd</code> in your home directory, create the <code>.yubico</code> directory where the files for your challenge-response will be stored, <code>cd</code> inside the directory, create the challenge-response files with <code>sudo ykpamcfg -2</code>, move them from where they are first created to the users's <code>.yubico</code> directory and change the owner of the files from root to the user that owns the directory.
