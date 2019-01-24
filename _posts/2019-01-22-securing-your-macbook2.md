@@ -56,11 +56,12 @@ where the line `root		ALL = (ALL) ALL` means that root can do everything (well, 
     <span class="label label-info">NOTE:</span> the following part is for those who went through the first part of this serie as your new account can now decrypt FV2.
 </p>
 
-In case you don't want your newly created admin account to be able to decrypt FV2 run the following command (again, I'm assuming your newly created account's username is `antani`):
+In case you don't want your newly created admin account to be able to decrypt FV2 (and you don't want it to appear on the login screen) run the following command (again, I'm assuming your newly created account's username is `antani`):
 
 ```
 $ su antani
 $ sudo fdesetup remove -user antani
+$ sudo dscl . create /Users/antani IsHidden 1
 ```
 <p class="alert alert-warning">
     <span class="label label-warning">CAUTION:</span> the whole point of this part was to make sure the admin account is used strictly for administrative purposes and NOTHING else. That means not even decrypting FV2. This is to avoid that an attacker that may have seen you while decrypting FV2 using your admin account can use that information to later escalate privileges on your machine.
