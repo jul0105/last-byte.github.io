@@ -112,5 +112,6 @@ Now, remove the Yubikey, open a third terminal and try first logging into the ad
     <span class="label label-success">SUCCESS:</span> you have successfully enabled 2FA for unlocking the screen, running <code>sudo</code> and logging in with users. 
 </p>
 <p class="alert alert-info">
-    <span class="label label-info">NOTE:</span> for troubleshooting I suggest you head up to [Yubico's official guide](https://support.yubico.com/support/solutions/articles/15000015045-macos-logon-tool-configuration-guide) 
+    <span class="label label-info">NOTE:</span> for troubleshooting I suggest you head up to Yubico's official guide @ https://support.yubico.com/support/solutions/articles/15000015045-macos-logon-tool-configuration-guide
+</p>
 
