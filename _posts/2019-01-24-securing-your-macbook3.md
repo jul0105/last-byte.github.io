@@ -26,7 +26,7 @@ These are the steps we will follow in order to achive our goal:
 <br>
 ### 1. Configure the Yubikey second slot to provide a challenge-response authentication mechanism
 <p class="alert alert-info">
-    <span class="label label-info">NOTE:</span> if you went through the second part of this serie you shouldn't be able to run <code>sudo</code> directly from the terminal. That means that everytime you will read a command prepended by <code>sudo</code> you will need to run <code>su \<admin account\></code> in order to then run the command with <code>sudo</code>
+    <span class="label label-info">NOTE:</span> if you went through the second part of this serie you shouldn't be able to run <code>sudo</code> directly from the terminal. That means that everytime you will read a command prepended by <code>sudo</code> you will need to run <code>su <admin account></code> in order to then run the command with <code>sudo</code>
 </p>
 First things first, we need the right software. We will install the [Yubikey Manager](https://www.yubico.com/products/services-software/download/yubikey-manager/) tool by Yubico and the Yubikey module for Pluggable Authentication Modules (PAM). The first can be downloaded by the link provided above and installed through the GUI while the second requires the installation through [MacPorts](https://www.macports.org/).
 <p class="alert alert-info">
