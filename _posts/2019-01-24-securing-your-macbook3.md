@@ -114,4 +114,4 @@ Now, remove the Yubikey, open a third terminal and try first logging into the ad
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> for troubleshooting I suggest you head up to Yubico's official guide @ https://support.yubico.com/support/solutions/articles/15000015045-macos-logon-tool-configuration-guide
 </p>
-
+antani
