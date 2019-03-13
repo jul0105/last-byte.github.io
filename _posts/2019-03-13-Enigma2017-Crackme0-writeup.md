@@ -10,7 +10,12 @@ Yesterday I bought the commercial edition of [Binary Ninja](https://binary.ninja
 
 ## Static analysis with Binary Ninja
 
-First things first, I fired up my good friend Binary Ninja (Binja from now on) and started looking around the binary. Other than main() we have three other interesting functions: wrong(), decrypt() and fromhex(). Let's start with wrong()
+First things first, I fired up my good friend Binary Ninja (Binja from now on) and started looking around the binary. Other than main() we have three other interesting functions: 
+- wrong()
+- decrypt()
+- fromhex()
+
+Let's start with wrong()
 ![wrong_disasm]({{site.baseurl}}/img/wrong.png)
 
 Meh. It doesn't do much except for killing the process. From the Cross Reference (XREF) section of Binja we can clearly see it gets called twice from main.
@@ -28,6 +33,7 @@ But let's do things the tidy way, after all this CTF ended two years ago so we a
 Oh boy, I hate when things get messy out of nowhere... Let's go with the cartesian logic approach and break it down into little bits and see if we can work out what's happening here.
 
 ![fromhex1]({{site.baseurl}}/img/fromhex1.png)
-What this block of fromhex() does is essentially setup the stack right after the function call and check the length of the string calling strlen(). I already changed the variable names in order to make it easier to understand which area of the stack points to which variable.
+
+What this block of fromhex() does is essentially setting up the stack right after the function call and checking the length of the input string calling strlen(). I already changed the variable names in order to make it easier to understand which area of the stack points to which variable.
 
 
