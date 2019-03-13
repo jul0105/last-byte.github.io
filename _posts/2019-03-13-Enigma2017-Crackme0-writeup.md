@@ -25,7 +25,7 @@ and the second time right after an interesting memcmp() call.
 But let's do things the tidy way, after all this CTF ended two years ago so we are not competing. Let's open the fromhex() function and let's see what it does.
 ![fromhex0]({{site.baseurl}}/img/fromhex0.png)
 
-Oh boy, I hate when things get messy out of nowhere... Let's go with the cartesian logic approach and break it down into little bits and see if we can work out what happens.
+Oh boy, I hate when things get messy out of nowhere... Let's go with the cartesian logic approach and break it down into little bits and see if we can work out what's happening here.
 
 ![fromhex1]({{site.baseurl}}/img/fromhex1.png)
 What this block of fromhex() does is essentially setup the stack right after the function call and check the length of the string calling strlen(). I already changed the variable names in order to make it easier to understand which area of the stack points to which variable.
