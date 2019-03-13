@@ -2,7 +2,7 @@
 layout: post
 published: true
 image: /img/binja.png
-date: '2019-01-27'
+date: '2019-03-13'
 title: Enigma 2017 Crackme 0 Writeup
 subtitle: Static analysis with Binary Ninja
 ---
