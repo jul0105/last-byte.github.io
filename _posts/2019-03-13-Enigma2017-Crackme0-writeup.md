@@ -34,6 +34,10 @@ Oh boy, I hate when things get messy out of nowhere... Let's go with the cartesi
 
 ![fromhex1]({{site.baseurl}}/img/fromhex1.png)
 
-What this block of fromhex() does is essentially setting up the stack right after the function call and checking the length of the input string calling strlen(). I already changed the variable names in order to make it easier to understand which area of the stack points to which variable.
+What this block of fromhex() does is essentially setting up the stack right after the function call and checking the length of the input string calling strlen(). I already changed the variable names in order to make it easier to understand which area of the stack points to which variable. Per calling convention, when a function returns the return value is put into EAX and indeed you can see that right after strlen() returns what's into EAX is copied into a local variable positioned at EBP-0x10. If we check the manpage for strlen we can find the following information:
 
+![strlen]({{site.baseurl}}/img/strlenmanpage.png)
 
+So... strlen() gives us back the length of the string it takes as argument (notice also I've changed the argument name). That's interesting, in fact most of the times a programmer will check if the length of the string it's right before even checking the string! So we can assume that right after the strlen() call we will find an instruction comparing the length of the string with a fixed value. And that's exactly what happens.
+
+![fromhex2]({{site.baseurl}}/img/fromhex2.png)
