@@ -10,8 +10,17 @@ Yesterday I bought the commercial edition of [Binary Ninja](https://binary.ninja
 First things first, I fired up my good friend Binary Ninja (Binja from now on) and started looking around the binary. Other than main() we have three other interesting functions: wrong(), decrypt() and fromhex(). Let's start with wrong()
 ![wrong_disasm]({{site.baseurl}}/img/wrong.png)
 
-Meh. It doesn't do much except for killing the process, from the XREF section of Binja we can clearly see it gets called twice from main.
+Meh. It doesn't do much except for killing the process. From the Cross Reference (XREF) section of Binja we can clearly see it gets called twice from main.
 ![wrong_xref]({{site.baseurl}}/img/wrong_xref.png)
+
+While doing reverse engineering it's always important to look at failure functions like wrong() and when they get called because it can shed some light on how the program works and, more importantly, what are the conditions for it to work properly. What you have to look at specifically is when functions like wrong() get called. As we said before it gets called twice: once right after the fromhex() function returns
+![wrong_call1]({{site.baseurl}}/img/wrong_call1.png)
+
+and the second time right after an interesting memcmp() call
+![wrong_call2]({{site.baseurl}}/img/wrong_call2.png)
+
+
+
 
 
 
