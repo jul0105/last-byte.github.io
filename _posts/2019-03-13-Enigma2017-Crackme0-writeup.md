@@ -59,7 +59,7 @@ By looking at the rest of the fromhex() function it seems like its sole purpose 
 
 Also we can see that the fromhex() will return a non-zero value everytime it finds a non hexadecimal character inside our input string or if the input string is not 32-character long. That's interesting, note that main() will check what the return value of fromhex() is (by checking the content of EAX via `TEST EAX, EAX`) and if it's not zero will jump to the code block that leads to wrong().
 
-![main1]({{site.baseurl}}/img/main1)
+![main1]({{site.baseurl}}/img/main1.png)
 
 
 
