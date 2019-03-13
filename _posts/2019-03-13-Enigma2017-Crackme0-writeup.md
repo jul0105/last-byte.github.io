@@ -7,8 +7,12 @@ Yesterday I bought the commercial edition of [Binary Ninja](https://binary.ninja
 
 ## Static analysis with Binary Ninja
 
-First things first, I fired up my good friend Binary Ninja and started looking around the binary. Other than main() we have three other interesting functions: wrong(), decrypt() and fromhex(). Let's start with wrong()
+First things first, I fired up my good friend Binary Ninja (Binja from now on) and started looking around the binary. Other than main() we have three other interesting functions: wrong(), decrypt() and fromhex(). Let's start with wrong()
 ![wrong_disasm]({{site.baseurl}}/img/wrong.png)
+
+Meh. It doesn't do much except for killing the process, from the XREF section of Binja we can clearly see it gets called twice from main.
+![wrong_xref]({{site.baseurl}}/img/wrong_xref.png)
+
 
 
 
