@@ -16,18 +16,23 @@ First things first, I fired up my good friend Binary Ninja (Binja from now on) a
 - fromhex()
 
 Let's start with wrong()
+
 ![wrong_disasm]({{site.baseurl}}/img/wrong.png)
 
 Meh. It doesn't do much except for killing the process. From the Cross Reference (XREF) section of Binja we can clearly see it gets called twice from main.
+
 ![wrong_xref]({{site.baseurl}}/img/wrong_xref.png)
 
 While doing reverse engineering it's always important to look at failure functions like wrong() and when they get called because it can shed some light on how the program works and, more importantly, what are the conditions for it to work properly. What you have to look at specifically is when functions like wrong() get called. As we said before it gets called twice: once right after the fromhex() function returns.
+
 ![wrong_call1]({{site.baseurl}}/img/wrong_call1.png)
 
 and the second time right after an interesting memcmp() call.
+
 ![wrong_call2]({{site.baseurl}}/img/wrong_call2.png)
 
 But let's do things the tidy way, after all this CTF ended two years ago so we are not competing. Let's open the fromhex() function and let's see what it does.
+
 ![fromhex0]({{site.baseurl}}/img/fromhex0.png)
 
 Oh boy, I hate when things get messy out of nowhere... Let's go with the cartesian logic approach and break it down into little bits and see if we can work out what's happening here.
@@ -41,3 +46,5 @@ What this block of fromhex() does is essentially setting up the stack right afte
 So... strlen() gives us back the length of the string it takes as argument (notice also I've changed the argument name). That's interesting, in fact most of the times a programmer will check if the length of the string it's right before even checking the string! So we can assume that right after the strlen() call we will find an instruction comparing the length of the string with a fixed value. And that's exactly what happens.
 
 ![fromhex2]({{site.baseurl}}/img/fromhex2.png)
+
+I commented the code as it took me a while to clearly understand what happens here. I HAVE NO IDEA WHY but instead of checking directly the length of the string with a `CMP EAX, 0x20` the program first uses a `SAR EAX, 0x1` instruction to divide by two the length of the string and then does a `CMP EAX, 0x10`. 
