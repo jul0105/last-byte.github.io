@@ -47,4 +47,8 @@ So... strlen() gives us back the length of the string it takes as argument (noti
 
 ![fromhex2]({{site.baseurl}}/img/fromhex2.png)
 
-I commented the code as it took me a while to clearly understand what happens here. I HAVE NO IDEA WHY but instead of checking directly the length of the string with a `CMP EAX, 0x20` the program first uses a `SAR EAX, 0x1` instruction to divide by two the length of the string and then does a `CMP EAX, 0x10`. 
+I commented the code as it took me a while to clearly understand what happens here. I HAVE NO IDEA WHY but instead of checking directly the length of the string with a `CMP EAX, 0x20` the program first uses a `SAR EAX, 0x1` instruction to divide by two the length of the string and then does a `CMP EAX, 0x10`.
+
+<p class="alert alert-info">
+    <span class="label label-info">NOTE:</span> the SAR instruction stands for Shift Arithmetic Right and takes two arguments: the first is the destination and the second is a numeric value. What it does is essentially shifting right the bits inside the destination by an amount specified by the numeric value, but preserving the right-most bit. In this way the sign of the number contained by the destination doesn't change but the value gets divided by two to the power of the numeric value.
+</p>
