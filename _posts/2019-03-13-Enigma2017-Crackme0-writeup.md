@@ -23,5 +23,10 @@ and the second time right after an interesting memcmp() call.
 ![wrong_call2]({{site.baseurl}}/img/wrong_call2.png)
 
 But let's do things the tidy way, after all this CTF ended two years ago so we are not competing. Let's open the fromhex() function and let's see what it does.
+![fromhex0]({{site.baseurl}}/img/fromhex0.png)
+
+Oh boy, I hate when things get messy out of nowhere... Let's go with the cartesian logic approach and break it down into little bits and see if we can work out what happens.
+![fromhex1]({{site.baseurl}}/img/fromhex1.png)
+
 
 
