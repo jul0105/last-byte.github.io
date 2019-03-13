@@ -52,3 +52,14 @@ I commented the code as it took me a while to clearly understand what happens he
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> the SAR instruction stands for Shift Arithmetic Right and takes two arguments: the first is the destination and the second is a numeric value. What it does is essentially shifting right the bits inside the destination by an amount specified by the numeric value, but preserving the left-most bit. In this way the sign of the number contained by the destination doesn't change but the value gets divided by two to the power of the numeric value.
 </p>
+
+By looking at the rest of the fromhex() function it seems like its sole purpose is to check whether the serial number we input is a valid hexadecimal string 
+
+![strchr0]({{site.baseurl}}/img/strchr0.png)
+
+Also we can see that the fromhex() will return a non-zero value everytime it finds a non hexadecimal character inside our input string or if the input string is not 32-character long. That's interesting, note that main() will check what the return value of fromhex() is (by checking the content of EAX via `TEST EAX, EAX`) and if it's not zero will jump to the code block that leads to wrong().
+
+![main1]({{site.baseurl}}/img/main1)
+
+
+
