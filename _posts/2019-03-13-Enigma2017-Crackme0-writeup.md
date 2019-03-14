@@ -99,4 +99,14 @@ Let's declutter this a bit. In this screenshot you can see I
 2. placed a breakpoint at the beginning of the function via `break *decrypt`
 3. ran the program with a 32 byte string via `r aabbccddeeffaabbccddeeffaabbccdd`
 
-And as expected the execution stopped right at the beginning of `decrypt()`. As you can see the string we gave as argument to the program respected all the requirements we defined above and allowed us to breeze through `fromhex()`.
+And as expected the execution stopped right at the beginning of `decrypt()`. As you can see the string we gave as argument to the program respected all the requirements we defined above and allowed us to breeze through `fromhex()`, otherwise the program would've told us our input was wrong and wouldn't even have reached `decrypt()`. That being said let's step through the function and see what happens to our input. After letting it do its stuff for a few rounds I notice the address `0x8049a97` is being called more than once by the following instructions inside `decrypt()`:
+
+```
+movzx  eax, BYTE PTR [eax+0x8049a97]
+add    edx, 0x8049a97
+mov    BYTE PTR [eax+0x8049a97], dl
+lea    edx, [eax+0x8049a97]
+```
+
+It seems like it's manipulating some kind of string, and that makes sense since the function is called "decrypt". Let's check what we can find at that address:
+
