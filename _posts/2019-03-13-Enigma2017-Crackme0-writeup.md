@@ -173,7 +173,8 @@ and in fact when we run `./crackme_0 32646165373263313532666165373937` we get th
 Ok, now I gotta be honest with you. I'm [notso.pro](https://blog.notso.pro/aboutme/) and it really didnt't go that way so I'll do a quick rundown of how things really went.
 
 ```
-FUCK!
+What's all this mess?
+WTF am I still doing here?!
 FUCK!
 FUCK!
 FUCK!
