@@ -6,11 +6,11 @@ date: '2019-03-13'
 title: Enigma 2017 Crackme 0 Writeup
 subtitle: Reverse engineering with Binary Ninja and GDB
 ---
-Yesterday I bought the commercial edition of [Binary Ninja](https://binary.ninja/) and I wanted to test it out so I went looking for some interesting reverse engineering challenges. Since I SUCK at reverse engineering I decided to go for a simple crackme from the 2017 edition of the Enigma CTF called [Crackme 0](https://hackcenter.com/competition/train/1/Enigma-2017/Crackme-0). Now, I could've looked at the provided [C source code](https://shell-enigma2017.hackcenter.com/static/dc7f79bcb37030ddc9f001208767e999/crackme_0_empty.c) but what's the point in reverse engineering if you already have the source? Let's leave C source codes to whitehats, shall we?
+Yesterday I bought the commercial edition of [Binary Ninja](https://binary.ninja/) and I wanted to test it out so I went looking for some interesting reverse engineering challenges. Since I SUCK at reverse engineering I decided to go for a simple crackme from the 2017 edition of the Enigma CTF called [Crackme 0](https://hackcenter.com/competition/train/1/Enigma-2017/Crackme-0). I could've looked at the provided [C source code](https://shell-enigma2017.hackcenter.com/static/dc7f79bcb37030ddc9f001208767e999/crackme_0_empty.c) but what's the point in reverse engineering if you already have the source? Let's leave source codes to whitehats, shall we?
 
 ## Static analysis with Binary Ninja
 
-First things first, I fired up my good friend Binary Ninja (Binja from now on) and started looking around the binary. Other than main() we have three other interesting functions: 
+First things first, I fired up my good friend Binary Ninja (Binja from now on) and started looking around the binary. Other than main() we have three interesting functions: 
 - wrong()
 - decrypt()
 - fromhex()
@@ -31,23 +31,25 @@ and the second time right after an interesting memcmp() call.
 
 ![wrong_call2]({{site.baseurl}}/img/wrong_call2.png)
 
-But let's do things the tidy way, after all this CTF ended two years ago so we are not competing. Let's open the fromhex() function and let's see what it does.
+But let's do things the tidy way, after all this CTF ended two years ago so we are not competing. Time to open up the fromhex() function and see what it does.
 
 ![fromhex0]({{site.baseurl}}/img/fromhex0.png)
 
-Oh boy, I hate when things get messy out of nowhere... Let's go with the cartesian logic approach and break it down into little bits and see if we can work out what's happening here.
+Oh boy, I hate when things get messy out of nowhere... Let's go with the cartesian logic approach: we will break it down into smaller blocks and see if we can work out what's happening here.
 
 ![fromhex1]({{site.baseurl}}/img/fromhex1.png)
 
-What this block of fromhex() does is essentially setting up the stack right after the function call and checking the length of the input string calling strlen(). I already changed the variable names in order to make it easier to understand which area of the stack points to which variable. Per calling convention, when a function returns the return value is put into EAX and indeed you can see that right after strlen() returns what's into EAX is copied into a local variable positioned at EBP-0x10. If we check the manpage for strlen we can find the following information:
+What this block of fromhex() does is essentially setting up the stack right after the function call and checking the length of the input string calling the C function strlen(). I already changed variables' names in Binja in order to make it easier to understand which areas of the stack points to which variables. Per calling convention, when a function returns the return value is put into EAX and indeed you can see that right after strlen() returns what's into EAX is copied into a local variable positioned at EBP-0x10. If we check the manpage for strlen we can find the following information:
 
 ![strlen]({{site.baseurl}}/img/strlenmanpage.png)
 
-So... strlen() gives us back the length of the string it takes as argument (notice also I've changed the argument name). That's interesting, in fact most of the times a programmer will check if the length of the string it's right before even checking the string! So we can assume that right after the strlen() call we will find an instruction comparing the length of the string with a fixed value. And that's exactly what happens.
+So... strlen() gives us back the length of the string it takes as argument. That's interesting, in fact most of the times a programmer will check if the length of the string it's right before even checking the string! So we can assume that right after the strlen() call we will find an instruction comparing the length of the string with a fixed value. And that's exactly what happens.
 
 ![fromhex2]({{site.baseurl}}/img/fromhex2.png)
 
 I commented the code as it took me a while to clearly understand what happens here. I HAVE NO IDEA WHY but instead of checking directly the length of the string with a `CMP EAX, 0x20` the program first uses a `SAR EAX, 0x1` instruction to divide by two the length of the string and then does a `CMP EAX, 0x10`.
+
+EDIT: Hi, it's last from the future here. After almost finishing writing the post I decided I would finally take a look at the source code to make sure I didn't leave anything interesting uncovered and it turned out there was a reason for the program to do this: in the source code there was something like this:
 
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> the SAR instruction stands for Shift Arithmetic Right and takes two arguments: the first is the destination and the second is a numeric value. What it does is essentially shifting right the bits inside the destination by an amount specified by the numeric value, but preserving the left-most bit. In this way the sign of the number contained by the destination doesn't change but the value gets divided by two to the power of the numeric value.
@@ -60,6 +62,3 @@ By looking at the rest of the fromhex() function it seems like its sole purpose 
 Also we can see that the fromhex() will return a non-zero value everytime it finds a non hexadecimal character inside our input string or if the input string is not 32-character long. That's interesting, note that main() will check what the return value of fromhex() is (by checking the content of EAX via `TEST EAX, EAX`) and if it's not zero will jump to the code block that leads to wrong().
 
 ![main0]({{site.baseurl}}/img/main0.png)
-
-
-
