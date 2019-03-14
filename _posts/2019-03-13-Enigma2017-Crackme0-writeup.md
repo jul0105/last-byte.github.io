@@ -77,7 +77,9 @@ Also we can see that the fromhex() will return a non-zero value everytime it fin
 
 ![main0]({{site.baseurl}}/img/main0.png)
 
-The address in the instruction `JE 0x80486B3` is the address of one of the code blocks that lead to `wrong()`. Ok, let's do a quick recap of what we know so far:
+The address in the instruction `JE 0x80486B3` is the address of one of the code blocks that lead to `wrong()`. 
+
+Ok, let's do a quick recap of what we know so far:
 - the program wants a string as argument
 - the string must contain exactly 32 characters
 - the charset is [a-z0-9]
