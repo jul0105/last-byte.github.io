@@ -81,3 +81,4 @@ The address in the instruction `JE 0x80486B3` is the address of one of the code 
 - the program wants a string as argument
 - the string must contain exactly 32 characters
 - the charset is [a-z0-9]
+- failure to comply with the requirements above leads to `wrong()`
