@@ -135,3 +135,21 @@ to this
 
 Interestingly our string is parsed using the [little-endian format](https://en.wikipedia.org/wiki/Endianness#Little-endian) which specifies the left-most byte is placed at the lower address. Now that we know that the last thing to do is analyze the part of the program that leads to the `memcmp()`.
 
+![buffer0]({{site.baseurl}}/img/buffer0.png)
+
+We know that `memcmp()` is a C function that takes three arguments:
+1. a pointer to a block of memory `str1`
+2. a pointer to another block of memory `str2` 
+3. a number `n`
+
+What it does is essentially comparing the first `n` bytes of the two blocks of memory `str1` and `str2`. It can return the following values:
+- less than 0 if `str1` is less than `str2`
+- more than 0 if `str1` is greater than `str2`
+- equal to 0 if the two are the equal
+
+So, by looking at the assembly we can see that three arguments are pushed on the stack before calling `memcmp()` and those are the number 0x10, the address of `secret` and the address of `buffer`. Since we know the calling convention states that arguments are pushed on the stack in reverse order we know that ther number 0x10 is the amount of bytes to check and that `secret` and `buffer` are the two blocks of memory that will be compared. And judging from the `JNE 0x80486e5` now we know that `buffer` and `secret` must be the same in order for the function to print the string "That is correct!".
+
+Knowing all that we can now simply go in memory and check what `secret` looks like
+
+
+
