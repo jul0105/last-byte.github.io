@@ -190,7 +190,7 @@ I really suck at this!
 FUCK!
 FUCK!
 FUCK!
-Wait a minute, my input is translated in this way?
+Wait a minute, my input is translated to this stuff?
 So that's how it works uh?
 Great I solved it!! Now, how does this shit work?
 ```
