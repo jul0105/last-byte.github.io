@@ -149,7 +149,11 @@ What it does is essentially comparing the first `n` bytes of the two blocks of m
 
 So, by looking at the assembly we can see that three arguments are pushed on the stack before calling `memcmp()` and those are the number 0x10, the address of `secret` and the address of `buffer`. Since we know the calling convention states that arguments are pushed on the stack in reverse order we know that ther number 0x10 is the amount of bytes to check and that `secret` and `buffer` are the two blocks of memory that will be compared. And judging from the `JNE 0x80486e5` now we know that `buffer` and `secret` must be the same in order for the function to print the string "That is correct!".
 
-Knowing all that we can now simply go in memory and check what `secret` looks like
+Knowing all that we can now simply go in memory and check what `secret` looks like. We can find the address of secret by disassembling main in GDB and seeing which address is pushed on the stack before `buffer` is pushed on the stack and `memcmp()` is called.
+
+![secret0]({{site.baseurl}}/img/secret0.png)
+
+Perfect.
 
 
 
