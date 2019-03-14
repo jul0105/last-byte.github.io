@@ -170,7 +170,7 @@ and in fact when we run `./crackme_0 32646165373263313532666165373937` we get th
 
 ![success]({{site.baseurl}}/img/success.png)
 
-Ok, now I gotta be honest with you. I'm [notso.pro](https://blog.notso.pro/aboutme/) and it did not go really that way so I'll do a quick rundown of how things really went.
+Ok, now I gotta be honest with you. I'm [notso.pro](https://blog.notso.pro/aboutme/) and it really didnt't go that way so I'll do a quick rundown of how things really went.
 
 ```
 FUCK!
