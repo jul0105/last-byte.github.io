@@ -114,3 +114,6 @@ It seems like it's manipulating some kind of string, and that makes sense since 
 
 That was unexpected. It seems like the function is converting our input string to a block of bytes, two characters at a time... That makes perfectly sense! Think about it: our input string was 32 bytes and the charset is [a-z0-9] which is the same charset of hexadecimal numbers, if `decrypt()` converts it into bytes we will have 16 bytes, every byte will be made of two characters from our input. Also this address in memory has a name: `buffer`. Why does it sound familiar?
 
+![buffer0]({{site.baseurl}}/img/buffer0.png)
+
+That's right! Remember that "interesting" call to `memcmp()` we mentioned before? 
