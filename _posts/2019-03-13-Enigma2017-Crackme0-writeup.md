@@ -91,3 +91,6 @@ Now that we understand the program a bit better we can move on to the more inter
 ![decrypt0]({{site.baseurl}}/img/decrypt0.png)
 
 You know what mate? I've seen worse, this one even fits the screen! Wanna know another thing mate? I'm a little bit tired of looking at static assembly code, why don't we analyze the workings of this function using our good friend GDB? I'm going to cheat and use [GDB Enhanced Features](https://github.com/hugsy/gef) (aka GEF) which is a set of commands for GDB that adds a lot of functionalities and also formats output in a better way using color codes and stuff like that.
+
+![decrypt1]({{site.baseurl}}/img/decrypt1.png)
+
