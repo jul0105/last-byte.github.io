@@ -116,4 +116,6 @@ That was unexpected. It seems like the function is converting our input string t
 
 ![buffer0]({{site.baseurl}}/img/buffer0.png)
 
-That's right! Remember that "interesting" call to `memcmp()` we mentioned before? 
+That's right! Remember that "interesting" call to `memcmp()` we mentioned before? It seems like this `buffer` variable will be compared to a `secret` variable. Let's get back to `decrypt()` and check how `buffer`. I will now place a breakpoint at the end of the function and run the program again, this time with `00112233445566778899aabbccddeeff` as input.
+
+
