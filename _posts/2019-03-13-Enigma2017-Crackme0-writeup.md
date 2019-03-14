@@ -118,4 +118,20 @@ That was unexpected. It seems like the function is converting our input string t
 
 That's right! Remember that "interesting" call to `memcmp()` we mentioned before? It seems like this `buffer` variable will be compared to a `secret` variable. Let's get back to `decrypt()` and check how `buffer`. I will now place a breakpoint at the end of the function and run the program again, this time with `00112233445566778899aabbccddeeff` as input.
 
+![decrypt4]({{site.baseurl}}/img/decrypt4.png)
+
+Now it's really clear! As you can see in the lower part of the screenshot our input has been parsed and we went from this
+
+```
+0xffffcd01:	"00112233445566778899aabbccddeeff"
+```
+
+to this
+
+```
+0x8049a97 <buffer>:		0xff	0xee	0xdd	0xcc	0xbb	0xaa	0x99	0x88
+0x8049a9f <buffer+8>:	0x77	0x66	0x55	0x44	0x33	0x22	0x11	0x00
+```
+
+Interestingly our string is parsed using the [little-endian format](https://en.wikipedia.org/wiki/Endianness#Little-endian) which specifies the left-most byte is placed at the lower address. Now that we know that the last thing to do is analyze the part of the program that leads to the `memcmp()`.
 
