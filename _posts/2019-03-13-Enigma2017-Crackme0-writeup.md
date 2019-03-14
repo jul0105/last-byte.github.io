@@ -153,7 +153,14 @@ Knowing all that we can now simply go in memory and check what `secret` looks li
 
 ![secret0]({{site.baseurl}}/img/secret0.png)
 
-Perfect.
+Perfect. Now we only have to rewrite our input so that it gets parsed in the right way. Knowing the value of `secret` all we have to do is write it backwards so that we get from this
 
+```
+```
+
+to this
+
+```
+```
 
 
