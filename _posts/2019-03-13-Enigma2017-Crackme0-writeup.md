@@ -84,3 +84,6 @@ Ok, let's do a quick recap of what we know so far:
 - the string must contain exactly 32 characters
 - the charset is [a-z0-9]
 - failure to comply with the requirements above leads to `wrong()`
+- the function `fromhex()` is responsible for doing some of the above checks
+
+Now that we understand the program a bit better we can move on to the more interesting (and usually scarier) function `decrypt()`.
