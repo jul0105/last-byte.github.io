@@ -63,7 +63,7 @@ EDIT: Hi, last from the future here. After almost finishing writing the post I d
   }
 ```
 
-So, what's happening here is the program first checks if the string is made of a even number of characters (by doing `len&1` it does a bitwise AND with 0x1, thus checking if the right-most bit is a 1 or a 0) and then divides by two `len` and checks it's equal to SECSIZE (which is defined as 16 earlier in the code). Now back to past last's writeup.
+So, what's happening here is the program first checks if the string is made of a even number of characters (by doing `len&1` it does a bitwise AND with 0x1, thus checking if the right-most bit is a 1 or a 0) and then divides `len` by two and checks if it's equal to SECSIZE (which is defined as 16 earlier in the code). Now back to past last's writeup.
 
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> the SAR instruction stands for Shift Arithmetic Right and takes two arguments: the first is the destination and the second is a numeric value. What it does is essentially shifting right the bits inside the destination by an amount specified by the numeric value, but preserving the left-most bit. In this way the sign of the number contained by the destination doesn't change but the value gets divided by two to the power of the numeric value.
