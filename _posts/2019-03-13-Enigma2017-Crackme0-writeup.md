@@ -49,7 +49,21 @@ So... strlen() gives us back the length of the string it takes as argument. That
 
 I commented the code as it took me a while to clearly understand what happens here. I HAVE NO IDEA WHY but instead of checking directly the length of the string with a `CMP EAX, 0x20` the program first uses a `SAR EAX, 0x1` instruction to divide by two the length of the string and then does a `CMP EAX, 0x10`.
 
-EDIT: Hi, it's last from the future here. After almost finishing writing the post I decided I would finally take a look at the source code to make sure I didn't leave anything interesting uncovered and it turned out there was a reason for the program to do this: in the source code there was something like this:
+EDIT: Hi, it's last from the future here. After almost finishing writing the post I decided I would finally take a look at the source code to make sure I didn't leave anything interesting uncovered and it turned out there was a reason for the program to do this: in the source code there were the following lines:
+
+```
+  int len = strlen(input);
+  //can't decode hex string with odd number of characters
+  if (len&1) {
+    return 1;
+  }
+  //make sure len/2 is the size we are looking for
+  if (len>>1 != SECSIZE) {
+    return 2;
+  }
+```
+
+So, what's happening here is the program first checks if the string is made of a even number of characters (by doing `len&1` it does a bitwise AND with 0x1, thus checking if the right-most one is a 1 or a 0) and then divides by two len and checks it's equal to SECSIZE (which is defined as 16 earlier in the code). Now back to past's last's writeup.
 
 <p class="alert alert-info">
     <span class="label label-info">NOTE:</span> the SAR instruction stands for Shift Arithmetic Right and takes two arguments: the first is the destination and the second is a numeric value. What it does is essentially shifting right the bits inside the destination by an amount specified by the numeric value, but preserving the left-most bit. In this way the sign of the number contained by the destination doesn't change but the value gets divided by two to the power of the numeric value.
