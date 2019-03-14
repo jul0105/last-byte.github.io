@@ -39,7 +39,7 @@ Oh boy, I hate when things get messy out of nowhere... Let's go with the cartesi
 
 ![fromhex1]({{site.baseurl}}/img/fromhex1.png)
 
-What this block of `fromhex()` does is essentially setting up the stack right after the function call and checking the length of the input string calling the C function `strlen()`. I already changed variables' names in Binja in order to make it easier to understand which areas of the stack points to which variables. Per calling convention, when a function returns the return value is put into EAX and indeed you can see that right after `strlen()` returns what's into EAX is copied into a local variable positioned at EBP-0x10. If we check the manpage for strlen we can find the following information:
+What this block of `fromhex()` does is essentially setting up the stack right after the function call and checking the length of the input string calling the C function `strlen()`. I already changed variables' names in Binja in order to make it easier to understand which areas of the stack point to which variables. Per calling convention, when a function returns the return value is put into EAX and indeed you can see that right after `strlen()` returns what's into EAX is copied into a local variable positioned at EBP-0x10. If we check the manpage for strlen we can find the following information:
 
 ![strlen]({{site.baseurl}}/img/strlenmanpage.png)
 
