@@ -156,11 +156,43 @@ Knowing all that we can now simply go in memory and check what `secret` looks li
 Perfect. Now we only have to rewrite our input so that it gets parsed in the right way. Knowing the value of `secret` all we have to do is write it backwards so that we get from this
 
 ```
+0x8049a74 <secret>:	0x37	0x39	0x37	0x65	0x61	0x66	0x32	0x35
+0x8049a7c <secret+8>:	0x31	0x63	0x32	0x37	0x65	0x61	0x64	0x32
 ```
 
 to this
 
 ```
+32646165373263313532666165373937
 ```
 
+and in fact when we run `./crackme_0 32646165373263313532666165373937` we get the following output
 
+![success]({{site.baseurl}}/img/success.png)
+
+Ok, now I gotta be honest with you. I'm notso.pro and it did not go really that way so I'll do a quick rundown of how things really went.
+
+```
+FUCK!
+FUCK!
+FUCK!
+FUCK!
+Ehi look there's a string there!
+It's not the serial!
+FUCK!
+FUCK!
+FUCK!
+This shit doesn't work!
+FUCK!
+FUCK!
+FUCK!
+I really suck at this!
+FUCK!
+FUCK!
+FUCK!
+Wait a minute, my input is translated in this way?
+So that's how it works uh?
+Great I solved it!! Now, how does this shit work?
+```
+
+Yeah. Just like that. Oh, did I forget to tell you it was 4AM when I finally solved it? Yeah, my life kinda sucks.
