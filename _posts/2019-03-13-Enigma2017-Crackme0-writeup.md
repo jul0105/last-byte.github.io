@@ -94,3 +94,9 @@ You know what mate? I've seen worse, this one even fits the screen! Wanna know a
 
 ![decrypt1]({{site.baseurl}}/img/decrypt1.png)
 
+Let's declutter this a bit. In this screenshot you can see I
+1. disassembled the `decrypt()` function via `disassemble decrypt`
+2. placed a breakpoint at the beginning of the function via `break *decrypt`
+3. ran the program with a 32 byte string via `r aabbccddeeffaabbccddeeffaabbccdd`
+
+And as expected the execution stopped right at the beginning of `decrypt()`. As you can see the string we gave as argument to the program respected all the requirements we defined above and allowed us to breeze through `fromhex()`.
