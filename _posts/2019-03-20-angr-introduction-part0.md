@@ -110,5 +110,13 @@ Here the program declares the `main()` function of the script. At (1) it declare
 path_to_binary = "./00_angr_find" # (1)
 ```
 
+Okay, let's move on to the next lines:
+
+```
+print_good_address = ??? (1)
+simulation.explore(find=print_good_address) (2)
+```
+These lines are the key. The `print_good_address` variable is the one which holds the address of the block that leads to printing "Good Job." and we can find its value through a disassembler (I'll go with Binary Ninja, as usual)
+
 
 
