@@ -114,7 +114,7 @@ Okay, let's move on to the next lines:
 
 ```
 print_good_address = ??? (1)
-simulation.explore(find=print_good_address) (2)
+simulation.explore(find=print_good_address) # (2)
 ```
 These lines are the key. The `print_good_address` variable is the one which holds the address of the block that leads to printing "Good Job." and we can find its value through a disassembler (I'll go with Binary Ninja, as usual)
 
@@ -123,9 +123,9 @@ These lines are the key. The `print_good_address` variable is the one which hold
 Let's edit out the `???` and substitute them with the highlighted address. At (2) we are basically telling the engine "Sup bro, why don't you recursively look at the program tree and tell me if you find a way to this address?" and, being the good guy he is, angr will do that for you. On to the last lines of the script.
 
 ```
-if simulation.found: (1)
-    solution_state = simulation.found[0] (2)
-    print solution_state.posix.dumps(sys.stdin.fileno()) (3)
+if simulation.found: # (1)
+    solution_state = simulation.found[0] # (2)
+    print solution_state.posix.dumps(sys.stdin.fileno()) # (3)
   
   else:
     raise Exception('Could not find the solution')
@@ -134,5 +134,6 @@ if __name__ == '__main__':
   main(sys.argv)
 ```
 
+At (1) the script checks if the array which contains all the states that reached the address defined before in the variable `print_good_address` actually contains anything. In the case there was some input that triggered the right path assign the state to the `solution_state` at (2) and print the input to stdin at (3). The remaining lines are called by the script if there are no states that reach the desired address, while the last two run the script.
 
 
