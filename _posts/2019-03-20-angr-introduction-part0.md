@@ -19,3 +19,10 @@ To quote the developers of angr:
 > angr is a python framework for analyzing binaries. 
 > It combines both static and dynamic symbolic ("concolic") analysis, making it applicable to a variety of tasks.
 
+It has a shit-ton of functionalities and its learning curve is somewhat steep, not for the amount of features per se but for the lack of learning materials or of a coherent learning path. Actually there are a lot of CTFs' writeups and stuff like but aside from angr_ctf there's not much more from a learner's point of view.
+
+Back on angr, what really shines (for a beginner at least) at first glance is the power of its symbolic execution engine. To put it simply, symbolic execution means analyzing a program without actually running it in order to understand what input makes the program take certain code paths. The most common example is a program which takes a string as input and prints something based on comparing the input with a string assembled at runtime. Symbolic execution allows us to analyze the program and treat it like an equation, solving the equation and telling us what is the correct input string.
+
+![symbolic0]({{site.baseurl}}/img/symbolicexec0.JPG)
+
+
