@@ -136,4 +136,14 @@ if __name__ == '__main__':
 
 At (1) the script checks if the array which contains all the states that reached the address defined before in the variable `print_good_address` actually contains anything. In the case there was some input that triggered the right path assign the state to the `solution_state` at (2) and print the input to stdin at (3). The remaining lines are called by the script if there are no states that reach the desired address, while the last two run the script.
 
+Now that the script is ready we can run it and it should print the string that make the program print "Good Job."
 
+IMAGE HERE
+
+Ok, I cheated a bit and formatted the output in a prettier way but you can see that if I run the program and give it the output of angr we get the desired outcome. Here is the final script:
+
+```
+
+```
+
+And that's all for this first part, in the next one we will see how to craft and inject a symbolic buffer inside a program, cya!
