@@ -138,12 +138,33 @@ At (1) the script checks if the array which contains all the states that reached
 
 Now that the script is ready we can run it and it should print the string that make the program print "Good Job."
 
-IMAGE HERE
+![scaffold00]({{site.baseurl}}/img/scaffold00.png)
 
 Ok, I cheated a bit and formatted the output in a prettier way but you can see that if I run the program and give it the output of angr we get the desired outcome. Here is the final script:
 
 ```
+import angr
+import sys
 
+def main(argv):
+  path_to_binary = "./00_angr_find" # path of the binary program
+  project = angr.Project(path_to_binary)
+  initial_state = project.factory.entry_state()
+  simulation = project.factory.simgr(initial_state)
+
+  print_good_address = 0x8048678  # :integer (probably in hexadecimal)
+  simulation.explore(find=print_good_address)
+  
+  if simulation.found:
+    solution_state = simulation.found[0]
+    solution = solution_state.posix.dumps(sys.stdin.fileno())
+    print("[+] Success! Solution is: {}".format(solution.decode("utf-8")))
+  
+  else:
+    raise Exception('Could not find the solution')
+
+if __name__ == '__main__':
+  main(sys.argv)
 ```
 
 And that's all for this first part, in the next one we will see how to craft and inject a symbolic buffer inside a program, cya!
