@@ -63,7 +63,7 @@ It could be done by hand but
 4. we don't have much time
 5. angr
 
-So let's take a look at the `scaffold01.py` file (I edited out all of the comments)
+So let's take a look at the `scaffold00.py` file (I edited out all of the comments)
 
 ```
 import angr
