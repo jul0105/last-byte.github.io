@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About me
+title: \`whoami\`
 subtitle: You really don't want to know this stuff
 ---
 
