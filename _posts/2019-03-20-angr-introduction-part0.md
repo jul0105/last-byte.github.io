@@ -30,9 +30,12 @@ There is an interesting set of slides on symbolic execution inside the angr_ctf 
 ```
 int x;
 scanf("%d", &x);
+
 if ((x > 1) && (x < 10)) {
 	puts("Success!!");
-} else {
+} 
+
+else {
 	puts("Fail.");
 }
 ```
@@ -41,4 +44,6 @@ In this code the `if` statement constrains the value of the variable `x`. Let's 
 What I want to stress here is the fact that a symbolic execution engine does not execute a program, unless explicitly told to. It's important to know that because symbolic execution evaluates all of the branches in the code and that means that if we are analyzing a large program with a lot of branches we can have what is called "path explosion" and in some cases the amount of time needed to analyze everything can be greater than what will take to reach the [heat death of the universe](https://en.wikipedia.org/wiki/Heat_death_of_the_universe) (spoiler, billions and billions of years). This happens because every branch doubles the amount of states the symbolic execution engine has to analyze.
 
 There's a lot more to symbolic execution than that so I've included a [pdf version of the slides included with angr_ctf](https://blog.notso.pro/downloads/SymbolicExecution.pdf) if you want to go down the rabbit hole.
+
+# 
 
