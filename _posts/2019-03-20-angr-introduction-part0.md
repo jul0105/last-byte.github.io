@@ -167,4 +167,4 @@ if __name__ == '__main__':
   main(sys.argv)
 ```
 
-And that's all for this first part, in the next one we will see how to craft and inject a symbolic buffer inside a program, cya!
+And that's all for this first part, in the next one we will see how to work out a solution for the problem of path explosion and craft a symbolic buffer to inject inside a program, cya!
