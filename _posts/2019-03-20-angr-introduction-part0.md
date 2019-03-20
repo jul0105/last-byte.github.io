@@ -50,4 +50,4 @@ There's a lot more to symbolic execution than that so I've included a [pdf versi
 
 Ok, time to get our hands dirty. Clone the angr_ctf repository linked above and head to the `dist/` folder. Here you will find 18 challenges and 18 scaffoldXX.py files containing the skeleton solutions to the challenges. The first challenge we will deal with is `00_angr_find`. It's a fairly simple binary taking as input a string and printing whether it was the right one or not. As pointed out before we are interested in the code path that leads to the "Good Job." string.
 
-
+![symbolic1]({{site.baseurl}}/img/symbexec1.png)
