@@ -55,3 +55,10 @@ Ok, time to get our hands dirty. Clone the angr_ctf repository linked above and 
 The conventional approach would be to open up the `complex_function()` function and reverse engineer it, but it doesn't seem a good idea to be honest:
 
 ![symbolic2]({{site.baseurl}}/img/symbexec2.png)
+
+It could be done by hand but
+1. it would be boring
+2. what's the point in having a CPU if you don't use it?
+3. we are lazy
+4. we don't have much time
+5. angr
