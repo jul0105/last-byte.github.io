@@ -1,6 +1,6 @@
 ---
 layout: page
-title: \`whoami\`
+title: # whoami
 subtitle: You really don't want to know this stuff
 ---
 
