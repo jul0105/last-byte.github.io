@@ -62,3 +62,29 @@ It could be done by hand but
 3. we are lazy
 4. we don't have much time
 5. angr
+
+So let's take a look at the `scaffold01.py` file (I edited out all of the comments)
+
+```
+import angr
+import sys
+
+def main(argv):
+  path_to_binary = ???
+  project = angr.Project(path_to_binary)
+  initial_state = project.factory.entry_state()
+  simulation = project.factory.simgr(initial_state)
+  
+  print_good_address = ???
+  simulation.explore(find=print_good_address)
+  
+  if simulation.found:
+    solution_state = simulation.found[0]
+    print solution_state.posix.dumps(sys.stdin.fileno())
+  
+  else:
+    raise Exception('Could not find the solution')
+
+if __name__ == '__main__':
+  main(sys.argv)
+```
