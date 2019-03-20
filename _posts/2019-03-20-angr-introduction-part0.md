@@ -88,3 +88,27 @@ def main(argv):
 if __name__ == '__main__':
   main(sys.argv)
 ```
+
+Let's analyze it line by line to understand how we can edit it to get to the solution.
+
+```
+import angr
+import sys
+```
+So far so good, this imports angr and the sys library. The second one is needed to parse what's printed to stdout.
+
+```
+def main(argv):
+  path_to_binary = ??? # (1)
+  project = angr.Project(path_to_binary) # (2)
+  initial_state = project.factory.entry_state() # (3)
+  simulation = project.factory.simgr(initial_state) # (4)
+```
+Here the program declares the `main()` function of the script. At (1) it declares where the script can find the binary program. After that it creates an instance of a `Project` object at (2) which will start angr on the binary. At (3) the script creates a state (kinda like a snapshot) of the program at its entry point and finally at (4) it makes a Simulation Manager object by calling the `simgr()` method with `initial_state` as argument. What that means is that it basically tells the symbolic execution engine to start the symbolic execution from the entry point of the program. The first thing we will do is edit the line at (1) and tell it where it can find the binary.
+
+```
+path_to_binary = "./00_angr_find" # (1)
+```
+
+
+
