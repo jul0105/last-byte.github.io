@@ -1,5 +1,10 @@
 ---
-published: false
+layout: post
+published: true
+image: /img/angr.png
+date: '2019-03-20'
+title: Introduction to angr Part 0
+subtitle: Learning angr through CTFs
 ---
 ## A New Post
 
