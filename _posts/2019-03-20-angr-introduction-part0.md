@@ -25,4 +25,16 @@ Back on angr, what really shines (for a beginner at least) at first glance is th
 
 ![symbolic0]({{site.baseurl}}/img/symbolicexec0.JPG)
 
+There is an interesting set of slides on symbolic execution inside the angr_ctf repo so I'll leave the academic part to you. What you need to know though is that it's called symbolic execution because certain parts of the program (in this case the input) are not concrete values, but symbolic ones, like the "x" in high school's equations. We say that execution paths "constrain" symbols:
+
+```
+int x;
+scanf("%d", &x);
+if ((x > 1) && (x < 10)) {
+	puts("Success!!");
+} else {
+	puts("Fail.");
+}
+```
+In this code the `if` statement constrains the value of the variable `x`. Let's say we are interested in the code path that leads to the "Success!!" string. For it to be taken we know that `x` must be greater than 1 and less than 10, this is the constrain needed for the success execution path. The symbolic execution engine injects a symbol (academically identified by the greek letter lambda λ) and walks the execution backwards in order to find a value of λ that fits the constraint.
 
