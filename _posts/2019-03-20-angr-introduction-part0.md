@@ -4,7 +4,7 @@ published: true
 image: /img/angr.png
 date: '2019-03-20'
 title: Introduction to angr Part 0
-subtitle: Learning angr through CTFs
+subtitle: Baby steps in symbolic execution
 ---
 I need a holiday. I definetely need one. But what's the point in going on vacation if you never learned how to use [angr](https://angr.io/) in a CTF? Wait, you are telling me this is not a reason not to go on vacation? Well, too bad, you should've told me before I started this serie :(
 
