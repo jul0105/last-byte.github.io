@@ -106,7 +106,44 @@ if __name__ == '__main__':
   main(sys.argv)
 ```
 
-This code is exactly like the one from `scaffold00.py`, it checks whether there are any states that reached the "Good Job." string and prints one of the input that lead to the desired code path.
+This code is exactly like the one from `scaffold00.py`, it checks whether there are any states that reached the "Good Job." string and prints one of the input that lead to the desired code path. Here's the solution script:
+
+```
+import angr
+import sys
+
+def main(argv):
+  path_to_binary = "./02_angr_find_condition"
+  project = angr.Project(path_to_binary)
+  initial_state = project.factory.entry_state()
+  simulation = project.factory.simgr(initial_state)
+  
+  def is_successful(state):
+    stdout_output = state.posix.dumps(sys.stdout.fileno())
+    if b'Good Job.' in stdout_output:
+      return True
+    else: return False
+
+  def should_abort(state):
+    stdout_output = state.posix.dumps(sys.stdout.fileno())
+   
+    if b'Try again.' in  stdout_output:
+      return True
+    else: return False
+
+  simulation.explore(find=is_successful, avoid=should_abort)
+
+  if simulation.found:
+    solution_state = simulation.found[0]
+    solution = solution_state.posix.dumps(sys.stdin.fileno())
+    print("[+] Success! Solution is: {}".format(solution.decode("utf-8")))
+
+  else:
+    raise Exception('Could not find the solution')
+
+if __name__ == '__main__':
+  main(sys.argv)
+```
 
 ![scaffold02]({{site.baseurl}}/img/scaffold02.png)
 
