@@ -71,4 +71,14 @@ def is_successful(state):
     else: return False
 ```
 
-At (1) we put what's printed to stdout in the `stdout_output` variable. Note that this is not a string but a bytes object, which means that at (2) we will use `b'Good Job.'` instead of just `"Good Job."` to check if the string "Good Job." is printed.
+At (1) we put what's printed to stdout in the `stdout_output` variable. Note that this is not a string but a bytes object, which means that at (2) we will use `b'Good Job.'` instead of just `"Good Job."` to check if the string "Good Job." is printed. At (3) we return True if we got the string we wanted or False if that's not the case. Now it's time to do the same but with the "Try again." string that is printed when we reach un unwanted path.
+
+```
+def should_abort(state):
+    stdout_output = state.posix.dumps(sys.stdout.fileno())   
+    if b'Try again.' in  stdout_output:
+      return True
+    else: return False
+```
+
+As you can see it's practically identical to the `is_successful()` function.
