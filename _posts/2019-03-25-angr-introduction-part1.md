@@ -82,3 +82,11 @@ def should_abort(state):
 ```
 
 As you can see it's practically identical to the `is_successful()` function.
+
+After defining these two functions it's time to kick in angr's horsepower and tell him which code path we are interested in and which ones we want to avoid:
+
+```
+simulation.explore(find=is_successful, avoid=should_abort)
+```
+
+The `find` and `avoid` arguments can be an address (or a list of addresses) if you already pinpointed specific addresses you are interested in or that you want to avoid (like it was in the challenge `01_angr_avoid` I didn't cover) or a function that dynamically chooses whether the state is interesting or not.
