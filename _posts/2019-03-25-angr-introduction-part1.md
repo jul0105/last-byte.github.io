@@ -110,7 +110,7 @@ This code is exactly like the one from `scaffold00.py`, it checks whether there 
 
 ![scaffold02]({{site.baseurl}}/img/scaffold02.png)
 
-WIN. Let's head to the next challenge.
+WIN. But what would've changed if we didn't specify `avoid` and ran the script with only `find`? Well, in this challenge not much at all since it's a fairly little program with not that many branches. What about more complex programs then? Remember what I told you earlier about the [heat death of the universe](https://en.wikipedia.org/wiki/Heat_death_of_the_universe)? Yeah, that. Let's head to the next challenge, shall we?
 
 
 ## 03_angr_symbolic_registers
