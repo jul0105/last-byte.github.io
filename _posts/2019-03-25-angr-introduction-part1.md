@@ -119,7 +119,7 @@ Ok, these challenges were just baby steps, now we will start to actually walk wi
 But first, let's take a look at the `main()` function of the challenge we are going to solve.
 ![angr03main]({{site.baseurl}}/img/angr03main.png)
 
-Alright, we have a `get_user_input()` function and three functions, `complex_function_1()`, `complex_function_2()` and `complex_function_3()` which manipulate the output of the `get_user_input()`. Let's take a look at the content of this particular function and see if and how it parses the input:
+Alright, we have a `get_user_input()` function and three functions, `complex_function_1()`, `complex_function_2()` and `complex_function_3()` which manipulate the output of `get_user_input()`. Let's take a look at the content of this particular function and see if and how it parses the input:
 ![getuserinput03]({{site.baseurl}}/img/getuserinput03.png)
 
 
