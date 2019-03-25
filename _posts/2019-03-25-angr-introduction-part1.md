@@ -262,7 +262,9 @@ I'm leaving the floor to last of the past, cya.
 ***
 
 
-Notice that we are using the `blank_state()` method this time instead of the `entry_state()`. By passing `addr=start_address` to `blank_state()` we are effectively telling him to create a new state at that particular address. After that we need to create three symbolic bitvectors. As stated in the comments, a symbolic bitvector is a data type angr uses to inject symbolic values into the program. These will be the "x"s of the equation that angr will solve. We are going to use claripy to generate three bitvectors through the `BVS()` method. This method takes two arguments: the first is a name angr uses to reference the bitvector while the second one is the size in bits of the bitvector itself. Since the symbolic values are stored into registers and the registers are 32 bit long, the size of the bitvectors will be 32 bits.
+Notice that we are using the `blank_state()` method this time instead of the `entry_state()`. By passing `addr=start_address` to `blank_state()` we are effectively telling him to create a new state at that particular address. 
+
+Now, remember when we noticed that `get_user_input()` parsed our input and put it into three registers? Yep, now it's time to craft that input so that we can get to where we want in the program. To do that we need to create three symbolic bitvectors. As stated in the comments, a symbolic bitvector is a data type angr uses to inject symbolic values into the program. These will be the "x"s of the equation that angr will solve. We are going to use claripy to generate three bitvectors through the `BVS()` method. This method takes two arguments: the first is a name angr uses to reference the bitvector while the second one is the size in bits of the bitvector itself. Since the symbolic values are stored into registers and the registers are 32 bit long, the size of the bitvectors will be 32 bits.
 
 ```
 password_size_in_bits = 32
