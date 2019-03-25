@@ -124,7 +124,4 @@ Alright, we have a `get_user_input()` function and three functions, `complex_fun
 
 There it is, angr's worst enemy, a "complex" format string. You can see that right before calling `scanf()` the program pushes on the stack the address of `"%x %x %x"`. That means the function will take three hexadecimal values as input.
 
-![getuserinput03_2]({{site.baseurl}}/img/getuseinput03_2.png)
-
-
-
+![getuserinput03_2]({{site.baseurl}}/img/getuserinput03_2.png)
