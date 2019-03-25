@@ -126,4 +126,94 @@ There it is, angr's worst enemy, a "complex" format string. You can see that rig
 
 ![getuserinput03_2]({{site.baseurl}}/img/getuserinput03_2.png)
 
-You see that? The three values are moved into `EAX`, `EBX` and `EDX`! Better take note of that. Now that we have a grasp of how our input is parsed let's take a look at the `skeleton03.py` script.
+You see that? The three values are moved into `EAX`, `EBX` and `EDX`! Better take note of that. Now that we have a grasp of how our input is parsed let's take a look at the `scaffold03.py` script.
+
+```
+import angr
+import claripy
+import sys
+
+def main(argv):
+  path_to_binary = argv[1]
+  project = angr.Project(path_to_binary)
+
+  # Sometimes, you want to specify where the program should start. The variable
+  # start_address will specify where the symbolic execution engine should begin.
+  # Note that we are using blank_state, not entry_state.
+  # (!)
+  start_address = ???  # :integer (probably hexadecimal)
+  initial_state = project.factory.blank_state(addr=start_address)
+
+  # Create a symbolic bitvector (the datatype Angr uses to inject symbolic
+  # values into the binary.) The first parameter is just a name Angr uses
+  # to reference it.
+  # You will have to construct multiple bitvectors. Copy the two lines below
+  # and change the variable names. To figure out how many (and of what size)
+  # you need, dissassemble the binary and determine the format parameter passed
+  # to scanf.
+  # (!)
+  password0_size_in_bits = ???  # :integer
+  password0 = claripy.BVS('password0', password0_size_in_bits)
+  ...
+
+  # Set a register to a symbolic value. This is one way to inject symbols into
+  # the program.
+  # initial_state.regs stores a number of convenient attributes that reference
+  # registers by name. For example, to set eax to password0, use:
+  #
+  # initial_state.regs.eax = password0
+  #
+  # You will have to set multiple registers to distinct bitvectors. Copy and
+  # paste the line below and change the register. To determine which registers
+  # to inject which symbol, dissassemble the binary and look at the instructions
+  # immediately following the call to scanf.
+  # (!)
+  initial_state.regs.??? = password0
+  ...
+
+  simulation = project.factory.simgr(initial_state)
+
+  def is_successful(state):
+    stdout_output = state.posix.dumps(sys.stdout.fileno())
+    return ???
+
+  def should_abort(state):
+    stdout_output = state.posix.dumps(sys.stdout.fileno())
+    return ???
+
+  simulation.explore(find=is_successful, avoid=should_abort)
+
+  if simulation.found:
+    solution_state = simulation.found[0]
+
+    # Solve for the symbolic values. If there are multiple solutions, we only
+    # care about one, so we can use eval, which returns any (but only one)
+    # solution. Pass eval the bitvector you want to solve for.
+    # (!)
+    solution0 = solution_state.se.eval(password0)
+    ...
+
+    # Aggregate and format the solutions you computed above, and then print
+    # the full string. Pay attention to the order of the integers, and the
+    # expected base (decimal, octal, hexadecimal, etc).
+    solution = ???  # :string
+    print solution
+  else:
+    raise Exception('Could not find the solution')
+
+if __name__ == '__main__':
+  main(sys.argv)
+```
+
+Ok, first things first, let's edit the path of the binary as we did before. After that we need to tell angr that this time we don't want to start at the beginning of the program as we want to skip the `scanf()`. It comes natural to think that the `start_address` would be the one of the instruction right after the call to `scanf()` BUT that means we would start from the `ADD ESP, 0x10` instruction and that is NO BUENO as this instruction clears up the stacky mess left by `scanf()` and since we are not calling `scanf()` at all...
+
+![meme03]({{site.baseurl}}/img/meme03.jpg)
+
+This means we are also going to skip the cleaning up of the stack and set `start_address` to the instruction right next to it, that is a `MOV ECX, DWORD [EBP - 0x18]` located @ `0x08048937`. Note that yours MAY change so deal with it ¯\_(ツ)_/¯
+
+```
+start_address = 0x08048937
+initial_state = project.factory.blank_state(addr=start_address)
+```
+
+Notice that we are using the `blank_state()` method this time.
