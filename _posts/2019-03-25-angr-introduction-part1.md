@@ -109,3 +109,7 @@ if __name__ == '__main__':
 This code is exactly like the one from `scaffold00.py`, it checks whether there are any states that reached the "Good Job." string and prints one of the input that lead to the desired code path.
 
 ![scaffold02]({{site.baseurl}}/img/scaffold02.png)
+
+WIN. Let's head to the next challenge.
+
+## 03_angr_symbolic_registers
