@@ -209,7 +209,7 @@ Ok, first things first, let's edit the path of the binary as we did before. Afte
 
 ![meme03]({{site.baseurl}}/img/meme03.jpg)
 
-This means we are also going to skip the cleaning up of the stack and set `start_address` to the instruction right next to it, that is a `MOV ECX, DWORD [EBP - 0x18]` located @ `0x08048937`. Note that yours MAY change so deal with it ¯\\\_(ツ)\_/¯. 
+This means we are also going to skip the cleaning up of the stack and set `start_address` to the instruction right next to it, that is a `MOV ECX, DWORD [EBP - 0x18]` located @ `0x08048937`. Note that yours MAY change so deal with it ¯\\\_(ツ)\_/¯ 
 
 ___
 ---
