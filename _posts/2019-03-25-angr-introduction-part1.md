@@ -114,5 +114,5 @@ WIN. But what would've changed if we didn't specify `avoid` and ran the script w
 
 
 ## 03_angr_symbolic_registers
-Ok, these challenges were just baby steps, now we will start to actually walk with angr. But first I will tell you a secret: angr can't deal with "complex" format strings when calling `scanf()`. I know, I know, take a minute, let it sink in. Yep, it's a pain in the butt. BUT~~T~~ we can take it as an opportunity to learn how to inject symbolic values into registers, and we damn will.
+Ok, these challenges were just baby steps, now we will start to actually walk with angr. But first I will tell you a secret: angr can't deal with "complex" format strings when calling `scanf()`. I know, I know, take a minute, let it sink in. Yep, it's a pain in the butt. But we can take it as an opportunity to learn how to inject symbolic values into registers, and we damn will.
 
