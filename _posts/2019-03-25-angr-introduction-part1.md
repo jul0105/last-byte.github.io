@@ -122,5 +122,9 @@ But first, let's take a look at the `main()` function of the challenge we are go
 Alright, we have a `get_user_input()` function and three functions, `complex_function_1()`, `complex_function_2()` and `complex_function_3()` which manipulate the output of `get_user_input()`. Let's take a look at the content of this particular function and see if and how it parses the input:
 ![getuserinput03]({{site.baseurl}}/img/getuseinput03.png)
 
+There it is, angr's worst enemy, a "complex" format string. You can see that right before calling `scanf()` the program pushes on the stack the address of `"%x %x %x"`. That means the function will take three hexadecimal values as input.
+
+![getuserinput03_2]({{site.baseurl}}/img/getuseinput03_2.png)
+
 
 
