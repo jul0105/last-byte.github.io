@@ -89,4 +89,23 @@ After defining these two functions it's time to kick in angr's horsepower and te
 simulation.explore(find=is_successful, avoid=should_abort)
 ```
 
-The `find` and `avoid` arguments can be an address (or a list of addresses) if you already pinpointed specific addresses you are interested in or that you want to avoid (like it was in the challenge `01_angr_avoid` I didn't cover) or a function that dynamically chooses whether the state is interesting or not.
+The `find` and `avoid` arguments can be an address (or a list of addresses) if you already pinpointed specific addresses you are interested in or that you want to avoid (like it was in the challenge `01_angr_avoid` I didn't cover) or a function that dynamically chooses whether the state is interesting or not. In this case we went for two functions since there are many states that print interesting strings.
+
+After that it's time to check the results and see if we've got what we wanted. I modified the print statement to make it prettier:
+
+```
+  if simulation.found:
+    solution_state = simulation.found[0]
+    solution = solution_state.posix.dumps(sys.stdin.fileno())
+    print("[+] Success! Solution is: {}".format(solution.decode("utf-8")))
+
+  else:
+    raise Exception('Could not find the solution')
+
+if __name__ == '__main__':
+  main(sys.argv)
+```
+
+This code is exactly like the one from `scaffold00.py`, it checks whether there are any states that reached the "Good Job." string and prints one of the input that lead to the desired code path.
+
+![scaffold02]({{site.baseurl}}/img/scaffold02.png)
