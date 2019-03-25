@@ -65,9 +65,9 @@ Now, let's take a look at the `is_successful()` function. What this function sho
 
 ```
 def is_successful(state):
-	stdout_output = state.posix.dumps(sys.stdout.fileno()) (1)
-    if b'Good Job.' in stdout_output: (2)
-    	return True (3)
+	stdout_output = state.posix.dumps(sys.stdout.fileno()) # (1)
+    if b'Good Job.' in stdout_output: # (2)
+    	return True # (3)
     else: return False
 ```
 
@@ -233,3 +233,58 @@ password0 = claripy.BVS('password0', password_size_in_bits)
 password1 = claripy.BVS('password1', password_size_in_bits)
 password2 = claripy.BVS('password2', password_size_in_bits)
 ```
+
+Ok, now that we have created the three symbolic bitvectors it's time to put them where they belong, the registers `EAX`, `EBX` and `EDX`. We are going to modify the `initial_state` we created before and update the content of the registers. Luckily for us, angr provides a very smart way to do so:
+
+```
+initial_state.regs.eax = password0
+initial_state.regs.ebx = password1
+initial_state.regs.edx = password2
+```
+
+Now we have to define the `find` and `avoid` states and we'll do it in the same way we did before:
+
+```
+simulation = project.factory.simgr(initial_state) 
+
+def is_successful(state):
+  stdout_output = state.posix.dumps(sys.stdout.fileno())
+  if b'Good Job.\n' in stdout_output:
+    return True
+  else: return False
+
+def should_abort(state):
+  stdout_output = state.posix.dumps(sys.stdout.fileno())
+  if b'Try again.\n' in  stdout_output:
+    return True
+  else: return False 
+
+simulation.explore(find=is_successful, avoid=should_abort)
+```
+
+Ok now everything is ready, time to prepare the part that will print the solution (because there is a solution right? RIGHT?!)
+
+```
+if simulation.found:
+    solution_state = simulation.found[0]
+
+    # Solve for the symbolic values. If there are multiple solutions, we only
+    # care about one, so we can use eval, which returns any (but only one)
+    # solution. Pass eval the bitvector you want to solve for.
+    # (!) NOTE: state.se is deprecated, use state.solver (it's exactly the same).
+    solution0 = format(solution_state.solver.eval(password0), 'x') # (1)
+    solution1 = format(solution_state.solver.eval(password1), 'x')
+    solution2 = format(solution_state.solver.eval(password2), 'x')
+
+    # Aggregate and format the solutions you computed above, and then print
+    # the full string. Pay attention to the order of the integers, and the
+    # expected base (decimal, octal, hexadecimal, etc).
+    solution = solution0 + " " + solution1 + " " + solution2 # (2)
+    print("[+] Success! Solution is: {}".format(solution))
+  else:
+    raise Exception('Could not find the solution')
+
+if __name__ == '__main__':
+  main(sys.argv)
+```
+Great, now a little explaination: at (1) we are calling the `eval()` method of the solver engine on the three symbolic values we injected before. The `format()` statement formats the solution and removes the "0x" value that is automatically prepended. At (2) we assemble the three solutions in one string, then we print it.
