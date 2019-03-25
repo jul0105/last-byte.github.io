@@ -209,7 +209,7 @@ Ok, first things first, let's edit the path of the binary as we did before. Afte
 
 ![meme03]({{site.baseurl}}/img/meme03.jpg)
 
-This means we are also going to skip the cleaning up of the stack and set `start_address` to the instruction right next to it, that is a `MOV ECX, DWORD [EBP - 0x18]` located @ `0x08048937`. Note that yours MAY change so deal with it ¯\\_(ツ)_/¯. 
+This means we are also going to skip the cleaning up of the stack and set `start_address` to the instruction right next to it, that is a `MOV ECX, DWORD [EBP - 0x18]` located @ `0x08048937`. Note that yours MAY change so deal with it ¯\\\_(ツ)\_/¯. 
 
 EDIT: Hi! last from the future here. I don't want to spoil all the fun but uhm... how can I say it... if you start angr from that address it won't work because we are ~~fucking up~~ messing with the function right in the middle of it and programs don't like that. To do something like that you should setup the stack first and I'm too lazy to do it (nevermind we will do it in the following part of the tutorial anyway). To make it work I started the analysis from the instruction right after the call to `get_user_input()` which is a `MOV DWORD [EBP - 0x14], EAX` located @ `0x8048980`. This doesn't change anything as we are just skipping the function and setting directly the registers' values anyway.
 
