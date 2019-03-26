@@ -19,9 +19,12 @@ Ok ok, nothing that bad here, let's move on to the `handle_user()` function
 
 ![handleuser04]({{site.baseurl}}/img/handleuser04.png)
 
-Awww, look at that. Look at the ~~FUCKING~~ pretty "complex" format string that angr seems to love so much.
+Awww, look at that. Look at the pretty "complex" format string that angr seems to love so much. Also note that before pushing the format string and calling `scanf()` the program pushes on the stack the addresses of two local variables, `[EBP - 0x10]` and `[EBP - 0xC]`
 
 ![format04]({{site.baseurl}}/img/format04.png)
 
-So, standard angr binary challenge. Not quite, this time the variables are stored on the stack and not in registers like the last challenge, that means we will have to cast some stack wizardry in order to push a symbolic buffer without ~~fucking everything up~~ crashing the program. 
+So, standard angr binary challenge? Not quite, this time the variables are stored on the stack and not in registers like the last challenge, that means we will have to cast some stack wizardry in order to push a symbolic buffer without ~~fucking everything up~~ crashing the program. Let's do a recap of what we know so far:
+1. `main()` calls `handle_user()`
+2. `handle_user()` calls `scanf()` with a complex format string
+2. `handle_user()` puts the two values inside the stack @ `[EBP - 0x10]` and `[EBP - 0xC]`
 
