@@ -80,3 +80,7 @@ def main(argv):
 if __name__ == '__main__':
   main(sys.argv)
 ```
+
+Instead of modifying it right away let's devise a strategy first. We need to decide where angr should start. Since we need to skip the `scanf()` we will start from the instruction located @ 0x8048697. We are going to skip the `ADD ESP, 0x10` right after the `scanf()` because this instruction clears the stack after `scanf()` returns, but since we are not calling it there's no need to clear anything.
+
+![start04]({{site.baseurl}}/img/start04.png)
