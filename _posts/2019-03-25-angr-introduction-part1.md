@@ -383,4 +383,4 @@ if __name__ == '__main__':
 
 ![solution03]({{site.baseurl}}/img/solution03.png)
 
-Fuck yeah. And that's how ~~fucking magic~~ computer science is done guys. See you at the next post where we will learn how to construct stack frames and jump right in the middle of functions.
+Fuck yeah. And that's how ~~fucking magic~~ computer science is done guys. See you at [the next post](https://blog.notso.pro/2019-03-26-angr-introduction-part2/) where we will learn how to construct stack frames and jump right in the middle of functions.
