@@ -26,7 +26,7 @@ Awww, look at that. Look at the pretty "complex" format string that angr seems t
 So, standard angr binary challenge? Not quite, this time the variables are stored on the stack and not in registers like the last challenge, that means we will have to cast some stack wizardry in order to push a symbolic buffer without ~~fucking everything up~~ crashing the program. Let's do a recap of what we know so far:
 1. `main()` calls `handle_user()`
 2. `handle_user()` calls `scanf()` with a complex format string
-3. `handle_user()` puts the two values inside the stack @ `[EBP - 0x10]` and `[EBP - 0xC]`
+3. `scanf()` puts the two values inside `handle_user()`'s stack frame @ `[EBP - 0x10]` and `[EBP - 0xC]`
 4. life sucks and I should probably get a job instead of doing dumb shit on the internet
 
 Anyway, now we have a "clear" understanding of what the binary does, let's look at the skeleton solution, `scaffold04.py` (I edited out most of the comments for brevity's sake)
@@ -103,13 +103,13 @@ Nothing special here, we updated the `path_to_binary` variable as usual and set 
 initial_state.regs.ebp = initial_state.regs.esp
 ```
 
-After that we are going to increase the stack pointer to provide padding before pushing our symbolic values on the stack. Remember we are going to decrease `ESP` by a value of 8.
+After that we are going to decrease by a value of 8 the stack pointer (remember that the stack grows downwards so we are increasing its size actually) to provide padding before pushing our symbolic values on the stack.
 
 ```
 padding_length_in_bytes = 0x08
 initial_state.regs.esp -= padding_length_in_bytes
 ```
-Now it's time to create our symbolic bitvectors and push them on the stack. Remember that the program expects two unsigned integer values so the size of the symbolic bitvectors will be 32 bits as this is the dimension of a unsigned integer on a x86 architecture. 
+Now it's time to create our symbolic bitvectors and push them on the stack. Remember that the program expects two unsigned integer values (we understood this by the `%u %u` format string)so the size of the symbolic bitvectors will be 32 bits as this is the dimension of a unsigned integer on a x86 architecture. 
 
 ```
 password0 = claripy.BVS('password0', 32)
