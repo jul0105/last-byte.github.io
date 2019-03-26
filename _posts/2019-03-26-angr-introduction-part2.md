@@ -87,4 +87,47 @@ Instead of modifying it right away let's devise a strategy first. We need to dec
 
 Now we need to understand how all the instructions we skipped manipulate the stack in order to work out the exact position of the symbolic bitvectors we are going to inject. We know from before that the two values we want to inject are located @ `[EBP - 0x10]` and `[EBP - 0xC]` so we need to pad the stack before pushing them, but first we need to tell `EBP` where in memory it should point. To do so we are going to do with angr what the function prologue (that we are skipping) does: `MOV EBP, ESP`. After that we are going to decrease the stack pointer and push our values. But how much padding do we need exactly?
 
-We know that the lowest of the two values is located @ `[EBP - 0xC]`, but since it is a 4 byte value it will occupy the following addresses: `| 0xC | 0xB | 0xA | 0x9 |`. That means we need to pad 8 bytes before pushing on the stack the first value and then the second.
+We know that the lowest of the two values is located @ `[EBP - 0xC]`, but since it is a 4 byte value it will occupy the following addresses: `| 0xC | 0xB | 0xA | 0x9 |`. That means we need to pad 8 bytes before pushing on the stack the first value and then the second. After pushing the values on the stack we should be ready to go, let's take a look at how we are going to modify the script
+
+```
+def main(argv):
+  path_to_binary = "04_angr_symbolic_stack"
+  project = angr.Project(path_to_binary)
+
+  start_address = 0x8048697
+  initial_state = project.factory.blank_state(addr=start_address)
+```
+Nothing special here, we updated the `path_to_binary` variable as usual and set the `start_address` to the value of the instruction following the stack cleaning instruction of the `scanf()` function we saw before. Now it's time to start working on the stack, first we perform the `MOV EBP, ESP` instruction we mentioned before and we are going to do it using angr's methods
+
+```
+initial_state.regs.ebp = initial_state.regs.esp
+```
+
+After that we are going to increase the stack pointer to provide padding before pushing our symbolic values on the stack. Remember we are going to decrease `ESP` by a value of 8.
+
+```
+padding_length_in_bytes = 0x08
+initial_state.regs.esp -= padding_length_in_bytes
+```
+Now it's time to create our symbolic bitvectors and push them on the stack. Remember that the program expects two unsigned integer values so the size of the symbolic bitvectors will be 32 bits as this is the dimension of a unsigned integer on a x86 architecture. 
+
+```
+password0 = claripy.BVS('password0', 32)
+password1 = claripy.BVS('password1', 32)
+
+initial_state.stack_push(password0) 
+initial_state.stack_push(password1)
+```
+
+After that the rest is basically identical to the previous scripts, we just have to solve the symbolic bitvectors and print them.
+
+```
+if simulation.found:
+  solution_state = simulation.found[0]
+  solution0 = (solution_state.solver.eval(password0))
+  solution1 = (solution_state.solver.eval(password1))
+
+  print("[+] Success! Solution is: {0} {1}".format(solution0, solution1))
+else:
+  raise Exception('Could not find the solution')
+```
