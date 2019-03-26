@@ -1,6 +1,9 @@
 ---
-published: false
+layout: post
+published: true
+image: /img/angr.png
+date: '2019-03-26'
+title: Introduction to angr Part 2
+subtitle: Jarvis, sometimes you gotta run, before you can walk.
 ---
-## A New Post
-
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
+PLACEHOLDER
