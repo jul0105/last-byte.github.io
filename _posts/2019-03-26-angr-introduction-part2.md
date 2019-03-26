@@ -81,6 +81,10 @@ if __name__ == '__main__':
   main(sys.argv)
 ```
 
-Instead of modifying it right away let's devise a strategy first. We need to decide where angr should start. Since we need to skip the `scanf()` we will start from the instruction located @ 0x8048697. We are going to skip the `ADD ESP, 0x10` right after the `scanf()` because this instruction clears the stack after `scanf()` returns, but since we are not calling it there's no need to clear anything.
+Instead of modifying it right away let's devise a strategy first. We need to decide where angr should start. Since we need to skip the `scanf()` we will start from the instruction located @ `0x8048697`. We are going to skip the `ADD ESP, 0x10` right after the `scanf()` because this instruction clears the stack after `scanf()` returns, but since we are not calling it there's no need to clear anything.
 
 ![start04]({{site.baseurl}}/img/start04.png)
+
+Now we need to understand how all the instructions we skipped manipulate the stack in order to work out the exact position of the symbolic bitvectors we are going to inject. We know from before that the two values we want to inject are located @ `[EBP - 0x10]` and `[EBP - 0xC]` so we need to pad the stack before pushing them, but first we need to tell `EBP` where in memory it should point. To do so we are going to do with angr what the function prologue (that we are skipping) does: `MOV EBP, ESP`. After that we are going to decrease the stack pointer and push our values. But how much padding do we need exactly?
+
+We know that the lowest of the two values is located @ `[EBP - 0xC]`, but since it is a 4 byte value it will occupy the following addresses: `| 0xC | 0xB | 0xA | 0x9 |`. That means we need to pad 8 bytes before pushing on the stack the first value and then the second.
