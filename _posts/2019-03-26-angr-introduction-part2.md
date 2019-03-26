@@ -19,4 +19,8 @@ Ok ok, nothing that bad here, let's move on to the `handle_user()` function
 
 ![handleuser04]({{site.baseurl}}/img/handleuser04.png)
 
+Awww, look at that. Look at the ~~FUCKING~~ pretty "complex" format string that angr seems to love so much.
+
+![format04]({{site.baseurl}}/img/format04.png)
+
 
