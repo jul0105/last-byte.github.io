@@ -23,4 +23,5 @@ Awww, look at that. Look at the ~~FUCKING~~ pretty "complex" format string that 
 
 ![format04]({{site.baseurl}}/img/format04.png)
 
+So, standard angr binary challenge. Not quite, this time the variables are stored on the stack and not in registers like the last challenge, that means we will have to cast some stack wizardry in order to push a symbolic buffer without ~~fucking everything up~~ crashing the program. 
 
