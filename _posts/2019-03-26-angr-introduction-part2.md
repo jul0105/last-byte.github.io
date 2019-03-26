@@ -17,6 +17,6 @@ First let's take a look at the challenge
 
 Ok ok, nothing that bad here, let's move on to the `handle_user()` function
 
-![handleuser04]({{site.baseurl}}/img/handleuser.png)
+![handleuser04]({{site.baseurl}}/img/handleuser04.png)
 
 
