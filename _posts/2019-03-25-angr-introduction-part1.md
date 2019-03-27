@@ -6,7 +6,7 @@ date: '2019-03-25'
 title: Introduction to angr Part 1
 subtitle: You need to learn to walk before you can run
 ---
-In the [zeroth part](https://blog.notso.pro/2019-03-20-angr-introduction-part0/) of this serie we learnt how to perform some very basic symbolic execution of a simple binary. This time we are going to talk about symbolic bitvectors and how to avoid unwanted states to reduce execution times. 
+In the [zeroth part](https://blog.notso.pro/2019-03-20-angr-introduction-part0/) of this series we learnt how to perform some very basic symbolic execution of a simple binary. This time we are going to talk about symbolic bitvectors and how to avoid unwanted states to reduce execution times. 
 
 We are going to skip the challenge `01_angr_avoid` as it is basically identical to the first one with the exception that you also have to specify what branch in the code you want to avoid: basically the `explore()` method in angr allows to specify an `avoid` argument with the address of code you don't want to analyze, but don't worry, we are going to see it in a moment.
 
