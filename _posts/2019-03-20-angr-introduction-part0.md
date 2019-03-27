@@ -6,9 +6,9 @@ date: '2019-03-20'
 title: Introduction to angr Part 0
 subtitle: Baby steps in symbolic execution
 ---
-I need a holiday. I definetely need one. But what's the point in going on vacation if you never learned how to use [angr](https://angr.io/) in a CTF? Wait, you are telling me this is not a reason not to go on vacation? Well, too bad, you should've told me before I started this serie :(
+I need a holiday. I definetely need one. But what's the point in going on vacation if you never learned how to use [angr](https://angr.io/) in a CTF? Wait, you are telling me this is not a reason not to go on vacation? Well, too bad, you should've told me before I started this series :(
 
-Jokes aside (they were not jokes...) this is going to be a ~~mini~~ serie on how to use angr in CTFs. I should point out that I've only recently started learning and using angr so I'm writing these posts both as a reference and to apply the [Feynman technique](https://fs.blog/2012/04/feynman-technique/) in order to learn better. We will use the awesome resource [angr_ctf](https://github.com/jakespringer/angr_ctf) which contains a number of challenges aimed at teaching the basics of angr.
+Jokes aside (they were not jokes...) this is going to be a ~~mini~~ series on how to use angr in CTFs. I should point out that I've only recently started learning and using angr so I'm writing these posts both as a reference and to apply the [Feynman technique](https://fs.blog/2012/04/feynman-technique/) in order to learn better. We will use the awesome resource [angr_ctf](https://github.com/jakespringer/angr_ctf) which contains a number of challenges aimed at teaching the basics of angr.
 
 But before we start... what the ~~fuck~~ heck is angr?
 
