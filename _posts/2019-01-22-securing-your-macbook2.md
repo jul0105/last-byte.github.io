@@ -7,7 +7,7 @@ title: Securing Your Macbook Part 2
 subtitle: 'Separating Privileges (2): different accounts for different privilege levels'
 ---
 # Introduction
-Quick recap of what we saw in the [last post](https://blog.notso.pro/2019-01-21-securing-your-macbook/). In the first part of this serie we saw how to create a new user and allow only him to unlock FV2. This effectively allows having different passwords for FV2 decryption and user authentication.
+Quick recap of what we saw in the [last post](https://blog.notso.pro/2019-01-21-securing-your-macbook/). In the first part of this series we saw how to create a new user and allow only him to unlock FV2. This effectively allows having different passwords for FV2 decryption and user authentication.
   
 In this short post we will see how to segregate privileges and have an account ONLY for administrative purposes and one for everyday tasks. The reason behind this is that if your everyday account gets compromised for whatever reason (browser 0day? Wrong email attachment? TotallyNotMalware.dmg?) it won't have access to superuser capabilities and/or `sudo`.
 
@@ -53,7 +53,7 @@ root		ALL = (ALL) ALL
 
 where the line `root		ALL = (ALL) ALL` means that root can do everything (well, you know... it's root) and the line `%admin		ALL = (ALL) ALL` means that all the accounts beloging to the `admin` group (and that means `antani` too) can use sudo to run anything. Just make sure that <mark>no other account except for root and the admin group shows up in the sudoers file unless you specifically intended so</mark>.
 <p class="alert alert-info">
-    <span class="label label-info">NOTE:</span> the following part is for those who went through the first part of this serie as your new account can now decrypt FV2.
+    <span class="label label-info">NOTE:</span> the following part is for those who went through the first part of this series as your new account can now decrypt FV2.
 </p>
 
 In case you don't want your newly created admin account to be able to decrypt FV2 (and you don't want it to appear on the login screen) run the following command (again, I'm assuming your newly created account's username is `antani`):
