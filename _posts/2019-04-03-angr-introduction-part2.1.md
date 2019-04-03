@@ -64,7 +64,7 @@ password = claripy.BVS("password", password_length * 8) # create a symbolic bitv
 fake_password_address = 0xffffcc80 # random address in the stack where we will store our string
 ```
 
-Now it's time to store our bitvector in memory and put it's address into `EAX`. Conveniently angr makes it really easy to do it through the following methods
+Now it's time to store our bitvector in memory and put its address into `EAX`. Conveniently angr makes it really easy to do it through the following methods
 
 ```
 initial_state.memory.store(fake_password_address, password) # store symbolic bitvector to the address we specified before
@@ -131,4 +131,4 @@ Time to run it and test it
 
 ![ssod6]({{site.baseurl}}/img/ssod6.png)
 
-It worked! So cool! And that's how you use angr in a real CTF, see you at the next post :)
+It worked! So cool! It gave us the solution in a little more than 6 seconds on a virtual machine. And that's how you use angr in a real CTF, see you at the next post :)
