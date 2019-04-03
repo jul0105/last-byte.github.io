@@ -31,7 +31,7 @@ From this screenshot we can see that the pointer to our input string is pushed o
 
 Let's see what we know so far:
 1. the address we will start from is `0x8048692`, which is the one of `PUSH EAX` right before the call to `fromhex()`
-2. the address we want to reach is `0x80486d3`, which is the starting address of the code block that leads to printing "That is correct!"
+2. the address we want to reach is `0x80486d3`, which where the code block that prints "That is correct!" starts
 3. a list of addresses leading to uninteresting code paths `[0x8048541, 0x8048624, 0x8048599, 0x8048585]`
 4. we know the pointer to our string is stored in `EAX`
 5. the cake is a lie
