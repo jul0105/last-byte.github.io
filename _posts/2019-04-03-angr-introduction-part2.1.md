@@ -25,3 +25,6 @@ Basically a `JE` instruction is the same as a `JZ` (a.k.a. Jump if Zero) instruc
 
 Ok, now that we have all the code paths we deem interesting and the ones we want to avoid let's see where we need to put our symbolic buffer.
 
+![ssod5]({{site.baseurl}}/img/ssod5.png)
+
+From this screenshot we can see that the pointer to our input string is pushed on the stack right before calling `fromhex()` and this means we can basically store wherever we want our input string, then put the address we chose (which can be any address in the stack) inside `EAX` and the program will take care of the rest.
