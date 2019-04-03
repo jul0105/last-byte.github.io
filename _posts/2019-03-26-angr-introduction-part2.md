@@ -193,4 +193,4 @@ Let's test it!
 
 ![success04]({{site.baseurl}}/img/success04.png)
 
-Cool, it works! We are starting to get a grasp on how angr works, maybe next time we will see how to use it in a real CTF. This post ends here, see you at the next one!
+Cool, it works! We are starting to get a grasp on how angr works, maybe next time we will see how to use it in a real CTF. This post ends here, see you at the [next one](https://blog.notso.pro/2019-04-03-angr-introduction-part2.1/)!
