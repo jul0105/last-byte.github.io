@@ -27,4 +27,4 @@ Ok, now that we have all the code paths we deem interesting and the ones we want
 
 ![ssod5]({{site.baseurl}}/img/ssod5.png)
 
-From this screenshot we can see that the pointer to our input string is pushed on the stack right before calling `fromhex()` and this means we can basically store wherever we want our input string, then put the address we chose (which can be any address in the stack) inside `EAX` and the program will take care of the rest. Don't worry, we will see how to do it in a moment.
+From this screenshot we can see that the pointer to our input string is pushed on the stack right before calling `fromhex()` and this means we can basically store our input string wherever we want, then put the address we chose (which can be any address in the stack) inside `EAX` and the program will take care of the rest. Don't worry, we will see how to do it in a moment.
