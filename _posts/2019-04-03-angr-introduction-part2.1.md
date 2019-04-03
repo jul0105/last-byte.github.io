@@ -89,3 +89,46 @@ if simulation.found:
     
 else: print("[-] Bro, try harder.")
 ```
+
+Here's the complete script
+
+```
+import angr
+import claripy
+
+def main():
+    path_to_binary = "./crackme_0"
+    project = angr.Project(path_to_binary)
+
+    start_addr   = 0x8048692 # address of "PUSH EAX" right before fromhex()
+    avoid_addr   = [0x8048541, 0x8048624, 0x8048599, 0x8048585] # addresses we want to avoid
+    success_addr = 0x80486d3 # address of code block leading to "That is correct!"
+    initial_state = project.factory.blank_state(addr=start_addr)
+    
+    password_length = 32               # amount of characters that compose the string
+    password = claripy.BVS("password", password_length * 8) # create a symbolic bitvector
+    fake_password_address = 0xffffcc80 # random address in the stack where we will store our string
+
+    initial_state.memory.store(fake_password_address, password) # store symbolic bitvector to the address we specified before
+    initial_state.regs.eax = fake_password_address # put address of the symbolic bitvector into eax
+
+    simulation = project.factory.simgr(initial_state)
+    simulation.explore(find=success_addr, avoid=avoid_addr)
+
+    if simulation.found:
+        solution_state = simulation.found[0]
+
+        solution = solution_state.solver.eval(password, cast_to=bytes) # concretize the symbolic bitvector
+        print("[+] Success! Solution is: {}".format(solution.decode("utf-8")))
+    
+    else: print("[-] Bro, try harder.")
+    
+if __name__ == '__main__':
+  main()
+```
+
+Time to run it and test it
+
+![ssod6]({{site.baseurl}}/img/ssod6.png)
+
+It worked! So cool! And that's how you use angr in a real CTF, see you at the next post :)
