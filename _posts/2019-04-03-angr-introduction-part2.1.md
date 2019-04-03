@@ -17,7 +17,7 @@ Mmmmh, as we've seen previously, `fromhex()` will return different values based 
 
 ![ssod4]({{site.baseurl}}/img/ssod4.png)
 
-Basically a `JE` instruction is the same as a `JZ` (a.k.a. Jump if Zero) instruction. The `TEST EAX, EAX` instruction right before it sets the zero flag in the `EFLAGS` register if `EAX` is zero. The `JE` and the `JZ` instructions jump to the address specified if the zero flag is set, hence we are interested only in the code path that leads to 0 being stored in `EAX`. Knowing this we can go back to `fromhex()` and take not of all the code path leading to anything else than 0 being returned.
+Basically a `JE` instruction is the same as a `JZ` (a.k.a. Jump if Zero) instruction. The `TEST EAX, EAX` instruction right before it sets the zero flag in the `EFLAGS` register if `EAX` is zero. The `JE` and the `JZ` instructions jump to the address specified if the zero flag is set, hence we are interested only in the code path that leads to 0 being stored in `EAX`. Knowing this we can go back to `fromhex()` and take note of all the code path leading to anything else than 0 being returned.
 
 ![ssod2]({{site.baseurl}}/img/ssod2.png)
 
