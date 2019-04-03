@@ -22,3 +22,6 @@ Basically a `JE` instruction is the same as a `JZ` (a.k.a. Jump if Zero) instruc
 ![ssod2]({{site.baseurl}}/img/ssod2.png)
 
 ![ssod3]({{site.baseurl}}/img/ssod3.png)
+
+Ok, now that we have all the code paths we deem interesting and the ones we want to avoid let's see where we need to put our symbolic buffer.
+
