@@ -9,7 +9,7 @@ I told you in the [last post](https://blog.notso.pro/2019-03-26-angr-introductio
 
 ![ssod0]({{site.baseurl}}/img/ssod0.png)
 
-As you can see I highlighted in red the code paths we are not interested in (leading to `wrong()`), in green the one we are interested in (leading to "That is correct!") and in blue the instruction from which angr will start the analysis. Let's have a look at `fromhex()` and see if we can rule out any uninteresting paths.
+As you can see I highlighted in red the code paths we are not interested in (leading to `wrong()`), in green the one we are interested in (leading to "That is correct!") and in blue the instruction from which angr will start the analysis. Instead of taking note of every address taking to `wrong()` we can simply use the address of the function to drop every state that reaches it. Let's have a look at `fromhex()` and see if we can rule out any uninteresting paths.
 
 ![ssod1]({{site.baseurl}}/img/ssod1.png)
 
@@ -31,8 +31,8 @@ From this screenshot we can see that the pointer to our input string is pushed o
 
 Let's see what we know so far:
 1. the address we will start from is `0x8048692`, which is the one of `PUSH EAX` right before the call to `fromhex()`
-2. the address we want to reach is `0x80486d3`, which where the code block that prints "That is correct!" starts
-3. a list of addresses leading to uninteresting code paths `[0x8048541, 0x8048624, 0x8048599, 0x8048585]`
+2. the address we want to reach is `0x80486d3`, which is where the code block that prints "That is correct!" starts
+3. the addresses leading to uninteresting code paths are `[0x8048541, 0x8048624, 0x8048599, 0x8048585]`
 4. we know the pointer to our string is stored in `EAX`
 5. the cake is a lie
 
@@ -43,7 +43,7 @@ import angr
 import claripy
 ```
 
-Then we define our `main()` and the variables we need. Along that we define our initial state for angr
+Then we define our `main()` and the variables we need. Along with that we define our initial state for angr
 
 ```
 def main():
@@ -56,7 +56,7 @@ def main():
     initial_state = project.factory.blank_state(addr=start_addr)
 ```
 
-Now it's time to make our symbolic bitvector and choose where to store it. I chose an address in the stack, `0xffffcc80` but you can choose any address in the stack, it's not important. Here we initialize `password_length` to 32 because, as we have seen while reversing in the previous post, we know that this program wants a 32 byte long string. Remember that when we are creating a symbolic bitvector for a string the length of the bitvector will be the length of the string in byte (32 in this case) multiplied by 8 (you know there are 8 bits in a byte right?)
+Now it's time to make our symbolic bitvector and choose where to store it. I chose an address in the stack, `0xffffcc80` but you can choose any address in the stack, it's not important. Here we initialize `password_length` to 32 because, as we have seen while reversing in the previous post, we know that this program wants a 32 byte long string. Remember that when we are creating a symbolic bitvector its length is expressed in bits, so for a symbolic string the length of the bitvector will be the length of the string expressed in bytes (32 in this case) multiplied by 8 (you know there are 8 bits in a byte right?)
 
 ```
 password_length = 32 # amount of characters that compose the string
