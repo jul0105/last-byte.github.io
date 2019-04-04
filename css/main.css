@@ -7,7 +7,8 @@ layout: null
 /* --- General --- */
 
 body {
-  font-family: 'Monoton', 'Arial', sans-serif;
+  /*font-family: 'Monoton', 'Arial', sans-serif;*/
+  font-family: 'Arial', 'Arial', sans-serif;
   font-size: 18px;
   color: #404040;
   position: relative;
