@@ -131,4 +131,4 @@ Time to run it and test it
 
 ![ssod6]({{site.baseurl}}/img/ssod6.png)
 
-It worked! So cool! It gave us the solution in a little more than 6 seconds on a virtual machine. And that's how you use angr in a real CTF, see you at the next post :)
+It worked! So cool! It gave us the solution in a little more than 6 seconds on a virtual machine. That's it for today, see you at the next angr tutorial :)
