@@ -9,7 +9,7 @@ I told you in the [last post](https://blog.notso.pro/2019-03-26-angr-introductio
 
 ![ssod0]({{site.baseurl}}/img/ssod0.png)
 
-As you can see I highlighted in red the code path we are not interested in (the ones leading to `wrong()`), in green the one we are interested in (the one leading to "That is correct!") and in blue the instruction from which angr will start the analysis. Let's have a look at `fromhex()` and see if we can rule out any uninteresting paths.
+As you can see I highlighted in red the code paths we are not interested in (leading to `wrong()`), in green the one we are interested in (leading to "That is correct!") and in blue the instruction from which angr will start the analysis. Let's have a look at `fromhex()` and see if we can rule out any uninteresting paths.
 
 ![ssod1]({{site.baseurl}}/img/ssod1.png)
 
@@ -17,7 +17,7 @@ Mmmmh, as we've seen previously, `fromhex()` will return different values based 
 
 ![ssod4]({{site.baseurl}}/img/ssod4.png)
 
-Basically a `JE` instruction is the same as a `JZ` (a.k.a. Jump if Zero) instruction. The `TEST EAX, EAX` instruction right before it sets the zero flag in the `EFLAGS` register if `EAX` is zero. The `JE` and the `JZ` instructions jump to the address specified if the zero flag is set, hence we are interested only in the code path that leads to 0 being stored in `EAX`. Knowing this we can go back to `fromhex()` and take note of all the code path leading to anything else than 0 being returned.
+Basically a `JE` instruction is the same as a `JZ` (a.k.a. Jump if Zero) instruction. The `TEST EAX, EAX` instruction right before it sets the zero flag in the `EFLAGS` register if `EAX` is zero. The `JE` and the `JZ` instructions jump to the address specified if the zero flag is set, hence we are interested only in the code path that leads to 0 being stored in `EAX`. Knowing this we can go back to `fromhex()` and take note of all the code paths leading to anything else than 0 being returned.
 
 ![ssod2]({{site.baseurl}}/img/ssod2.png)
 
