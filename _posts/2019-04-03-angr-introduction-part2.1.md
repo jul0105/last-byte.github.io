@@ -45,7 +45,7 @@ import claripy
 
 Then we define our `main()` and the variables we need. Along with that we define our initial state for angr
 
-```
+```python
 def main():
     path_to_binary = "./crackme_0"
     project = angr.Project(path_to_binary)
