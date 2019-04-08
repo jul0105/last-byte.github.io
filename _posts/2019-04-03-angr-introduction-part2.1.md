@@ -38,7 +38,7 @@ Let's see what we know so far:
 
 Knowing that we can build our script, we start by importing the necessary libraries
 
-```
+```python
 import angr
 import claripy
 ```
@@ -58,7 +58,7 @@ def main():
 
 Now it's time to make our symbolic bitvector and choose where to store it. I chose an address in the stack, `0xffffcc80` but you can choose any address in the stack, it's not important. Here we initialize `password_length` to 32 because, as we have seen while reversing in the previous post, we know that this program wants a 32 byte long string. Remember that when we are creating a symbolic bitvector its length is expressed in bits, so for a symbolic string the length of the bitvector will be the length of the string expressed in bytes (32 in this case) multiplied by 8 (you know there are 8 bits in a byte right?)
 
-```
+```python
 password_length = 32 # amount of characters that compose the string
 password = claripy.BVS("password", password_length * 8) # create a symbolic bitvector
 fake_password_address = 0xffffcc80 # random address in the stack where we will store our string
@@ -66,21 +66,21 @@ fake_password_address = 0xffffcc80 # random address in the stack where we will s
 
 Now it's time to store our bitvector in memory and put its address into `EAX`. Conveniently angr makes it really easy to do it through the following methods
 
-```
+```python
 initial_state.memory.store(fake_password_address, password) # store symbolic bitvector to the address we specified before
 initial_state.regs.eax = fake_password_address # put address of the symbolic bitvector into eax
 ```
 
 After that we start our simulation and let angr look for the code paths we specified
 
-```
+```python
 simulation = project.factory.simgr(initial_state)
 simulation.explore(find=success_addr, avoid=avoid_addr)
 ```
 
 And now it's time to check if there's a solution and print it
 
-```
+```python
 if simulation.found:
     solution_state = simulation.found[0]
 
@@ -92,7 +92,7 @@ else: print("[-] Bro, try harder.")
 
 Here's the complete script
 
-```
+```python
 import angr
 import claripy
 
