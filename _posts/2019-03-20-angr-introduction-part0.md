@@ -65,7 +65,7 @@ It could be done by hand but
 
 So let's take a look at the `scaffold00.py` file (I edited out all of the comments)
 
-```
+```python
 import angr
 import sys
 
@@ -91,13 +91,13 @@ if __name__ == '__main__':
 
 Let's analyze it line by line to understand how we can edit it to get to the solution.
 
-```
+```python
 import angr
 import sys
 ```
 So far so good, this imports angr and the sys library. The second one is needed to parse what's printed to stdout.
 
-```
+```python
 def main(argv):
   path_to_binary = ??? # (1)
   project = angr.Project(path_to_binary) # (2)
@@ -106,13 +106,13 @@ def main(argv):
 ```
 Here the program declares the `main()` function of the script. At (1) it declares where the script can find the binary program. After that it creates an instance of a `Project` object at (2) which will start angr on the binary. At (3) the script creates a state (kinda like a snapshot) of the program at its entry point and finally at (4) it makes a Simulation Manager object by calling the `simgr()` method with `initial_state` as argument. What that means is that it basically tells the symbolic execution engine to start the symbolic execution from the entry point of the program. The first thing we will do is edit the line at (1) and tell it where it can find the binary.
 
-```
+```python
 path_to_binary = "./00_angr_find" # (1)
 ```
 
 Okay, let's move on to the next lines:
 
-```
+```python
 print_good_address = ??? (1)
 simulation.explore(find=print_good_address) # (2)
 ```
@@ -122,7 +122,7 @@ These lines are the key. The `print_good_address` variable is the one which hold
 
 Let's edit out the `???` and substitute them with the highlighted address. At (2) we are basically telling the engine "Sup bro, why don't you recursively look at the program tree and tell me if you find a way to this address?" and, being the good guy he is, angr will do that for you. On to the last lines of the script.
 
-```
+```python
 if simulation.found: # (1)
     solution_state = simulation.found[0] # (2)
     print solution_state.posix.dumps(sys.stdin.fileno()) # (3)
@@ -142,7 +142,7 @@ Now that the script is ready we can run it and it should print the string that m
 
 Ok, I cheated a bit and formatted the output in a prettier way but you can see that if I run the program and give it the output of angr we get the desired outcome. Here is the final script:
 
-```
+```python
 import angr
 import sys
 
