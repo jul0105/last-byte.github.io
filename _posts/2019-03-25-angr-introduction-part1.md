@@ -13,7 +13,7 @@ We are going to skip the challenge `01_angr_avoid` as it is basically identical 
 ## 02_angr_find_condition
 This challenge teaches us how to tell angr what to avoid or keep based on the output of the program itself. If you open the binary with a disassembler you will see that there are A LOT of blocks printing "Good Job." or "Try again.", so taking note of all the starting addresses of these blocks is a big NO NO. Luckily we can tell angr to keep or discard a state based on what it prints to stdout. Let's open `scaffold02.py` and check what it contains:
 
-```
+```python
 import angr
 import sys
 
@@ -57,13 +57,13 @@ if __name__ == '__main__':
 
 As you can see the first four lines are almost exactly the same as the ones in `scaffold00.py`. Let's edit the `path_to_binary` variable and give it the path of the binary we are analyzing.
 
-```
+```python
 path_to_binary = "./02_angr_find_condition"
 ```
 
 Now, let's take a look at the `is_successful()` function. What this function should do is checking whether the state it takes as input leads to printing the "Good Job." string and return either True or False. Knowing that we can edit it
 
-```
+```python
 def is_successful(state):
 	stdout_output = state.posix.dumps(sys.stdout.fileno()) # (1)
     if b'Good Job.' in stdout_output: # (2)
@@ -73,7 +73,7 @@ def is_successful(state):
 
 At (1) we put what's printed to stdout in the `stdout_output` variable. Note that this is not a string but a bytes object, which means that at (2) we have to use `b'Good Job.'` instead of just `"Good Job."` to check if the string "Good Job." is printed. At (3) we return True if we got the string we wanted or False if that's not the case. Now it's time to do the same but with the "Try again." string that is printed when we reach un unwanted path.
 
-```
+```python
 def should_abort(state):
     stdout_output = state.posix.dumps(sys.stdout.fileno())   
     if b'Try again.' in  stdout_output:
@@ -85,7 +85,7 @@ As you can see it's practically identical to the `is_successful()` function.
 
 After defining these two functions it's time to kick in angr's horsepower and tell him which code path we are interested in and which ones we want to avoid:
 
-```
+```python
 simulation.explore(find=is_successful, avoid=should_abort)
 ```
 
@@ -93,7 +93,7 @@ The `find` and `avoid` arguments can be an address (or a list of addresses) if y
 
 After that it's time to check the results and see if we've got what we wanted. I modified the print statement to make it prettier:
 
-```
+```python
   if simulation.found:
     solution_state = simulation.found[0]
     solution = solution_state.posix.dumps(sys.stdin.fileno())
@@ -108,7 +108,7 @@ if __name__ == '__main__':
 
 This code is exactly like the one from `scaffold00.py`, it checks whether there are any states that reached the "Good Job." string and prints one of the inputs (there can be more than one, with `simulation.found[0]` we are choosing the first one) that lead to the desired code path. Here's the solution script:
 
-```
+```python
 import angr
 import sys
 
@@ -165,7 +165,7 @@ There it is, angr's worst enemy, a "complex" format string. You can see that rig
 
 You see that? The three values are moved into `EAX`, `EBX` and `EDX`! Better take note of that. Now that we have a grasp of how our input is parsed let's take a look at the `scaffold03.py` script.
 
-```
+```python
 import angr
 import claripy
 import sys
@@ -253,7 +253,7 @@ This means we are also going to skip the cleaning up of the stack and set `start
 
 EDIT: Hi! last from the future here. I don't want to spoil all the fun but uhm... how can I say it... if you start angr from that address it won't work because we are ~~fucking up~~ messing with the function right in the middle of it and programs don't like that. To do something like that you should setup the stack first and I'm too lazy to do it (nevermind we will do it in the following part of the tutorial anyway). To make it work I started the analysis from the instruction right after the call to `get_user_input()` which is a `MOV DWORD [EBP - 0x14], EAX` located @ `0x8048980`. This doesn't change anything as we are just skipping the function and setting directly the registers' values anyway.
 
-```
+```python
 start_address = 0x8048980
 initial_state = project.factory.blank_state(addr=start_address)
 ```
@@ -266,7 +266,7 @@ Notice that we are using the `blank_state()` method this time instead of the `en
 
 Now, remember when we noticed that `get_user_input()` parsed our input and put it into three registers? Yep, now it's time to craft that input so that we can get to where we want in the program. To do that we need to create three symbolic bitvectors. As stated in the comments, a symbolic bitvector is a data type angr uses to inject symbolic values into the program. These will be the "x"s of the equation that angr will solve. We are going to use claripy to generate three bitvectors through the `BVS()` method. This method takes two arguments: the first is a name angr uses to reference the bitvector while the second one is the size in bits of the bitvector itself. Since the symbolic values are stored into registers and the registers are 32 bit long, the size of the bitvectors will be 32 bits.
 
-```
+```python
 password_size_in_bits = 32
 password0 = claripy.BVS('password0', password_size_in_bits)
 password1 = claripy.BVS('password1', password_size_in_bits)
@@ -275,7 +275,7 @@ password2 = claripy.BVS('password2', password_size_in_bits)
 
 Ok, now that we have created the three symbolic bitvectors it's time to put them where they belong, the registers `EAX`, `EBX` and `EDX`. We are going to modify the `initial_state` we created before and update the content of the registers. Luckily for us, angr provides a very smart way to do so:
 
-```
+```python
 initial_state.regs.eax = password0
 initial_state.regs.ebx = password1
 initial_state.regs.edx = password2
@@ -283,7 +283,7 @@ initial_state.regs.edx = password2
 
 Now we have to define the `find` and `avoid` states and we'll do it in the same way we did before:
 
-```
+```python
 simulation = project.factory.simgr(initial_state) 
 
 def is_successful(state):
@@ -303,7 +303,7 @@ simulation.explore(find=is_successful, avoid=should_abort)
 
 Ok now everything is ready, time to prepare the part that will print the solution (because there is a solution right? RIGHT?!)
 
-```
+```python
 if simulation.found:
     solution_state = simulation.found[0]
 
@@ -328,7 +328,7 @@ if __name__ == '__main__':
 ```
 Great, now a little explaination: at (1) we are calling the `eval()` method of the solver engine on the three symbolic values we injected before. The `format()` statement formats the solution and removes the "0x" value that is automatically prepended. At (2) we assemble the three solutions in one string, then we print it. Here's the complete solution (without the comments)
 
-```
+```python
 import angr
 import claripy
 import sys
