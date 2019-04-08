@@ -31,7 +31,7 @@ So, standard angr binary challenge? Not quite, this time the variables are store
 
 Anyway, now we have a "clear" understanding of what the binary does, let's look at the skeleton solution, `scaffold04.py` (I edited out most of the comments for brevity's sake)
 
-```
+```python
 import angr
 import claripy
 import sys
@@ -89,7 +89,7 @@ Now we need to understand how all the instructions we skipped manipulate the sta
 
 We know that the lowest of the two values is located @ `[EBP - 0xC]`, but since it is a 4 byte value it will occupy the following addresses: `| 0xC | 0xB | 0xA | 0x9 |`. That means we need to pad 8 bytes before pushing on the stack the first value and then the second. After pushing the values on the stack we should be ready to go, let's take a look at how we are going to modify the script
 
-```
+```python
 def main(argv):
   path_to_binary = "04_angr_symbolic_stack"
   project = angr.Project(path_to_binary)
@@ -99,19 +99,19 @@ def main(argv):
 ```
 Nothing special here, we updated the `path_to_binary` variable as usual and set the `start_address` to the value of the instruction following the stack cleaning instruction of the `scanf()` function we saw before. Now it's time to start working on the stack, first we perform the `MOV EBP, ESP` instruction we mentioned before and we are going to do it using angr's methods
 
-```
+```python
 initial_state.regs.ebp = initial_state.regs.esp
 ```
 
 After that we are going to decrease by a value of 8 the stack pointer (remember that the stack grows downwards so we are increasing its size actually) to provide padding before pushing our symbolic values on the stack.
 
-```
+```python
 padding_length_in_bytes = 0x08
 initial_state.regs.esp -= padding_length_in_bytes
 ```
 Now it's time to create our symbolic bitvectors and push them on the stack. Remember that the program expects two unsigned integer values (we understood this by the `%u %u` format string)so the size of the symbolic bitvectors will be 32 bits as this is the dimension of a unsigned integer on a x86 architecture. 
 
-```
+```python
 password0 = claripy.BVS('password0', 32)
 password1 = claripy.BVS('password1', 32)
 
@@ -121,7 +121,7 @@ initial_state.stack_push(password1)
 
 After that the rest is basically identical to the previous scripts, we just have to solve the symbolic bitvectors and print them.
 
-```
+```python
 if simulation.found:
   solution_state = simulation.found[0]
   solution0 = (solution_state.solver.eval(password0))
@@ -134,7 +134,7 @@ else:
 
 And this is the final script
 
-```
+```python
 import angr
 import claripy
 import sys
