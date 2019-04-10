@@ -21,7 +21,7 @@ Based on the format string we can deduce there are four arguments, and indeed fo
 
 ![angr5_1]({{site.baseurl}}/img/angr5_1.png)
 
-Let's take note of these four addresses (the three shown and the address of `user_input` which is `0xa1ba1c0`). Now we know the binary takes four 8-byte-long strings as input, let's see how they are manipulated.
+Let's take note of these four addresses (the three shown and the address of `user_input` which is `0xA1BA1C0`). Now we know the binary takes four 8-byte-long strings as input, let's see how they are manipulated.
 
 ![angr5_2]({{site.baseurl}}/img/angr5_2.png)
 
@@ -36,3 +36,8 @@ You see it? The for loop. At the end of this block the variable `[EBP - 0xC]` is
 Without losing too much time on reversing it, we can see it does a series of binary mathe-magical operations to our byte and then returns. If you pay attention to the highlighted code block you camn see that this function can branch, print "Try again." and kill the process in some case. We don't like that, so we have to remember to avoid this branch later with angr. Time to head back to `main()`.
 
 ![angr5_5]({{site.baseurl}}/img/angr5_5.png)
+
+And here's the key: our input, after being manipulated, is compared to the string `"NJPURZPCDYEAXCSJZJMPSOMBFDDLHBVN"`. If the two strings match then we have "Good Job." printed, otherwise the program prints "Try again." like in `complex_function()`. Let's do a quick recap of what we know so far:
+
+1. the binary takes as input four 8-byte-long strings
+2. the strings reside at the following addresses `[0xA1BA1C0, 0xA1BA1C8, 0xA1BA1D0, 0xA1BA1D8]`
