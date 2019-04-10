@@ -169,6 +169,14 @@ That's it, one down, off we go. And for our next trick... `06_angr_symbolic_dyna
 
 ## 06_angr_symbolic_dynamic_memory
 
+This challenge doesn't differ too much from the previous one, except the memory for the strings is allocated in the heap through `malloc()` instead of the stack. Let's have a look at the program
+
+![angr6_0]({{site.baseurl}}/img/angr6_0.png)
+
+Fairly similar to the other challenge, let's analyze `main()` block by block
+
+![angr6_1]({{site.baseurl}}/img/angr6_1.png)
+
 
 
 
