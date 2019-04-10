@@ -145,16 +145,16 @@ Here we could have just taken note of the address of the code block that leads t
 
 ```python
 if simulation.found:
-  solution_state = simulation.found[0] (1)
+  solution_state = simulation.found[0] # (1)
 
-  solution0 = solution_state.solver.eval(password0,cast_to=bytes) (2)
+  solution0 = solution_state.solver.eval(password0,cast_to=bytes) # (2)
   solution1 = solution_state.solver.eval(password1,cast_to=bytes)
   solution2 = solution_state.solver.eval(password2,cast_to=bytes)
   solution3 = solution_state.solver.eval(password3,cast_to=bytes)
     
-  solution = solution0 + b" " + solution1 + b" " + solution2 + b" " + solution3 (3)
+  solution = solution0 + b" " + solution1 + b" " + solution2 + b" " + solution3 # (3)
 
-  print("[+] Success! Solution is: {}".format(solution.decode("utf-8"))) (4)
+  print("[+] Success! Solution is: {}".format(solution.decode("utf-8"))) # (4)
 else:
   raise Exception('Could not find the solution')
 ```
