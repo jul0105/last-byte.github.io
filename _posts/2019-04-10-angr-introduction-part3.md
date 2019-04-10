@@ -179,7 +179,9 @@ Fairly similar to the other challenge, let's analyze `main()` block by block
 
 You can see two buffers are allocated through `malloc()` (highlighted in green and blue), both of them 9 byte big. You can deduce it by looking at what's pushed before `malloc()` is called, as this function takes only a parameter, which is the size of the buffer to allocate, and returns the address of the buffer through `EAX`. 
 
-In fact, you can see that after both calls the content of `EAX` is copied to two memory areas that Binary Ninja identifies as `buffer0` and `buffer1`. These memory areas are located respectively at `0xABCC8A4` and `0xABCC8AC`. 
+In fact, you can see that after both calls the content of `EAX` is copied to two memory areas that Binary Ninja identifies as `buffer0` and `buffer1`. These memory areas are located respectively at `0xABCC8A4` and `0xABCC8AC`.
+
+In red you can see instead the call to `scanf()` that writes to the two addresses two strings of 8 characters (8 characters plus a NULL byte to terminate the string, that's why `malloc()` allocated 9 bytes per buffer).
 
 
 
