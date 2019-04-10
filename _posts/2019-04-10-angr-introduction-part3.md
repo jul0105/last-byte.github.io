@@ -47,5 +47,69 @@ And here's the key: our input, after being manipulated, is compared to the strin
 6. both `complex_function()` and `main()` can lead to "Try again."
 7. in "Shutter Island" Leonardo DiCaprio is a crazy man and he is imagining everything
 
+Alright, we now have enough information to start working on the solution, let's open `scaffold05.py`
 
+```python
+import angr
+import claripy
+import sys
+
+def main(argv):
+  path_to_binary = argv[1]
+  project = angr.Project(path_to_binary)
+
+  start_address = ???
+  initial_state = project.factory.blank_state(addr=start_address)
+
+  password0 = claripy.BVS('password0', ???)
+  ...
+
+  password0_address = ???
+  initial_state.memory.store(password0_address, password0)
+  ...
+
+  simulation = project.factory.simgr(initial_state)
+
+  def is_successful(state):
+    stdout_output = state.posix.dumps(sys.stdout.fileno())
+    return ???
+
+  def should_abort(state):
+    stdout_output = state.posix.dumps(sys.stdout.fileno())
+    return ???
+
+  simulation.explore(find=is_successful, avoid=should_abort)
+
+  if simulation.found:
+    solution_state = simulation.found[0]
+
+    solution0 = solution_state.se.eval(password0,cast_to=str)
+    ...
+    solution = ???
+
+    print solution
+  else:
+    raise Exception('Could not find the solution')
+
+if __name__ == '__main__':
+  main(sys.argv)
+```
+
+As usual I edited out most of the comments for brevity's sake. Let's start from `main()`
+
+```python
+def main():
+  path_to_binary = "05_angr_symbolic_memory"
+  project = angr.Project(path_to_binary) (1)
+
+  start_address = 0x8048601
+  initial_state = project.factory.blank_state(addr=start_address) (2)
+
+  password0 = claripy.BVS('password0', 64) (3)
+  password1 = claripy.BVS('password1', 64)
+  password2 = claripy.BVS('password2', 64)
+  password3 = claripy.BVS('password3', 64)
+```
+
+We start out by setting up the project (1) and our initial state (2). Notice the address we start from is the address of the `MOV DWORD [EBP - 0xC], 0x0` after the call to `scanf()` and its subsequent `ADD ESP, 0x20`.
 
