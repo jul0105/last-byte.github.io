@@ -29,7 +29,9 @@ Here we can see that something like a for loop starts: the value `0x0` is moved 
 
 ![angr5_3]({{site.baseurl}}/img/angr5_3.png)
 
-You see it? The for loop. At the end of this block the variable `[EBP - 0xC]` is incremented by 1. This means our loop starts at `0x0` and ends at `0x1F` times. From 0 to 31 we have 32 iterations. That makes sense, something is iterating on our input, which is composed of 32 bytes.
+You see it? The for loop. At the end of this block the variable `[EBP - 0xC]` is incremented by 1. This means our loop starts at `0x0` and ends at `0x1F`. From 0 to 31 we have 32 iterations. That makes sense, something is iterating on our input, which is composed of 32 bytes (four 8-byte-long strings). Basically what this loop does is it takes every byte in our input and it applies `complex_function()` to it. Let's have a look at `complex_function()` then.
+
+![angr5_4]({{site.baseurl}}/img/angr5_4.png)
 
 
 
