@@ -342,7 +342,30 @@ def main():
 We start by setting up the usual variables and creating our project with angr (1). Then we move on to decide where to start and setup a state accordingly (2). Note that we are starting from the address `0x8048699` which points to the instruction `MOV DWORD [EBP - 0xC], 0x0` after the call to `scanf()`. We are basically skipping all the `malloc()`s as we will deal with it later in the script. After that we initialize two symbolic bitvectors (3) of size 64 bits (as usual, 8 bytes strings times 8). Next part:
 
 ```python
+fake_heap_address0 = 0xffffc93c # (1)
+pointer_to_malloc_memory_address0 = 0xabcc8a4 # (2)
+fake_heap_address1 = 0xffffc94c # (3)
+pointer_to_malloc_memory_address1 = 0xabcc8ac # (4)
 
+initial_state.memory.store(pointer_to_malloc_memory_address0, fake_heap_address0, endness=project.arch.memory_endness) # (5)
+initial_state.memory.store(pointer_to_malloc_memory_address1, fake_heap_address1, endness=project.arch.memory_endness) # (6)
+
+initial_state.memory.store(fake_heap_address0, password0) # (7)
+initial_state.memory.store(fake_heap_address1, password1) # (8)
+```
+
+This is the key. You see, angr is not really "running" the binary (as of now, at least) so it doesn't need you to actually allocate memory into the heap, you can fake any address actually. What we did is we chose two addresses in the stack (1) (3) and we also stored the addresses of `buffer0` and `buffer1` into the variables `pointer_to_malloc_memory_address0` and `pointer_to_malloc_memory_address1` (2) (4). 
+
+After that we told angr to store the two fake addresses inside `buffer0` and `buffer1`(5) (6), where the binary would have stored the address returned by `malloc()` if it run. Finally we stored the two symbolic bitvectors at the two fake addresses (7) (8). Can you see the magic now?
+
+```
+BEFORE:
+buffer0 -> malloc()ed address 0 -> string 0
+buffer1 -> malloc()ed address 1 -> string 1
+
+AFTER:
+buffer0 -> fake address 0 -> symbolic bitvector 0
+buffer1 -> fake address 1 -> symbolic bitvector 1
 ```
 
 
