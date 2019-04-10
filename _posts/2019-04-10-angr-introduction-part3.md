@@ -183,7 +183,19 @@ In fact, you can see that after both calls the content of `EAX` is copied to two
 
 In red you can see instead the call to `scanf()` that writes to the two addresses two strings of 8 characters (8 characters plus a NULL byte to terminate the string, that's why `malloc()` allocated 9 bytes per buffer then `memset()`ed all to 0x00).
 
+Let's move on.
+
 ![angr6_2]({{site.baseurl}}/img/angr6_2.png)
+
+Here in red you can see a pattern very similar to the one we saw previously: a local variable located at `[EBP - 0xC]` is set to 0x0 and then is checked if it's equal to 0x7. Judging by the fact that
+
+1. both our strings contain 8 characters (excluding the ninth which is a NULL byte)
+2. from 0 to 7 we have 8 iterations
+3. the following code block ends with an instruction which increases `[EBP - 0xC]` by 1
+
+![angr6_3]({{site.baseurl}}/img/angr6_3.png)
+
+we can safely assume that here we have another for loop that iterates over the bytes of our two strings. Moreover, if you look carefully at the previous code block you can see that it loads the n-th byte of the strings at ever iteration using `[EBP - 0xC]` as index and performs `complex_function()` twice, once for every string.
 
 
 
