@@ -459,5 +459,5 @@ Let's test it and see what happens
 
 ![angr6_6]({{site.baseurl}}/img/angr6_6.png)
 
-Flawless. That's all for this part guys, I know it was a bit longer than usual but I think these two challenges should be analyzed together, see you at the next post :)
+Flawless. That's all for this part guys, I know it was a bit longer than usual but I think overall it was worth the time. See you at the next post :)
 
