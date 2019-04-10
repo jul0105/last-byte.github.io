@@ -21,4 +21,4 @@ Based on the format string we can deduce there are four arguments, and indeed fo
 
 ![angr5_1]({{site.baseurl}}/img/angr5_1.png)
 
-Let's take note of these four addresses (the three shown and the address of `user_input`).
+Let's take note of these four addresses (the three shown and the address of `user_input` which is `0xa1ba1c0`).
