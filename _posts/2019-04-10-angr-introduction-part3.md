@@ -21,11 +21,16 @@ Based on the format string we can deduce there are four arguments, and indeed fo
 
 ![angr5_1]({{site.baseurl}}/img/angr5_1.png)
 
-Let's take note of these four addresses (the three shown and the address of `user_input` which is `0xa1ba1c0`). Now we know the binary takes four 8-byte-long strings as input, let's see how the are manipulated.
+Let's take note of these four addresses (the three shown and the address of `user_input` which is `0xa1ba1c0`). Now we know the binary takes four 8-byte-long strings as input, let's see how they are manipulated.
+
+![angr5_2]({{site.baseurl}}/img/angr5_2.png)
+
+Here we can see that something like a for loop starts: the value `0x0` is moved into a local variable pointed by `[EBP - 0xC]`, then the content of this variable is compared to the value `0x1F` (31 in decimal), and if the variable is less or equal to `0x1F` it jumps to the following code.
 
 ![angr5_3]({{site.baseurl}}/img/angr5_3.png)
 
-Here we can see that something like a for loop starts and it runs `0x1f` times, which is 31 in decimal. From 0 to 31 we have 32 iterations. That makes sense, something is iterating on our input, which is composed of 32 bytes.
+You see it? The for loop. At the end of this block the variable `[EBP - 0xC]` is incremented by 1. This means our loop starts at `0x0` and ends at `0x1F` times. From 0 to 31 we have 32 iterations. That makes sense, something is iterating on our input, which is composed of 32 bytes.
 
-![angr5_2]({{site.baseurl}}/img/angr5_2.png)
+
+
 
