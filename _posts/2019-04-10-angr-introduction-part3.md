@@ -255,6 +255,11 @@ Here in red you can see a pattern very similar to the one we saw previously: a l
 
 we can safely assume that here we have another for loop that iterates over the bytes of our two strings. Moreover, if you look carefully at the previous code block you can see that it loads the n-th byte of the strings at every iteration using `[EBP - 0xC]` as index and performs `complex_function()` twice, once for every string.
 
+Time to have a look at `complex_function()`
+
+![angr6_4]({{site.baseurl}}/img/angr6_4.png)
+
+
 
 
 
