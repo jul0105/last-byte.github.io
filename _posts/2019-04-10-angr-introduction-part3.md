@@ -263,7 +263,15 @@ Usual mathe-magical operations. And, like the previous challenge, we have a "Try
 
 ![angr6_5]({{site.baseurl}}/img/angr6_5.png)
 
-In this section of `main()` you can see that what's pointed by `buffer0` and `buffer1` is compared to two different strings and if they are equal the program prints "Good Job.", otherwise it prints "Try again.", standard angr_ctf behaviour.
+In this section of `main()` you can see that what's pointed by `buffer0` and `buffer1` is compared to two different strings and if they are equal the program prints "Good Job.", otherwise it prints "Try again.", standard angr_ctf behaviour. Before starting working on the solution let's recap what we understood by reverse engineering this binary:
+
+1. the program allocates two 9-byte-long buffers in the heap using `malloc()` and sets them to 0
+2. it then takes two strings as input using `scanf()` with `"%8s %8s"` as a format string
+3. a for loop which cycles 8 times is started
+4. every iteration "encrypts" the n-th byte of the two strings through `complex_function()`
+5. after being manipulated the two strings are compared with other strings
+6. if they are the same we win, otherwise we lose
+7. we still don't have a Theory of Everything that reunites General Relativity with Quantum Mechanics
 
 
 
