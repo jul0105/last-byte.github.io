@@ -100,16 +100,28 @@ As usual I edited out most of the comments for brevity's sake. Let's start from 
 ```python
 def main():
   path_to_binary = "05_angr_symbolic_memory"
-  project = angr.Project(path_to_binary) (1)
+  project = angr.Project(path_to_binary) # (1)
 
   start_address = 0x8048601
-  initial_state = project.factory.blank_state(addr=start_address) (2)
+  initial_state = project.factory.blank_state(addr=start_address) # (2)
 
-  password0 = claripy.BVS('password0', 64) (3)
+  password0 = claripy.BVS('password0', 64) # (3)
   password1 = claripy.BVS('password1', 64)
   password2 = claripy.BVS('password2', 64)
   password3 = claripy.BVS('password3', 64)
 ```
 
-We start out by setting up the project (1) and our initial state (2). Notice the address we start from is the address of the `MOV DWORD [EBP - 0xC], 0x0` after the call to `scanf()` and its subsequent `ADD ESP, 0x20`.
+We start out by setting up the project (1) and our initial state (2). Notice the address we start from is the address of the `MOV DWORD [EBP - 0xC], 0x0` after the call to `scanf()` and its subsequent `ADD ESP, 0x20`. After setting up our blank state we create four symbolic bitvectors (3) that will substitute our input. Note their size is 64 bits, since the strings are 8 bytes big.
+
+```python
+password0_address = 0xa1ba1c0 # (1)
+initial_state.memory.store(password0_address, password0) # (2)
+initial_state.memory.store(password0_address + 0x8,  password1) # (3)
+initial_state.memory.store(password0_address + 0x10, password2)
+initial_state.memory.store(password0_address + 0x18, password3) 
+
+simulation = project.factory.simgr(initial_state) # (4)
+```
+
+Here we define the address (1) at which the first symbolic bitvector will be stored (2). The other three symbolic bitvectors should be stored respectively at `0xA1BA1C8`, `0xA1BA1D0`, and `0xA1BA1D8`, which are `password0_address` + `0x8`, + `0x10`, and + `0x18`.
 
