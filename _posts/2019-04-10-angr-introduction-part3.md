@@ -43,6 +43,8 @@ And here's the key: our input, after being manipulated, is compared to the strin
 2. the strings reside at the following addresses `[0xA1BA1C0, 0xA1BA1C8, 0xA1BA1D0, 0xA1BA1D8]`
 3. a loop manipulates the string through `complex_function()`
 4. the manipulated string is compared to `"NJPURZPCDYEAXCSJZJMPSOMBFDDLHBVN"`
-5. both `complex_function()` and `main()` can lead to "Try again."
+5. if the two strings match "Good Job." is printed
+6. both `complex_function()` and `main()` can lead to "Try again."
+7. in "Shutter Island" Leonardo DiCaprio is a crazy man and he is imagining everything
 
 
