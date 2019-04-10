@@ -259,10 +259,11 @@ Time to have a look at `complex_function()`
 
 ![angr6_4]({{site.baseurl}}/img/angr6_4.png)
 
-Usual mathe-magical operations. And, like the previous challenge, we have a "Try again." block. Let's head back to the second part of `main()`
+Usual mathe-magical operations. And, like the previous challenge, we have a "Try again." block. Let's head back to the second part of `main()` so we can see what happens after the for loop ends.
 
 ![angr6_5]({{site.baseurl}}/img/angr6_5.png)
 
+In this section of `main()` you can see that what's pointed by `buffer0` and `buffer1` is compared to two different strings and if they are equal the program prints "Good Job.", otherwise it prints "Try again.", standard angr_ctf behaviour.
 
 
 
