@@ -23,4 +23,9 @@ Based on the format string we can deduce there are four arguments, and indeed fo
 
 Let's take note of these four addresses (the three shown and the address of `user_input` which is `0xa1ba1c0`). Now we know the binary takes four 8-byte-long strings as input, let's see how the are manipulated.
 
+![angr5_3]({{site.baseurl}}/img/angr5_3.png)
+
+Here we can see that something like a for loop starts and it runs `0x1f` times, which is 31 in decimal. From 0 to 31 we have 32 iterations. That makes sense, something is iterating on our input, which is composed of 32 bytes.
+
 ![angr5_2]({{site.baseurl}}/img/angr5_2.png)
+
