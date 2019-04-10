@@ -123,5 +123,49 @@ initial_state.memory.store(password0_address + 0x18, password3)
 simulation = project.factory.simgr(initial_state) # (4)
 ```
 
-Here we define the address (1) at which the first symbolic bitvector will be stored (2). The other three symbolic bitvectors should be stored respectively at `0xA1BA1C8`, `0xA1BA1D0`, and `0xA1BA1D8`, which are `password0_address` + `0x8`, + `0x10`, and + `0x18`.
+Here we define the address (1) at which the first symbolic bitvector will be stored (2). The other three symbolic bitvectors should be stored respectively at `0xA1BA1C8`, `0xA1BA1D0`, and `0xA1BA1D8`, which are `password0_address` + `0x8` (3), + `0x10`, and + `0x18`. After that we call the simulation manager on the blank state we set up earlier (4).
+
+```python
+def is_successful(state): # (1)
+  stdout_output = state.posix.dumps(sys.stdout.fileno())
+  if b'Good Job.\n' in stdout_output:
+    return True
+  else: return False
+
+def should_abort(state): # (2)
+  stdout_output = state.posix.dumps(sys.stdout.fileno())
+  if b'Try again.\n' in stdout_output:
+    return True
+  else: return False
+
+simulation.explore(find=is_successful, avoid=should_abort) # (3)
+```
+
+Here we could have just taken note of the address of the code block that leads to "Good Job." and of the two code blocks that lead to "Try again.", but we can just simply define two functions (1) (2) that will check the output of the program and let angr decide if to drop the state or not (3), like we did in a [previous post](https://blog.notso.pro/2019-03-25-angr-introduction-part1/). Next we start the simulation and search for our desired code path (3).
+
+```python
+if simulation.found:
+  solution_state = simulation.found[0] (1)
+
+  solution0 = solution_state.solver.eval(password0,cast_to=bytes) (2)
+  solution1 = solution_state.solver.eval(password1,cast_to=bytes)
+  solution2 = solution_state.solver.eval(password2,cast_to=bytes)
+  solution3 = solution_state.solver.eval(password3,cast_to=bytes)
+    
+  solution = solution0 + b" " + solution1 + b" " + solution2 + b" " + solution3 (3)
+
+  print("[+] Success! Solution is: {}".format(solution.decode("utf-8"))) (4)
+else:
+  raise Exception('Could not find the solution')
+```
+
+Now we check if any state reached the desired code path (1), we concretize the symbolic bitvectors (2) into actual strings (actually they are bytes, we'll decode them as strings when we'll print them), we concatenate them (3), and finally we print the solution (4). 
+
+Time to run it and see if it works!
+
+![angr5_6]({{site.baseurl}}/img/angr5_6.png)
+
+That's it, off you go. And for our next trick... `06_angr_symbolic_dynamic_memory`!
+
+
 
