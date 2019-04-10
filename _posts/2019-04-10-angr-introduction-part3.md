@@ -259,6 +259,10 @@ Time to have a look at `complex_function()`
 
 ![angr6_4]({{site.baseurl}}/img/angr6_4.png)
 
+Usual mathe-magical operations. And, like the previous challenge, we have a "Try again." block. Let's head back to the second part of `main()`
+
+![angr6_5]({{site.baseurl}}/img/angr6_5.png)
+
 
 
 
