@@ -195,7 +195,7 @@ Here in red you can see a pattern very similar to the one we saw previously: a l
 
 ![angr6_3]({{site.baseurl}}/img/angr6_3.png)
 
-we can safely assume that here we have another for loop that iterates over the bytes of our two strings. Moreover, if you look carefully at the previous code block you can see that it loads the n-th byte of the strings at ever iteration using `[EBP - 0xC]` as index and performs `complex_function()` twice, once for every string.
+we can safely assume that here we have another for loop that iterates over the bytes of our two strings. Moreover, if you look carefully at the previous code block you can see that it loads the n-th byte of the strings at every iteration using `[EBP - 0xC]` as index and performs `complex_function()` twice, once for every string.
 
 
 
