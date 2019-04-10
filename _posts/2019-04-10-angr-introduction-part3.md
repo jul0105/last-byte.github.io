@@ -181,7 +181,7 @@ You can see two buffers are allocated through `malloc()` (highlighted in green a
 
 In fact, you can see that after both calls the content of `EAX` is copied to two memory areas that Binary Ninja identifies as `buffer0` and `buffer1`. These memory areas are located respectively at `0xABCC8A4` and `0xABCC8AC`.
 
-In red you can see instead the call to `scanf()` that writes to the two addresses two strings of 8 characters (8 characters plus a NULL byte to terminate the string, that's why `malloc()` allocated 9 bytes per buffer then `memset()`ed all to 0x00).
+In red you can see instead the call to `scanf()` that writes to the two addresses two strings of 8 characters (8 characters plus a NULL byte to terminate the string, that's why `malloc()` allocated 9 bytes per buffer then `memset()`ed them all to 0x00).
 
 Let's move on.
 
