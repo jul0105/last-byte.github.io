@@ -165,7 +165,7 @@ Time to run it and see if it works!
 
 ![angr5_6]({{site.baseurl}}/img/angr5_6.png)
 
-That's it, one down, off we go. And for our next trick... `06_angr_symbolic_dynamic_memory`!
+That's it, one down! Off we go. And for our next trick... `06_angr_symbolic_dynamic_memory`!
 
 ## 06_angr_symbolic_dynamic_memory
 
