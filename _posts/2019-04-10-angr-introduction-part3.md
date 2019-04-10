@@ -271,7 +271,79 @@ In this section of `main()` you can see that what's pointed by `buffer0` and `bu
 4. every iteration "encrypts" the n-th byte of the two strings through `complex_function()`
 5. after being manipulated the two strings are compared with other strings
 6. if they are the same we win, otherwise we lose
-7. we still don't have a Theory of Everything that reunites General Relativity with Quantum Mechanics
+7. we still don't have a Theory of Everything that reunites General Relativity with Quantum Mechanics :(
+
+That being said, let's have a look at `scaffold06.py`:
+
+```python
+import angr
+import claripy
+import sys
+
+def main(argv):
+  path_to_binary = argv[1]
+  project = angr.Project(path_to_binary)
+
+  start_address = ???
+  initial_state = project.factory.blank_state(addr=start_address)
+
+  password0 = claripy.BVS('password0', ???)
+  ...
+
+  fake_heap_address0 = ???
+  pointer_to_malloc_memory_address0 = ???
+  initial_state.memory.store(pointer_to_malloc_memory_address0, fake_heap_address0, endness=project.arch.memory_endness)
+  ...
+
+  initial_state.memory.store(fake_heap_address0, password0)
+  ...
+
+  simulation = project.factory.simgr(initial_state)
+
+  def is_successful(state):
+    stdout_output = state.posix.dumps(sys.stdout.fileno())
+    return ???
+
+  def should_abort(state):
+    stdout_output = state.posix.dumps(sys.stdout.fileno())
+    return ???
+
+  simulation.explore(find=is_successful, avoid=should_abort)
+
+  if simulation.found:
+    solution_state = simulation.found[0]
+
+    solution0 = solution_state.se.eval(password0,cast_to=str)
+    ...
+    solution = ???
+
+    print solution
+  else:
+    raise Exception('Could not find the solution')
+
+if __name__ == '__main__':
+  main(sys.argv)
+```
+
+We have our skeleton solution, let's beat it into shape.
+
+```python
+def main():
+  path_to_binary = "./06_angr_symbolic_dynamic_memory"
+  project = angr.Project(path_to_binary) # (1)
+
+  start_address = 0x8048699 
+  initial_state = project.factory.blank_state(addr=start_address) # (2)
+
+  password0 = claripy.BVS('password0', 64) # (3)
+  password1 = claripy.BVS('password1', 64)
+```
+
+We start by setting up the usual variables and creating our project with angr (1). Then we move on to decide where to start and setup a state accordingly (2). Note that we are starting from the address `0x8048699` which points to the instruction `MOV DWORD [EBP - 0xC], 0x0` after the call to `scanf()`. We are basically skipping all the `malloc()`s as we will deal with it later in the script. After that we initialize two symbolic bitvectors (3) of size 64 bits (as usual, 8 bytes strings times 8). Next part:
+
+```python
+
+```
 
 
 
