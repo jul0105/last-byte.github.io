@@ -33,7 +33,7 @@ You see it? The for loop. At the end of this block the variable `[EBP - 0xC]` is
 
 ![angr5_4]({{site.baseurl}}/img/angr5_4.png)
 
-Without losing too much time on reversing it, we can see it does a series of binary mathe-magical operations to our byte and then returns. If you pay attention to the highlighted code block you camn see that this function can branch, print "Try again." and kill the process in some case. We don't like that, so we have to remember to avoid this branch later with angr. Time to head back to `main()`.
+Without losing too much time on reversing it, we can see it does a series of binary mathe-magical operations to our byte and then returns. If you pay attention to the highlighted code block you can see that this function can branch, print "Try again.", and kill the process in some case. We don't like that, so we have to remember to avoid this branch later with angr. Time to head back to `main()` and see what happens after the loop ends.
 
 ![angr5_5]({{site.baseurl}}/img/angr5_5.png)
 
@@ -41,8 +41,8 @@ And here's the key: our input, after being manipulated, is compared to the strin
 
 1. the binary takes as input four 8-byte-long strings
 2. the strings reside at the following addresses `[0xA1BA1C0, 0xA1BA1C8, 0xA1BA1D0, 0xA1BA1D8]`
-3. a loop manipulates the string through `complex_function()`
-4. the manipulated string is compared to `"NJPURZPCDYEAXCSJZJMPSOMBFDDLHBVN"`
+3. a loop manipulates the strings through `complex_function()`
+4. the output of the loop is compared to `"NJPURZPCDYEAXCSJZJMPSOMBFDDLHBVN"`
 5. if the two strings match "Good Job." is printed
 6. both `complex_function()` and `main()` can lead to "Try again."
 7. in "Shutter Island" Leonardo DiCaprio is a crazy man and he is imagining everything
@@ -239,13 +239,13 @@ You can see two buffers are allocated through `malloc()` (highlighted in green a
 
 In fact, you can see that after both calls the content of `EAX` is copied to two memory areas that Binary Ninja identifies as `buffer0` and `buffer1`. These memory areas are located respectively at `0xABCC8A4` and `0xABCC8AC`.
 
-In red you can see instead the call to `scanf()` that writes to the two addresses two strings of 8 characters (8 characters plus a NULL byte to terminate the string, that's why `malloc()` allocated 9 bytes per buffer then `memset()`ed them all to 0x00).
+In red you can see instead the call to `scanf()` that writes to the two addresses two strings of 8 characters (plus a NULL byte to terminate the strings, that's why `malloc()` allocated 9 bytes per buffer then `memset()`ed them all to 0x00, so that the ninth byte would be a NULL byte).
 
 Let's move on.
 
 ![angr6_2]({{site.baseurl}}/img/angr6_2.png)
 
-Here in red you can see a pattern very similar to the one we saw previously: a local variable located at `[EBP - 0xC]` is set to 0x0 and then is checked if it's equal to 0x7. Judging by the fact that
+Here in red you can see a pattern very similar to the one we saw previously: a local variable located at `[EBP - 0xC]` is set to 0x0 and then comes a comparison to check if it's equal to 0x7. Judging by the fact that
 
 1. both our strings contain 8 characters (excluding the ninth which is a NULL byte)
 2. from 0 to 7 we have 8 iterations
@@ -255,7 +255,7 @@ Here in red you can see a pattern very similar to the one we saw previously: a l
 
 we can safely assume that here we have another for loop that iterates over the bytes of our two strings. Moreover, if you look carefully at the previous code block you can see that it loads the n-th byte of the strings at every iteration using `[EBP - 0xC]` as index and performs `complex_function()` twice, once for every string.
 
-Time to have a look at `complex_function()`
+Time to take a look at `complex_function()`
 
 ![angr6_4]({{site.baseurl}}/img/angr6_4.png)
 
@@ -339,7 +339,7 @@ def main():
   password1 = claripy.BVS('password1', 64)
 ```
 
-We start by setting up the usual variables and creating our project with angr (1). Then we move on to decide where to start and setup a state accordingly (2). Note that we are starting from the address `0x8048699` which points to the instruction `MOV DWORD [EBP - 0xC], 0x0` after the call to `scanf()`. We are basically skipping all the `malloc()`s as we will deal with it later in the script. After that we initialize two symbolic bitvectors (3) of size 64 bits (as usual, 8 bytes strings times 8). Next part:
+We start by setting up the usual variables and creating our project with angr (1). Then we move on to decide where to start and setup a state accordingly (2). Note that we are starting from the address `0x8048699` which points to the instruction `MOV DWORD [EBP - 0xC], 0x0` after the call to `scanf()`. We are basically skipping all the `malloc()`s as we will deal with them later in the script. After that we initialize two symbolic bitvectors (3) of size 64 bits (as usual, 8 bytes strings times 8). Next part:
 
 ```python
 fake_heap_address0 = 0xffffc93c # (1)
@@ -354,9 +354,9 @@ initial_state.memory.store(fake_heap_address0, password0) # (7)
 initial_state.memory.store(fake_heap_address1, password1) # (8)
 ```
 
-This is the key. You see, angr is not really "running" the binary (as of now, at least) so it doesn't need you to actually allocate memory into the heap, you can fake any address actually. What we did is we chose two addresses in the stack (1) (3) and we also stored the addresses of `buffer0` and `buffer1` into the variables `pointer_to_malloc_memory_address0` and `pointer_to_malloc_memory_address1` (2) (4). 
+This is the key. You see, angr is not really "running" the binary (as of now, at least) so it doesn't need to actually allocate memory into the heap, you can fake any address actually. What we did is we chose two addresses in the stack (1) (3) and we also stored the addresses of `buffer0` and `buffer1` into the variables `pointer_to_malloc_memory_address0` and `pointer_to_malloc_memory_address1` (2) (4). 
 
-After that we told angr to store the two fake addresses inside `buffer0` and `buffer1`(5) (6), where the binary would have stored the address returned by `malloc()` if it run. Finally we stored the two symbolic bitvectors at the two fake addresses (7) (8). Can you see the magic now?
+After that we told angr to store the two fake addresses inside `buffer0` and `buffer1`(5) (6), where the binary would have stored the address returned by `malloc()` if it was run. Finally we stored the two symbolic bitvectors at the two fake addresses (7) (8). Can you see the magic now?
 
 ```
 BEFORE:
