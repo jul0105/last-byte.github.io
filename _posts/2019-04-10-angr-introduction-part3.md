@@ -368,7 +368,41 @@ buffer0 -> fake address 0 -> symbolic bitvector 0
 buffer1 -> fake address 1 -> symbolic bitvector 1
 ```
 
+Basically, we replaced the addresses pointed by `buffer0` and `buffer1` with addresses we chose and at which we stored our symbolic bitvectors. At this point the rest of the script is pretty much straightforward:
 
+```python
+simulation = project.factory.simgr(initial_state) # (1)
+
+def is_successful(state): # (2)
+  stdout_output = state.posix.dumps(sys.stdout.fileno())
+  if b'Good Job.\n' in stdout_output:
+    return True
+  else: return False
+
+def should_abort(state): # (3)
+  stdout_output = state.posix.dumps(sys.stdout.fileno())
+  if b'Try again.\n' in stdout_output:
+    return True
+  else: return False
+
+simulation.explore(find=is_successful, avoid=should_abort) # (4)
+
+if simulation.found:
+  solution_state = simulation.found[0]
+
+  solution0 = solution_state.solver.eval(password0, cast_to=bytes) # (5)
+  solution1 = solution_state.solver.eval(password1, cast_to=bytes)
+
+  print("[+] Success! Solution is: {0} {1}".format(solution0.decode('utf-8'), solution1.decode('utf-8'))) # (6)
+else:
+  raise Exception('Could not find the solution')
+```
+We initialize our simulation (1) then we define the two functions responsible for finding the code block we want and avoiding the ones we don't want (2) (3) then explore our simulation looking for the code paths (4) and, if we didn't mess up and we succeed in finding a solution, concretize the two bitvectors (5) and print the solution (6). Here's the complete script:
+
+```python
+
+
+```
 
 
 
