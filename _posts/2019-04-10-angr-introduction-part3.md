@@ -123,7 +123,7 @@ initial_state.memory.store(password0_address + 0x18, password3)
 simulation = project.factory.simgr(initial_state) # (4)
 ```
 
-Here we define the address (1) at which the first symbolic bitvector will be stored (2). The other three symbolic bitvectors should be stored respectively at `0xA1BA1C8`, `0xA1BA1D0`, and `0xA1BA1D8`, which are `password0_address` + `0x8` (3), + `0x10`, and + `0x18`. After that we call the simulation manager on the blank state we set up earlier (4).
+Here we define the address (1) at which the first symbolic bitvector will be stored (2). The other three symbolic bitvectors should be stored respectively at `0xA1BA1C8`, `0xA1BA1D0`, and `0xA1BA1D8`, which are `password0_address + 0x8` (3), `+ 0x10`, and `+ 0x18`. After that we call the simulation manager on the blank state we set up earlier (4).
 
 ```python
 def is_successful(state): # (1)
@@ -424,7 +424,6 @@ def main():
   initial_state.memory.store(fake_heap_address0, password0)
   initial_state.memory.store(fake_heap_address1, password1)
   
-
   simulation = project.factory.simgr(initial_state)
 
   def is_successful(state):
