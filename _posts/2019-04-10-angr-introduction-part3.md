@@ -33,6 +33,8 @@ You see it? The for loop. At the end of this block the variable `[EBP - 0xC]` is
 
 ![angr5_4]({{site.baseurl}}/img/angr5_4.png)
 
+Without losing too much time on reversing it, we can see it does a series of binary mathe-magical operations to our byte and then returns. If you pay attention to the highlighted code block you camn see that this function can branch, print "Try again." and kill the process in some case. We don't like that, so we have to remember to avoid this branch later with angr.
+
 
 
 
