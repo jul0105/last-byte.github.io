@@ -183,6 +183,8 @@ In fact, you can see that after both calls the content of `EAX` is copied to two
 
 In red you can see instead the call to `scanf()` that writes to the two addresses two strings of 8 characters (8 characters plus a NULL byte to terminate the string, that's why `malloc()` allocated 9 bytes per buffer).
 
+![angr6_2]({{site.baseurl}}/img/angr6_2.png)
+
 
 
 
