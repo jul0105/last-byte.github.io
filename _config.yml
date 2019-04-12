@@ -23,7 +23,7 @@ description: security & stuff
 
 # List of links in the navigation bar
 navbar-links:
-  About Me: "aboutme"
+  whoami: "aboutme"
   #Resources:
    # - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
    # - Learn markdown: "http://www.markdowntutorial.com/"
@@ -72,7 +72,7 @@ author:
 # If you want to add a new link that isn't here, you'll need to also edit the file _data/SocialNetworks.yml
 social-network-links:
   rss: true
-  email: "fed.lag@protonmail.ch"
+  email: "last@notso.pro"
   github: last-byte
   twitter: last0x00
 
