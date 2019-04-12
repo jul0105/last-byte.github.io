@@ -4,7 +4,7 @@ published: true
 image: /img/angr.png
 date: '2019-03-26'
 title: Introduction to angr Part 2
-subtitle: 'Jarvis, sometimes you gotta run, before you can walk'
+subtitle: 'Jarvis, sometimes you gotta run before you can walk'
 ---
 Searching on Google how to combat writer's block and blank page fear? Check. I really don't know how to start this time, probably because I'm distracted so let's dive right into it.
 
