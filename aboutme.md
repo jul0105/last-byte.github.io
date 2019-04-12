@@ -30,4 +30,4 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
       o.parentNode.insertBefore(s, o);
       })();
   </script>
-In case you need it, [here's my public key]({{site.baseurl}}/pubkey.txt).
+In case you need it you can find me at [last AT notso DOT pro](mailto:last@notso.pro), [here's my public key]({{site.baseurl}}/pubkey.txt).
