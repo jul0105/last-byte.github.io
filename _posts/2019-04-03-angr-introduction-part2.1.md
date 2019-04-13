@@ -9,7 +9,7 @@ I told you in the [last post](https://blog.notso.pro/2019-03-26-angr-introductio
 
 ![ssod0]({{site.baseurl}}/img/ssod0.png)
 
-As you can see I highlighted in red the code paths we are not interested in (leading to `wrong()`), in green the one we are interested in (leading to "That is correct!") and in blue the instruction from which angr will start the analysis. Instead of taking note of every address taking to `wrong()` we can simply use the address of the function to drop every state that reaches it. Let's have a look at `fromhex()` and see if we can rule out any uninteresting paths.
+As you can see I highlighted in red the code paths we are not interested in (leading to `wrong()`), in green the one we are interested in (leading to "That is correct!") and in blue the instruction from which angr will start the analysis. Instead of taking note of every address taking to `wrong()` we can simply use the address of the function to drop every state that reaches it. Let's have a look at `fromhex()` and see if we can rule out any uninteresting paths. Also, we want to avoid the code path that starts @ `0x8048670` because it's the one that complains about the lack of input and closes the program immediately.
 
 ![ssod1]({{site.baseurl}}/img/ssod1.png)
 
@@ -32,7 +32,7 @@ From this screenshot we can see that the pointer to our input string is pushed o
 Let's see what we know so far:
 1. the address we will start from is `0x8048692`, which is the one of `PUSH EAX` right before the call to `fromhex()`
 2. the address we want to reach is `0x80486d3`, which is where the code block that prints "That is correct!" starts
-3. the addresses leading to uninteresting code paths are `[0x8048541, 0x8048624, 0x8048599, 0x8048585]`
+3. the addresses leading to uninteresting code paths are `[0x8048541, 0x8048624, 0x8048599, 0x8048585, 0x8048670]`
 4. we know the pointer to our string is stored in `EAX`
 5. the cake is a lie
 
@@ -51,7 +51,7 @@ def main():
     project = angr.Project(path_to_binary)
 
     start_addr    = 0x8048692 # address of "PUSH EAX" right before fromhex()
-    avoid_addr    = [0x8048541, 0x8048624, 0x8048599, 0x8048585] # addresses we want to avoid
+    avoid_addr    = [0x8048541, 0x8048624, 0x8048599, 0x8048585, 0x8048670] # addresses we want to avoid
     success_addr  = 0x80486d3 # address of code block leading to "That is correct!"
     initial_state = project.factory.blank_state(addr=start_addr)
 ```
