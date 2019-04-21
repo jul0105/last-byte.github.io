@@ -138,7 +138,7 @@ to this
 0x8049a9f <buffer+8>:	0x77	0x66	0x55	0x44	0x33	0x22	0x11	0x00
 ```
 
-Interestingly our string is parsed using the [little-endian format](https://en.wikipedia.org/wiki/Endianness#Little-endian) which specifies the right-most byte is placed at the lower address. Now that we know that the last thing to do is analyze the part of the program that leads to the `memcmp()`.
+Interestingly our string is parsed using the [little-endian format](https://en.wikipedia.org/wiki/Endianness#Little-endian) which specifies the right-most byte is placed at the lower address. Now that we know that, the last thing to do is to analyze the part of the program that leads to the `memcmp()`.
 
 ![buffer0]({{site.baseurl}}/img/buffer0.png)
 
