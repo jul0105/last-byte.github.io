@@ -700,18 +700,19 @@ pre code {
   white-space: pre;
 }
 pre.highlight, .highlight > pre, td.code pre {
-  background-color: #FAFAFA;
-  background-image: linear-gradient(#F9F9F9 50%, #FDFDFD 50%);
+  background-color: #1a1f28;
+  background-image: linear-gradient(#242b36 50%, #28313d 50%);
   background-repeat: repeat;
   background-size: 3em 3em;
+  border-color: #2c3545;
   background-position: 0px 10px;
-  border-left: 7px solid #444;
+  border-left: 7px solid #17698c;
 }
 code table, code table td, code table th, code table tbody, code table tr,
 td.gutter pre {
   padding: 0;
   border: none;
-  background-color: #fff;
+  background-color: #1a1f28;
 }
 .highlight > pre {
   padding: 0;
@@ -736,7 +737,7 @@ td.gutter {
 }
 
 /* --- Notification boxes --- */
-.box-note, .box-warning, .box-error {
+.box-note, .box-warning, .box-error, .box-success {
   padding: 15px 15px 15px 10px;
   margin: 20px 20px 20px 5px;
   border: 1px solid #eee;
@@ -745,18 +746,31 @@ td.gutter {
 }
 
 .box-note {
-  background-color: #eee;
-  border-left-color: #2980b9;
+  background-color: #17698c;
+  border-color: #17698b;
+  color: #fff;
+  border-left-color: #174a6c;
 }
 
 .box-warning {
-  background-color: #fdf5d4;
-  border-left-color: #f1c40f;
+  background-color: #e7a91d;
+  color: #fff;
+  border-color: #e6a91b;
+  border-left-color: #a58912;
 }
 
 .box-error {
-  background-color: #f4dddb;
-  border-left-color: #c0392b;
+  background-color: #d54437;
+  border-left-color: #68241e;
+  border-color: #a52d2d;
+  color: #fff;
+}
+
+.box-success {
+  background-color: #4cba4c;
+  color: #fff;
+  border-color: #4cba4c;
+  border-left-color: #2f8b58;
 }
 
 /* Fix table border github gist snippets */
@@ -802,4 +816,7 @@ td.gutter {
   color: #808080;
   font-style: italic;
   font-size: 16px;
+}
+.fa-inverse{
+  color: #17698c;
 }
