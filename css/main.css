@@ -39,6 +39,7 @@ p {
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
+  color: #17698c;
 }
 a {
   color: {{ site.link-col }};
@@ -123,7 +124,7 @@ img {
 /* --- Navbar --- */
 
 .navbar-custom {
-  background-color: {{ site.navbar-col }};
+  background-color: #151920;
   border-bottom: 1px solid #EAEAEA;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   {% if site.navbar-img %}
@@ -141,7 +142,7 @@ img {
 .navbar-custom .navbar-brand,
 .navbar-custom .nav li a {
   font-weight: 800;
-  color: {{ site.navbar-text-col }};
+  color: #17698d;
 }
 
 .navbar-custom .navbar-brand:hover,
@@ -284,12 +285,11 @@ img {
 
 footer {
   padding: 30px 0;
-  border-top: 1px #EAEAEA solid;
+  border-top: 1px #15181f solid;
   margin-top: 50px;
   font-size: 14px;
-  background-color: {{ site.footer-col }};
+  background-color: #151920;
   {% if site.footer-img %}
-  background-image: url({{ site.footer-img }});
   background-attachment: fixed;
   {% endif %}
 }
@@ -332,7 +332,7 @@ footer .theme-by {
 
 .post-preview {
   padding: 20px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgb(51, 60, 77);
 }
 
 @media only screen and (min-width: 768px) {
@@ -347,7 +347,7 @@ footer .theme-by {
 
 .post-preview a {
   text-decoration: none;
-  color: #404040;
+  color: #d9d9d9;
 }
 
 .post-preview a:focus,
@@ -367,9 +367,9 @@ footer .theme-by {
 }
 .post-preview .post-meta,
 .post-heading .post-meta {
-  color: #808080;
+  color: #adadad;
   font-size: 18px;
-  font-style: italic;
+  /*font-style: italic;*/
   margin: 0 0 10px;
 }
 .post-preview .post-entry {
@@ -398,7 +398,10 @@ footer .theme-by {
   width: 192px;
 }
 .post-preview .post-read-more {
-  font-weight: 800;
+  /*font-weight: 800;*/
+  font-color: #000;
+  color: #625f5f;
+  font-size: 13px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -411,13 +414,16 @@ footer .theme-by {
 
 .blog-tags {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #999;
+  color: #5d6065;
   font-size: 15px;
   margin-bottom: 30px;
 }
 
 .blog-tags a {
-  color: {{ site.link-col }};
+  color: #17698c;
+  border-radius: 4px;
+  padding: 2px 2px 2px;
+  background: #15181f;
   text-decoration: none;
   padding: 0px 5px;
 }
