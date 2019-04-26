@@ -288,6 +288,7 @@ footer {
   border-top: 1px #15181f solid;
   margin-top: 50px;
   font-size: 14px;
+  color: #fff;
   background-color: #151920;
   {% if site.footer-img %}
   background-attachment: fixed;
@@ -421,7 +422,7 @@ footer .theme-by {
 }
 
 .blog-tags a {
-  color: #17698c;
+  color: #fff;
   border-radius: 4px;
   padding: 2px 2px 2px;
   background: #15181f;
