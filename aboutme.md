@@ -30,4 +30,6 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
       o.parentNode.insertBefore(s, o);
       })();
   </script>
+<script src="https://www.hackthebox.eu/badge/28728"></script>
+
 You can find me at [last AT notso DOT pro](mailto:last@notso.pro) or on [Twitter](https://twitter.com/last0x00), [here's my public key]({{site.baseurl}}/pubkey.txt).
