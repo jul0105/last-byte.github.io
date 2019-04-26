@@ -495,7 +495,7 @@ footer .theme-by {
 }
 .intro-header.big-img .page-heading,
 .intro-header.big-img .post-heading {
-  padding: 10px 0;
+  padding: 100px 0;
   color: #FFF;
   text-shadow: 1px 1px 3px #000;
 }
@@ -515,9 +515,6 @@ footer .theme-by {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   margin: 10px 0 0;
-  margin-right: 1px;
-  margin-left: 1px;
-  
 }
 .intro-header .post-heading .post-subheading {
   margin-bottom: 20px;
