@@ -707,6 +707,7 @@ pre.highlight, .highlight > pre, td.code pre {
   border-color: #2c3545;
   background-position: 0px 10px;
   border-left: 7px solid #17698c;
+  color: #fff;
 }
 code table, code table td, code table th, code table tbody, code table tr,
 td.gutter pre {
