@@ -24,9 +24,9 @@ body {
   /*font-family: 'Monoton', 'Arial', sans-serif;*/
   font-family: 'Arial', 'Arial', sans-serif;
   font-size: 18px;
-  color: #404040;
+  color: #afafaf;
   position: relative;
-  background-color: {{ site.page-col }};
+  background-color: #1a1f28;
   {% if site.page-img %}
   background-image: url({{ site.page-img }});
   background-attachment: fixed;
