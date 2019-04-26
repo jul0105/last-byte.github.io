@@ -75,6 +75,7 @@ social-network-links:
   email: "last@notso.pro"
   github: last-byte
   twitter: last0x00
+  linkedin: federico-lagrasta-b531a7169
 
 # Select which share links to show in posts
 share-links-active:
@@ -85,7 +86,7 @@ share-links-active:
 
 # How to display the link to the website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "Blog.NotSo.Pro" 
+#url-pretty: "Blog.NotSo.Pro" 
 
 # --- Web Statistics Section --- #
 
