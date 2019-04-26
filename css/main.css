@@ -398,7 +398,7 @@ footer .theme-by {
   width: 192px;
 }
 .post-preview .post-read-more {
-  /*font-weight: 800;*/
+  font-weight: 800;
   font-color: #000;
   color: #625f5f;
   font-size: 13px;
