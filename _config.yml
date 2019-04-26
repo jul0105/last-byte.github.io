@@ -110,7 +110,7 @@ url-pretty: "Blog.NotSo.Pro"
 # --- Comments --- #
 
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
-disqus: "notsopro"
+#disqus: "notsopro"
 
 # Excerpt Word Length
 # Truncates the excerpt to the specified number of words on the index page
