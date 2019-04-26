@@ -49,7 +49,7 @@ a:focus {
   color: {{ site.hover-col }};
 }
 blockquote {
-  color: #ffffff;
+  color: #7fffd4;
   font-style: italic;
 }
 blockquote p:first-child {
