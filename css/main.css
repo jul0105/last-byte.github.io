@@ -26,7 +26,7 @@ body {
   font-size: 18px;
   color: #1a1f28;
   position: relative;
-  background-color: #ffffff ;
+  background-color: #1a1f28 ;
   {% if site.page-img %}
   background-image: url({{ site.page-img }});
   background-attachment: fixed;
