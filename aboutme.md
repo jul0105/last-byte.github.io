@@ -29,7 +29,9 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
       var o = document.getElementsByTagName('script')[0];
       o.parentNode.insertBefore(s, o);
       })();
-  </script><script src="https://www.hackthebox.eu/badge/28728"></script>
+  </script>
+<div data-iframe-width="270" data-iframe-height="150"></div>
+<script src="https://www.hackthebox.eu/badge/28728"></script>
 <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/13051381">
 
 
