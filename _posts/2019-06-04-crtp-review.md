@@ -22,6 +22,7 @@ I can't say many things about the exam as you can imagine. I can only say that i
 
 After the ~~funny~~ technical part however you have to write a professional report describing all the steps that lead you to where you arrived. I ended up writing a 30 page report, give or take. You should also suggest mitigations and countermeasures, but having pwned everything I didn't bother doing it. Don't follow my bad example please :)  
 
-By passing the exam you obtain your Certified Red Team Professional certification. Though the title sounds pretty cool, I don't feel like a professional, yet. There's still a ton of work and study I have to go through, but this course surely helped a lot and it was an amazing experience.  
-
+By passing the exam you obtain your Certified Red Team Professional certification. Though the title sounds pretty cool, I don't feel like a professional, yet. There's still a ton of work and study I have to go through, but this course surely helped a lot and it was an amazing experience.
+  
+  
 ![certificate](https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/13051381)
