@@ -1,5 +1,8 @@
 ---
-published: false
+published: true
+image: /img/defense2.png
+title: Attacking and Defending Active Directory course review
+subtitle: Active Directory attacks, from zero to hero
 ---
 # Attacking and Defending Active Directory Course Review
 
