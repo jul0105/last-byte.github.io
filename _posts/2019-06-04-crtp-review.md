@@ -4,10 +4,10 @@ image: /img/defense2.png
 title: Attacking and Defending Active Directory course review
 subtitle: 'Active Directory attacks, from zero to hero'
 ---
-![crtp]({{site.baseurl}}/img/activedirectorylab.png)
-
 ## Introduction
 It's been almost two weeks since I took and passed the exam of the [Attacking and Defending Active Directory](https://www.pentesteracademy.com/activedirectorylab) course by Pentester Academy and I finally feel like doing a review. I was very excited to do this course as I didn't have a lot of experience with Active Directory and given also its low price tag of $250 with one month access to the lab I decided to give it a shot.
+<br>
+![crtp]({{site.baseurl}}/img/activedirectorylab.png)
 <br>
 ## The course material
 The instructor is [Nikhil Mittal](https://www.linkedin.com/in/mittalnikhil/) who is a really good instructor, having reached at both DEFCON and Black Hat conferences. In my opinion the course is really well made and covers the basics of both Active Directory and Powershell. Of course a little bit of basic knowledge about what Active Directory is and what it is for is needed, but it's nothing that can't be gained with a week of good study. 
