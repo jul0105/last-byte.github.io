@@ -3,6 +3,8 @@ published: false
 ---
 # Attacking and Defending Active Directory Course Review
 
+![crtp]({{site.baseurl}}/img/activedirectorylab.png)
+
 ## Introduction
 It's been almost two weeks since I took and passed the exam of the [Attacking and Defending Active Directory](https://www.pentesteracademy.com/activedirectorylab) course by Pentester Academy and I finally feel like doing a review. I was very excited to do this course as I didn't have a lot of experience with Active Directory and given also its low price tag of $250 with one month access to the lab I decided to give it a shot.
 
