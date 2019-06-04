@@ -7,8 +7,6 @@ subtitle: 'Active Directory attacks, from zero to hero'
 ## Introduction
 It's been almost two weeks since I took and passed the exam of the [Attacking and Defending Active Directory](https://www.pentesteracademy.com/activedirectorylab) course by Pentester Academy and I finally feel like doing a review. I was very excited to do this course as I didn't have a lot of experience with Active Directory and given also its low price tag of $250 with one month access to the lab I decided to give it a shot.
 <br>
-![crtp]({{site.baseurl}}/img/activedirectorylab.png)
-<br>
 ## The course material
 The instructor is [Nikhil Mittal](https://www.linkedin.com/in/mittalnikhil/) who is a really good instructor, having reached at both DEFCON and Black Hat conferences. In my opinion the course is really well made and covers the basics of both Active Directory and Powershell. Of course a little bit of basic knowledge about what Active Directory is and what it is for is needed, but it's nothing that can't be gained with a week of good study. 
 
@@ -19,7 +17,8 @@ On the offensive side, the lessons cover domain and forest enumeration, local pr
 <br>
 ## The lab
 What really shines in this course to me is the lab. Sure, the material given is great and well taught but knowledge without experience is only half the battle in my opinion. All of the learning objectives are done in the lab and you need to apply the techniques learnt through the course to finish them. The lab is a complete Active Directory environment, with state of the art, fully patched Windows Server 2016 and SQL Server 2017 machines. The environment is the moneycorp.local forest and the student starts from a machine in the child domain dollarcorp.moneycorp.local. 
-
+![crtp]({{site.baseurl}}/img/activedirectorylab.png)
+<br>
 From there he has to fully compromise his machine and gain SYSTEM privileges on it. Then he can start making his way through the domain, compromising accounts with higher privileges and escalating his way to the domain controller. After that he will need to apply persistence techniques such as Golden Tickets, Silver Tickets, Skeleton keys and so on. From there he will then have to perform cross domain attacks and escalate his privileges to the forest root and basically go god mode in the forest domain controller. Done that he will have to perform cross forest attacks and escalate his privileges into another forest. The lab is resetted everyday, except for the student machine, so that the environment is always clean and tidy. There are multiple purchase options, ranging from 30 days at $249 to 90 days at $549, but I feel that if you dedicate enough time one month is sufficient to complete the course and the lab.
 <br>
 ## The exam
