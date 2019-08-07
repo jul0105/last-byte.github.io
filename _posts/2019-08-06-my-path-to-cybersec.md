@@ -1,7 +1,9 @@
 ---
-published: false
+published: true
+image: /img/defense2.png
+title: My (ongoing) path to cyber security.
+subtitle: It's not about the destination, it's about the journey
 ---
-# My (ongoing) path to cyber security.
 
 Let's track this from the beginning.
 
