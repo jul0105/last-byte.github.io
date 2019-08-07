@@ -33,6 +33,7 @@ Three years went by, more or less, and when I finished middle school my grandpa 
 
 <br>
 ![linux](https://imgs.xkcd.com/comics/cautionary.png)
+
 <br>
   
   
