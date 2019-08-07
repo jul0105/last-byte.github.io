@@ -7,7 +7,7 @@ Let's track this from the beginning.
 
 Why am I writing this piece? The answer is at the end of the post (go there for a tl;dr).
  
-On this blog I usually stick to technical posts because that's what I feel like doing, teaching other people things I'm still learning to share my path. I'm a huge fan of the [Feynman Technique](link). In case you don't know who [Richard Feynman](link)) was, check him out. I put him in my personal Hall of Fame, a great scientist and a great educator. Thing is, sometimes growing is not only about technical skills, it's also about motivation, so I decided to share my (still ongoing) story on how I ~~crashed~~ landed in the cyber security world.
+On this blog I usually stick to technical posts because that's what I feel like doing, teaching other people things I'm still learning to share my path. I'm a huge fan of the [Feynman Technique](https://www.youtube.com/watch?v=_f-qkGJBPts). In case you don't know who [Richard Feynman](https://it.wikipedia.org/wiki/Richard_Feynman)) was, check him out. I put him in my personal Hall of Fame, a great scientist and a great educator. Thing is, sometimes growing is not only about technical skills, it's also about motivation, so I decided to share my (still ongoing) story on how I ~~crashed~~ landed in the cyber security world.
 So, for once, I am putting aside technical writing, exploitation, reverse engineering and the likes to focus on something more "human".
 
 <br>
@@ -52,7 +52,7 @@ It may be a unpopular opinion, but another thing that helped me a lot are certif
 
 I know it's sort of a mantra these days and everybody says that, but really, get out of your goddamned comfort zone. Moving out into the unknown (for you at least) really forces you to step up your game and improve, trust me.
 
-![OSCP](link)
+![OSCP]({{site.baseurl}}/img/oscp.jpg)
 
 <br>
 ## Conclusions
