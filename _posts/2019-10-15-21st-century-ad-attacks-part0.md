@@ -5,6 +5,8 @@ title: 21st Century Active Directory Attacks - Part 0
 subtitle: The gathering storm...
 ---
 You know folks, my life is kinda busy at the moment. Basically it's squeezed between my work, my [master's degree course in Cybersecurity](https://cybersecurity.uniroma1.it/) at the university, the [Advanced Web Attacks and Exploitation course](https://www.offensive-security.com/information-security-training/advanced-web-attack-and-exploitation/) by Offsec and the [Offshore labs](https://www.mrb3n.com/?p=551) on Hack The Box. Do you ever have those moments when you suddenly realize you are putting too much stuff in your life to ever make it work but you can't stop thinking "man, this thing is so cool, I should find a way to fit it in my schedule even though I literally don't have time to even sleep"? I have them all the time! And if it weren't for ~~the lack of~~ money, I would have bought a shitload of courses to keep myself occupied (like I have free time now, right? lol).  
+  
+  
 ![blog]({{site.baseurl}}/img/blog.JPG)
   
   
