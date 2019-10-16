@@ -19,7 +19,7 @@ Ok, enough with the stream of consciousness.
 
 ## Topics covered
 
-In this post series we are going to take a look at many aspects concerning Active Directory. I'll try to cover the following topics as best as I can:
+In this post series we are going to take a look at many aspects concerning Active Directory. We will start slow, from the basics and then move onto more complex topics like authentication mechanisms and attacks. With this in mind I want to cover the following topics:
 - Basics of Active Directory: I'll explain what forests and domains are, how they interact with the environment, the protocols and the general behaviour of AD; 
 - Active Directory reconaissance and enumeration. To do this we will use the famous Powerview module for Powershell;
 - Kerberos, the ~~in~~famous authentication mechanism loved by Red Teamers and hated by Blue Teamers;
@@ -46,4 +46,4 @@ AD is hierarchically structured and its basic building blocks are:
    
 A forest can be composed of one or more domains and inside a single domain you can find one or more OUs. Keep well in mind that forest are considered a security boundary, while __**domains are not considered a security boundary**__. If you are not already accostumed to AD and AD attacks, it's a phrase that might not make much sense to you as of now, but we will come back to it later. Suffice it to say that most of the times if an attacker manages to take full control over a domain in a forest, the entire forest is to be considered compromised. We will come back to it in later posts.
 
-The keystone of AD is the Domain Controller (DC). The DC is machine (usually a Windows Server) 
+The keystone of AD is the Domain Controller (DC). The DC the machine (usually a Windows Server) to which all the other machines and users authenticate and with which everything in a domain interacts, be it for requesting access to a service or checking if a user has permission on a certain object. Let's say for example that user Bob wants to access a resource hosted on Alice's server. To access the resource Bob first queries the DC, asking for access to said resource, and the DC redirects him to Alice's server 
