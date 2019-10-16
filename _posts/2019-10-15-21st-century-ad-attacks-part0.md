@@ -19,6 +19,15 @@ Ok, enough with the stream of consciousness.
 
 ## Topics covered
 
-In this post series we are going to take a look at many aspects concerning Active Directory. We will start slow, detailing what AD is, is not and how it works. I'll explain how domain trusts work and how to exploit them at your advantage. We will then have a look at Kerberos, the ~~in~~famous authentication mechanism loved by Red Teamers and hated by Blue Teamers. After detailing the basics we will go through all the most known attacks like Kerberoasting, forging golden and silver tickets, backdooring AD and implanting persistence measures on a compromised domain controller. I'll try to keep all the explanations as offensive-oriented as possible. I'll try to cover the use of [Covenant](https://github.com/cobbr/Covenant) as well to perform Red Team operations. I want to stress out however that none of this is new, none of this is a product of my personal research, it's just the result of countless hours reading and practicing the techniques developed by other fellow hackers who did the heavy lifting before me. Just to name a few: [harmj0y](https://www.harmj0y.net/blog/about/), [Nikhil Mittal](http://www.labofapenetrationtester.com/p/about-me.html), [Tim Medin](https://twitter.com/timmedin), all the folks from [Specter Ops](https://specterops.io/), [Sean Metcalf](https://adsecurity.org/?page_id=8), [Benjamin Delpy](https://twitter.com/gentilkiwi) and countless other security researchers around the globe. As Sir Isaac Newton once said:
+In this post series we are going to take a look at many aspects concerning Active Directory. I'll try to cover the following topics as best as I can:
+- Basics of Active Directory: I'll explain what forests and domains are, how they interact with the environment, the protocols and the general behaviour of AD; 
+- Active Directory reconaissance and enumeration. To do this we will use the famous Powerview module for Powershell;
+- Kerberos, the ~~in~~famous authentication mechanism loved by Red Teamers and hated by Blue Teamers;
+- AD attacks, focusing specifically on how to harness the power of Mimikatz in its various forms to perform attacks like overpass the hash, forging golden and silver tickets, dump credentials off DCs and machines;
+- AD persistence and backdooring;
+- Setting up a red teaming infrastructure with Covenant as a C2 framework and using redirectors to keep the C2 server "safe" from a tactical point of view.  
+  
+  
+I'll try to keep all the explanations as offensive-oriented as possible. I want to stress out however that none of this is new, none of this is a product of my personal research, it's just the result of countless hours reading and practicing the techniques developed by other fellow hackers who did the heavy lifting way before me. Just to name a few: [harmj0y](https://www.harmj0y.net/blog/about/), [Nikhil Mittal](http://www.labofapenetrationtester.com/p/about-me.html), [Tim Medin](https://twitter.com/timmedin), all the folks from [Specter Ops](https://specterops.io/), [Sean Metcalf](https://adsecurity.org/?page_id=8), [Benjamin Delpy](https://twitter.com/gentilkiwi) and countless other security researchers around the globe. As Sir Isaac Newton once said:
 
 > If I have seen further than others, it is by standing upon the shoulders of giants.
