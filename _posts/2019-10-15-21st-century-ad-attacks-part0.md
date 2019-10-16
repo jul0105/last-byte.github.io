@@ -44,6 +44,6 @@ AD is hierarchically structured and its basic building blocks are:
  - Domains
  - Organizational Units (OU)  
    
-A forest can be composed of multiple domains, and inside a single domain you can find one or more OUs.
+A forest can be composed of one or more domains, and inside a single domain you can find one or more OUs. Keep well in mind that forest are considered a security boundary, while **domains are not considered a security boundary**. If you are not already accostumed to AD and AD attacks, it's a phrase that might not make much sense to you as of now, but we will come back to it later. Suffice it to say that most of the times if an attacker manages to take full control over a domain in a forest, the entire forest is to be considered compromised. We will come back to it in later posts.
 
-The keystone of AD is the Domain Controller (DC). The DC is machine on which a domain
+The keystone of AD is the Domain Controller (DC). The DC is machine (usually a Windows Server) 
