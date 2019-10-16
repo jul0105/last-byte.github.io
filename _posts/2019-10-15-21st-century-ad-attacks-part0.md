@@ -18,7 +18,6 @@ So, what's the point in this introduction? Ever since I took the [Attacking and 
 Ok, enough with the stream of consciousness.  
 <br>
 <br>
-<br>
 
 ## Topics covered
 
