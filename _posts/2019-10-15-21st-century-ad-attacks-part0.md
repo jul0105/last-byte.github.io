@@ -31,3 +31,19 @@ In this post series we are going to take a look at many aspects concerning Activ
 I'll try to keep all the explanations as offensive-oriented as possible. I want to stress out however that none of this is new, none of this is a product of my personal research, it's just the result of countless hours reading and practicing the techniques developed by other fellow hackers who did the heavy lifting way before me. Just to name a few: [harmj0y](https://www.harmj0y.net/blog/about/), [Nikhil Mittal](http://www.labofapenetrationtester.com/p/about-me.html), [Tim Medin](https://twitter.com/timmedin), all the folks from [Specter Ops](https://specterops.io/), [Sean Metcalf](https://adsecurity.org/?page_id=8), [Benjamin Delpy](https://twitter.com/gentilkiwi) and countless other security researchers around the globe. As Sir Isaac Newton once said:
 
 > If I have seen further than others, it is by standing upon the shoulders of giants.
+  
+  
+Enough for the part 0 intro now, let's dive right in.
+
+## Oh Active Directory, Active Directory, wherefore art thou Active Directory?
+
+So, Active Directory (from now on abbreviated AD) is suite of technologies developed by Microsoft and is, at its core, a directory service employed by Windows domains to keep track of basically everything. It provides authentication mechanisms, objects management, users and groups management, security and configuration capabilities all centralized to a handful of servers, sometimes even just a single server. Practically it allows administrators to have centralized (when properly implemented) and secure (WHEN PROPERLY IMPLEMENTED) management of an entire network of devices.  
+  
+AD is hierarchically structured and its basic building blocks are:
+ - Forests
+ - Domains
+ - Organizational Units (OU)  
+   
+A forest can be composed of multiple domains, and inside a single domain you can find one or more OUs.
+
+The keystone of AD is the Domain Controller (DC). The DC is machine on which a domain
