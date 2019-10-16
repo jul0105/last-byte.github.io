@@ -15,7 +15,9 @@ You know folks, my life is kinda busy at the moment. Basically it's squeezed bet
 So, what's the point in this introduction? Ever since I took the [Attacking and Defending Active Directory](https://www.pentesteracademy.com/activedirectorylab) course and lab by Pentester Academy (which, given the cost and the amount of information I learned, I highly recommend by the way) I was stuck with the idea of starting a post series on Active Directory from a offensive point of view. I thought it would be really useful (for me as a memento and for others to learn of course) to keep the things I learned in a tidy and coherent way. This thought sprang up again lately, when I pwnd the first domain of the Offshore labs, and I finally made up my mind about it. And of course it will be a problem, because days are (still) 24 hour long and noone has invented the [Hyperbolic Time Chamber](https://dragonball.fandom.com/wiki/Hyperbolic_Time_Chamber) yet.
 <br>
 <br>
-Ok, enough with the stream of consciousness.
+Ok, enough with the stream of consciousness.  
+  
+  
 
 ## Topics covered
 
