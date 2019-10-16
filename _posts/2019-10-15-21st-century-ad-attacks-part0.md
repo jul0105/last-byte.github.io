@@ -18,6 +18,7 @@ So, what's the point in this introduction? Ever since I took the [Attacking and 
 Ok, enough with the stream of consciousness.  
 <br>
 <br>
+<br>
 
 ## Topics covered
 
@@ -36,6 +37,8 @@ I'll try to keep all the explanations as offensive-oriented as possible. I want 
   
   
 Enough for the part 0 intro now, let's dive right in.
+<br>
+<br>
 <br>
 <br>
 
