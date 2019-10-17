@@ -32,7 +32,7 @@ Side note, I never had a lot of confidence in my learning skills until very rece
 Three years went by, more or less, and when I finished middle school my grandpa bought me a laptop. Until then I had to share my PC with my younger brother so I didn't have a lot of room for mods or trying out new stuff. At that point I went through most of Microsoft's OSs, namely Windows 95, Windows 98, Windows Me, Windows XP and Windows motherfucking Vista. I don't remember clearly when, but at some point I found out about Linux, the OS "all hackers use". Cool, who doesn't want to be a hacker? And now I have a computer I can ~~fuck up~~ modify without a lot of consequences (for my brother, at least) so I threw Ubuntu (yes, Ubuntu was the first distro I installed, got any problems with that?) on a USB drive I had lying around and installed it on my brand new laptop. The impact had been... strange? No easy click and execute GUI, no installing ~~malware disguised as cracked videogames~~ software through the familiar double-click-on-a-exe-and-forget-it.
 
 <br>
-![linux](https://imgs.xkcd.com/comics/cautionary.png)
+![linux](https://imgs.xkcd.com/comics/cautionary.png){: .center-block :}
 
 <br>
   
@@ -46,7 +46,7 @@ After that things stalled for some years as I didn't really spend a lot of time 
 
 A game changer in my growth has been starting to attend hacker conferences and hacker camps. The first hacker camp I ever attended has been the Metro Olografix Camp, a.k.a. MOCA, in 2016.
 
-![moca](https://moca.olografix.org/wp-content/uploads/2016/06/MOCA16-home-slide.jpg)
+![moca](https://moca.olografix.org/wp-content/uploads/2016/06/MOCA16-home-slide.jpg){: .center-block :}
 
 MOCA is a hacker camp which is held every four years in Pescara and I was lucky enough to have the possibility to attend it. At the camp I was able to meet a ton of different people, from the common IT technician to the hardcore computer engineer, from the 12 years old script kiddie who wanted to learn the craft of the grown ups to the super skilled hacker full of knowledge and anecdotes. It was an awesome and awful experience at the same time. It was awesome because I was struck by the amount of really skilled people attending this kind of events and the fact that everyone was eager to showcase their skills and teach what they know to others. It was also awful however because it dawned on me how little I knew about hacking. And not only about hacking, but about every aspect of IT in general! This kind of experience is really humbling because you can find pros basically in every branch of technology, people whose knowledge dwarves yours by many orders of magnitude. I met awesome guys, people like Zen, who taught me a lot of the black wizardry behind drones and radio comms, or Illordlo who introduced me, a young, unskilled and clueless kid, to the dark art reverse engineering. But one great person who stood above the crowd those days was Rageman, who later became for me a mentor and a great friend. I would turn to him in days where I felt helpless and without a guide and he would always reassure me and tell me that every skill in hacking can be conquered, given the right amount of persistence and study discipline. There were many other guys and girls that became for me an example and that really sparked in me the will to persist and grow in this field, I consider this event to be the real turning point in my personal growth when it comes to hacking. It was truly a game changer.
 I attended many other conferences and camps from that day and they all served me well in their own way. I met other people, many way more skilled than me, few a little less, but a lot of them became life companions and I often turn to them for advice or just to have a chat. In the end this is the true value of camps and conferences, meeting new (and most of the times, awesome and better than you) people. And those people will help you grow, they will introduce you to new topics and areas previously unknown to you and make you a better professional everytime.
@@ -58,7 +58,7 @@ It may be an unpopular opinion, but another thing that helped me a lot are certi
 
 I know it's sort of a mantra these days and everybody says that, but really, get out of your goddamned comfort zone. Moving out into the unknown (for you at least) really forces you to step up your game and improve, trust me.
 
-![OSCP]({{site.baseurl}}/img/oscp.jpg)
+![OSCP]({{site.baseurl}}/img/oscp.jpg){: .center-block :}
 
 <br>
 ## Conclusions
