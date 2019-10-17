@@ -75,14 +75,13 @@ This is, oversimplified of course, how Kerberos authentication works. Kerberos i
 Keep well in mind that forests are considered a security boundary, while __<u>domains are not considered a security boundary</u>__. If you are not already accostumed to AD and AD attacks, it's a sentence that might not make much sense to you as of now, but we will come back to it later. Suffice it to say that most of the times if an attacker manages to take full control over a domain in a forest, the entire forest is to be considered compromised. We will come back to it in later posts.  
   
   
-<br>  
-### Organizational Units
+  
+### Organizational Units, Groups and Group Policy
   
   
-Organizational Units (OU) are another key concept in AD. At its core, an OU is just a container. A container of what? Of objects, of course. What are objects, you may ask. Users, groups, computers, Access Control Lists (don't worry, we'll explain those too), domains, forests can be objects. At this point it should be clear that everything in AD is an object. By grouping objects in OUs we can make sure that all of them have certain common properties: let's say I want to make sure that user Eve does not have access to a certain set of objects, for example the servers of the IT Department. We can create a OU called "IT Department's Servers", put the servers' objects into this OU and set certain rules (called Group Policy, we will cover that too) so that when Eve tries to login to those servers she is going to be denied access.  
+Organizational Units (OU) are another key concept in AD. At its core, an OU is just a container. A container of what? Of objects, of course. What are objects, you may ask. Users, groups, computers, Access Control Lists (don't worry, we'll explain those too), domains, forests can be objects. At this point it should be clear that everything in AD is an object. By grouping objects in OUs we can make sure that all of them have certain common properties: let's say I want to make sure that user Eve does not have access to a certain set of objects, for example the servers of the IT Department. We can create a OU called "IT Department's Servers", put the servers' objects into this OU and set certain rules, called Group Policy, so that when Eve tries to login to those servers she is going to be denied access.  
   
-  
-### 
+Groups and Group Policy are two other key features of AD. Groups are exactly what they sound like, groups of objects. When a forest is created, some groups are initialized by default, like the "Domain Admins" and "Enterprise Admins" groups, of which are member all the valuable accounts capable of controlling the forest key features. Domain admins can add or remove accounts, change password, access every system in the domain, change access rules to systems etc. A member of the "Domain Admins" group is basically a god in his domain (and not only in his domain, to be more precise) hence only a handful of trusted accounts are (or rather, should be) part of this group. 
   
   
 
