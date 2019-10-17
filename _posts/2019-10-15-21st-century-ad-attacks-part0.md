@@ -33,7 +33,8 @@ In this post series we are going to take a look at many aspects concerning Activ
 I'll try to keep all the explanations as offensive-oriented as possible. I want to stress out however that none of this is new, none of this is a product of my personal research, it's just the result of countless hours reading and practicing the techniques developed by other fellow hackers who did the heavy lifting way before me. Just to name a few: [harmj0y](https://www.harmj0y.net/blog/about/), [Nikhil Mittal](http://www.labofapenetrationtester.com/p/about-me.html), [Tim Medin](https://twitter.com/timmedin), all the folks from [Specter Ops](https://specterops.io/), [Sean Metcalf](https://adsecurity.org/?page_id=8), [Benjamin Delpy](https://twitter.com/gentilkiwi) and countless other security researchers around the globe. As Sir Isaac Newton once said:
 
 > If I have seen further than others, it is by standing upon the shoulders of giants.
-<br>
+  
+  
 Alright, I think the intro is complete now, let's dive right in.
 <br>
 <br>
