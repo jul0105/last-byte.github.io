@@ -72,7 +72,7 @@ The keystone of AD is the Domain Controller (DC). The DC is the machine (usually
 This is, oversimplified of course, how Kerberos authentication works. Kerberos is another key technology in Active Directory, but we will analyze it later. The key takeaway here is: DCs are fundamental. If the DC falls (both from an "architectural" and a hacking point of view) it takes everything down with it. Because of that, DCs are (or should be) the most protected and well defended piece of the AD architecture.
   
   
-Keep well in mind that forests are considered a security boundary, while __<u>domains are not considered a security boundary</u>__. If you are not already accostumed to AD and AD attacks, it's a phrase that might not make much sense to you as of now, but we will come back to it later. Suffice it to say that most of the times if an attacker manages to take full control over a domain in a forest, the entire forest is to be considered compromised. We will come back to it in later posts.  
+Keep well in mind that forests are considered a security boundary, while __<u>domains are not considered a security boundary</u>__. If you are not already accostumed to AD and AD attacks, it's a sentence that might not make much sense to you as of now, but we will come back to it later. Suffice it to say that most of the times if an attacker manages to take full control over a domain in a forest, the entire forest is to be considered compromised. We will come back to it in later posts.  
   
   
 <br>  
