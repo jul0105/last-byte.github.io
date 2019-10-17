@@ -35,9 +35,7 @@ I'll try to keep all the explanations as offensive-oriented as possible. I want 
 > If I have seen further than others, it is by standing upon the shoulders of giants.
   
 <br>
-
 Enough for the part 0 intro now, let's dive right in.
-<br>
 <br>
 <br>
 <br>
