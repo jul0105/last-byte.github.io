@@ -40,7 +40,7 @@ Alright, I think the intro is complete now, let's dive right in.
 
 ## Oh Active Directory, Active Directory, wherefore art thou Active Directory?
 
-So, Active Directory (from now on abbreviated AD) is a suite of technologies developed by Microsoft and is, at its core, a directory service employed by Windows domains to keep track of basically everything. It provides authentication mechanisms, objects management, users and groups management, security and configuration capabilities all centralized to a handful of servers, sometimes even just a single server. Practically it allows administrators to have centralized (when properly implemented) and secure (WHEN PROPERLY IMPLEMENTED) management of an entire network of devices.  
+So, Active Directory (from now on abbreviated AD) is a suite of technologies developed by Microsoft and is, at its core, a directory service employed by Windows domains to keep track of basically everything. It provides authentication mechanisms, objects management, users and groups management, security and configuration capabilities all centralized to a handful of servers, sometimes even just a single server. Practically it allows administrators to have centralized (when properly implemented) and secure (__<u>WHEN PROPERLY IMPLEMENTED</u>__) management of an entire network of devices.  
   
 AD is hierarchically structured and its basic building blocks are:
  - Forests
