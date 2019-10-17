@@ -1,7 +1,7 @@
 ---
 published: true
 image: /img/windows-logo-glitched.png
-title: Active Directory Attacks TTPs - Part 0
+title: Active Directory Attacks TTPs - 0
 subtitle: The gathering storm...
 ---
   
