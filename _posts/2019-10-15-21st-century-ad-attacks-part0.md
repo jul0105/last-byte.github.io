@@ -50,7 +50,7 @@ AD is hierarchically structured and its basic building blocks are:
   
 Let's break down these concepts.
   
-<br>  
+ 
 ### Forests and domains
   
   
