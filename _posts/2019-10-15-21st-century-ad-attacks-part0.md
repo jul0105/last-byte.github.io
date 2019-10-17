@@ -61,12 +61,12 @@ Hierarchically speaking, a forest can be made of just one domain (a single domai
 
   
   
-![blog]({{site.baseurl}}/img/forest.jpg){: .center-block :}
+![forest]({{site.baseurl}}/img/forest.jpg){: .center-block :}
   
   
 The keystone of AD is the Domain Controller (DC). The DC is the machine (usually a Windows Server) to which all the other machines and users authenticate and with which everything in a domain interacts, be it for requesting access to a service or checking if a user has permission on a certain object. Let's say for example that user Bob wants to access a resource hosted on Alice's server. To access the resource Bob first queries the DC, asking for access to said resource, and the DC provides him with information to access Alice's server and then redirects him to Alice's server. At this point Bob provides Alice's server with the information given to him by the DC and Alice's server decides wether he's allowed to access the resource or not.  
   
-![blog]({{site.baseurl}}/img/easy_kerb.jpg){: .center-block :}
+![easy kerberos]({{site.baseurl}}/img/easy_kerb.jpg){: .center-block :}
   
   
 This is, oversimplified of course, how Kerberos authentication works. Kerberos is another key technology in Active Directory, but we will analyze it later. The key takeaway here is: DCs are fundamental. If the DC falls (both from an "architectural" and a hacking point of view) it takes everything down with it. Because of that, DCs are (or should be) the most protected and well defended piece of the AD architecture.
@@ -81,7 +81,13 @@ Keep well in mind that forests are considered a security boundary, while __<u>do
   
 Organizational Units (OU) are another key concept in AD. At its core, an OU is just a container. A container of what? Of objects, of course. What are objects, you may ask. Users, groups, computers, Access Control Lists (don't worry, we'll explain those too), domains, forests can be objects. At this point it should be clear that everything in AD is an object. By grouping objects in OUs we can make sure that all of them have certain common properties: let's say I want to make sure that user Eve does not have access to a certain set of objects, for example the servers of the IT Department. We can create a OU called "IT Department's Servers", put the servers' objects into this OU and set certain rules, called Group Policy, so that when Eve tries to login to those servers she is going to be denied access.  
   
-Groups are another key features of AD and they are exactly what they sound like, groups of objects. When a forest is created, some groups are initialized by default, like the "Domain Admins" and "Enterprise Admins" groups, of which are member all the valuable accounts capable of controlling the forest's key features. Domain admins can add or remove accounts, change passwords, access every system in the domain, change access rules to systems and data etc. A member of the "Domain Admins" group is basically a god in his domain (and not only in his domain, to be more precise) hence only a handful of trusted accounts are (or rather, should be) part of this group. Keep in mind this group (and others we will see later) because they are often the target of attacks as becoming member of "Domain Admins" basically unlocks the entire forest to the attacker and opens up a multitude of ways to keep privileged access from being taken away from the countermeasures of the Blue Team.
+Groups are another key feature of AD and they are exactly what they sound like, groups of objects. When a forest is created, some groups are initialized by default, like the "Domain Admins" and "Enterprise Admins" groups, of which are member all the valuable accounts capable of controlling the forest's key features. Domain admins can add or remove accounts, change passwords, access every system in the domain, change access rules to systems and data etc. A member of the "Domain Admins" group is basically a god in his domain (and not only in his domain, to be more precise) hence only a handful of trusted accounts are (or rather, should be) part of this group. Keep in mind this group (and others we will see later) because they are often the target of attacks as becoming member of "Domain Admins" basically unlocks the entire forest to the attacker and opens up a multitude of ways to keep privileged access from being taken away from the countermeasures of the Blue Team.
+  
+Group Policy on the other hand is the tool with which administrators enforce rules on objects. As we said before with OUs, say we want to keep all the executives of a organization from using USB drives to transfer files. We could create a "Executives" group, to which we will assign all the executives' AD accounts and then impose a Group Policy on that object that tells every Windows machine they log on to disable the USB ports.
+  
+  
+![gpo]({{site.baseurl}}/img/gpo.jpg){: .center-block :}
+
   
   
 
