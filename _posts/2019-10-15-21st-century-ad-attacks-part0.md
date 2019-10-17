@@ -51,7 +51,10 @@ AD is hierarchically structured and its basic building blocks are:
  - Domains
  - Organizational Units (OU)  
    
-A forest can be composed of one or more domains and inside a single domain you can find one or more OUs. Keep well in mind that forest are considered a security boundary, while __<u>domains are not considered a security boundary</u>__. If you are not already accostumed to AD and AD attacks, it's a phrase that might not make much sense to you as of now, but we will come back to it later. Suffice it to say that most of the times if an attacker manages to take full control over a domain in a forest, the entire forest is to be considered compromised. We will come back to it in later posts.
+A forest can be composed of one or more domains and inside a single domain you can find one or more OUs. Keep well in mind that forest are considered a security boundary, while __<u>domains are not considered a security boundary</u>__. If you are not already accostumed to AD and AD attacks, it's a phrase that might not make much sense to you as of now, but we will come back to it later. Suffice it to say that most of the times if an attacker manages to take full control over a domain in a forest, the entire forest is to be considered compromised. We will come back to it in later posts.  
+    
+Hierarchically speaking, a multi domain forest is composed of a root domain and one or more child domains, which can be directly linked to the root domain or can be nested childs. As a example, say we have a forest named `forest.local`, the root domain Fully Qualified Domain Name (FQDN) is going to be the same as the forest, hence `forest.local`. If we have a child domain named `child`, its FQDN will be `child.forest.local`. We could have another child of the root domain called `brother`, with `brother.forest.local` as FQDN. If this last domain has a child of its own called `nephew`, its FQDN will be `nephew.brother.forest.local`.
+
   
   
 ![blog]({{site.baseurl}}/img/forest.jpg){: .center-block :}
