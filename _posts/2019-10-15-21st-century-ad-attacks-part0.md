@@ -13,7 +13,8 @@ You know folks, my life is kinda busy at the moment. Basically it's squeezed bet
   
   
 So, what's the point in this introduction? Ever since I took the [Attacking and Defending Active Directory](https://www.pentesteracademy.com/activedirectorylab) course and lab by Pentester Academy (which, given the cost and the amount of information I learned, I highly recommend by the way) I was stuck with the idea of starting a post series on Active Directory from a offensive point of view. I thought it would be really useful (for me as a memento and for others to learn of course) to keep the things I learned in a tidy and coherent way. This thought sprang up again lately, when I pwnd the first domain of the Offshore labs, and I finally made up my mind about it. And of course it will be a problem, because days are (still) 24 hour long and noone has invented the [Hyperbolic Time Chamber](https://dragonball.fandom.com/wiki/Hyperbolic_Time_Chamber) yet.
-<br>
+  
+  
 Ok, enough with the stream of consciousness.  
 <br>
 
@@ -47,6 +48,7 @@ AD is hierarchically structured and its basic building blocks are:
  - Organizational Units (OU)  
   
   
+<br>  
 ### Forests and domains
   
   
@@ -67,7 +69,14 @@ The keystone of AD is the Domain Controller (DC). The DC is the machine (usually
 This is, oversimplified of course, how Kerberos authentication works. Kerberos is another key technology in Active Directory, but we will analyze it later. The key takeaway here is: DCs are fundamental. If the DC falls (both from an "architectural" and a hacking point of view) it takes everything down with it. Because of that, DCs are (or should be) the most protected and well defended piece of the AD architecture.
   
   
+<br>  
 ### Organizational Units
   
   
-Organizational Units (OU) are another key concept in AD. At its core, an OU is just a container. A container of what? Of objects, of course. What are objects, you may ask. Users, groups, computers, Access Control Lists (don't worry, we'll explain those too), domains, forests can be objects. At this point it should be clear that everything in AD is an object. By grouping objects in OUs we can make sure that all of them have certain common properties: let's say I want to make sure that user Eve does not have access to a certain set of objects, for example the servers of the IT Department. We can create a OU called "IT Department's Servers", put the servers' objects into this OU and set certain rules (called Group Policy, we will cover that too) so that when Eve tries to login to those servers she is going to be denied access.
+Organizational Units (OU) are another key concept in AD. At its core, an OU is just a container. A container of what? Of objects, of course. What are objects, you may ask. Users, groups, computers, Access Control Lists (don't worry, we'll explain those too), domains, forests can be objects. At this point it should be clear that everything in AD is an object. By grouping objects in OUs we can make sure that all of them have certain common properties: let's say I want to make sure that user Eve does not have access to a certain set of objects, for example the servers of the IT Department. We can create a OU called "IT Department's Servers", put the servers' objects into this OU and set certain rules (called Group Policy, we will cover that too) so that when Eve tries to login to those servers she is going to be denied access.  
+  
+  
+### 
+  
+  
+
