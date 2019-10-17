@@ -79,9 +79,6 @@ hr.small {
 img::selection {
   color: white;
   background: transparent;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 img::-moz-selection {
   color: white;
@@ -90,6 +87,9 @@ img::-moz-selection {
 
 img {
   max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .disqus-comments {
