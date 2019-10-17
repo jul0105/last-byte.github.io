@@ -87,7 +87,11 @@ Group Policy on the other hand is the tool with which administrators enforce rul
   
   
 ![gpo]({{site.baseurl}}/img/gpo.jpg){: .center-block :}
+  
+  
+### Conclusions
 
+This was part 0 of this series, it was fairly non technical because, as I wrote in the beginning, I want to start with the basics and slowly build up from there. We will cover the rest of the basics and start talking of attacks in the next post, stay tuned.
   
   
 
