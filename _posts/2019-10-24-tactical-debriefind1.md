@@ -8,3 +8,10 @@ Greeting everyone, last is back! So, on the 28th of September I played the [RomH
   
   
 ## Table of contents
+Here's a overview of what I'm going to cover in this post:
+ - Introduction and lab description
+ - Choosing and setting up a C2 Framework
+ - Covenant usage
+ - Pivoting techniques
+ - SSH tunneling done the right way
+ 
