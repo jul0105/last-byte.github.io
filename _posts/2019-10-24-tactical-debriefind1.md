@@ -29,4 +29,7 @@ One of the things I found really valuable about this lab is that, contrary to th
   
   
 There are also a few sidequests here and there, mainly about reverse engineering, web exploitation and cryptography. Having played in CTFs before helped me a lot as these challenges were very CTF-like. The crypto one kept me busy for __<u>three days</u>__ as I usually don't even look at crypto challenges in CTFs, but in the end I learned a ton about ECDSA and ElGamal encryption algorithm.
- 
+  
+  
+## Choosing and setting up a C2 Framework
+To do ¯\\\_(ツ)\_/¯
