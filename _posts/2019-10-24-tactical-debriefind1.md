@@ -28,7 +28,7 @@ I'm not going to disclose a lot of information about the topology of the interna
 One of the things I found really valuable about this lab is that, contrary to the OSCP's one for example, it's basically all about Windows Server 2016 and Windows 10, with some Windows 7 machine here and there. This kind of configuration forces you to use misconfigurations and develop a methodical approach to exploitation and privilege escalation as there is almost no room for kernel exploits, except from only one or two machines in the entire lab. This means that basically all you have to do to complete the lab is technical skills in Active Directory attacks. Keep in mind there is more than one forest. And in a forest there may be more than one domain.
   
   
-There are also a few sidequests here and there, mainly about reverse engineering, web exploitation and cryptography. Having played in CTFs before helped me a lot as these challenges were very CTF-like. The crypto one kept me busy for __<u>three days</u>__ as I usually don't even look at crypto challenges in CTFs, but in the end I learned a ton about ECDSA and ElGamal encryption algorithm.
+There are also a few sidequests here and there, mainly about reverse engineering, web exploitation and cryptography. Having played in CTFs before helped me a lot as these challenges were very CTF-like. The crypto one kept me busy for __<u>three days</u>__ as I usually don't even look at crypto challenges in CTFs (contrary to my fine mate [TheZer0](https://twitter.com/Th3Zer0) who should definitely [update his bio](https://twitter.com/last0x00/status/1187450723069583360)), but in the end I learned a ton about ECDSA and ElGamal encryption algorithm.
   
   
 ## Choosing and setting up a C2 Framework
