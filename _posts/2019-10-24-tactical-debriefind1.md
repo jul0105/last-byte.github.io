@@ -22,5 +22,5 @@ The lab is made of 17 machines, 16 of which in scope (technically the firewall i
   
 ![offshoremachines]({{site.baseurl}}/img/offshoremachines.PNG)
 
-I'm not going to disclose a lot of information about the topology of the internal network, but I can say there is a DMZ in which you can access a webserver located at an IP address in the 10.10.110.0/24 subnet. By compromising it you can then pivot inside the network
+I'm not going to disclose a lot of information about the topology of the internal network, but I can say there is a DMZ in which you can access a webserver located at an IP address in the 10.10.110.0/24 subnet. By compromising it you can then pivot behind the firewall and inside the network, from there it only gets tougher.
  
