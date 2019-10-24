@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 image: /img/windows-logo-glitched.png
 title: Active Directory Attacks TTPs - 0
 subtitle: The (very) basics of Active Directory
