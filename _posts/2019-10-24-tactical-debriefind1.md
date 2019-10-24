@@ -16,3 +16,6 @@ Here's a overview of what I'm going to cover in this post:
  - SSH tunneling done the right way
  - Bloodhound
  
+## Introduction and lab description
+The lab is made of 17 machines, 16 of which in scope (technically the firewall is not in scope, but they say noone is going to keep you from trying to pwn it so ¯\_(ツ)_/¯) 
+ 
