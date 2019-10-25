@@ -17,7 +17,7 @@ Here's a overview of what I'm going to cover in this post:
  - Bloodhound
  
 ## Introduction and lab description
-The lab is made of 17 machines, 16 of which in scope (technically the firewall is not in scope, but they say noone is going to keep you from trying to pwn it so ¯\\\_(ツ)\_/¯). There are 29 flags in total (yes, 29, which is not a round number like 30. Yes, I contacted them to make sure there wasn't a hidden flag). Here's the list of the flags' tasks and machine names:
+The lab is made of 17 machines, 16 of which in scope (technically the firewall is not in scope, but they say noone is going to keep you from trying to pwn it so, ¯\\\_(ツ)\_/¯). There are 29 flags in total (yes, 29, which is not a round number like 30. Yes, I contacted them to make sure there wasn't a hidden flag). Here's the list of the flags' tasks and machine names:
   
   
 ![offshoremachines]({{site.baseurl}}/img/offshoremachines.PNG)
