@@ -32,4 +32,4 @@ There are also a few sidequests here and there, mainly about reverse engineering
   
   
 ## Choosing and setting up a C2 Framework
-To do ¯\\\_(ツ)\_/¯
+Now that I've laid down the environment I want to tell you what was the process I went through to decide if and which C2 Framework to use for the operation and why I chose [Covenant](https://github.com/cobbr/Covenant) in the end. I want to stress out it was the first time using a C2 Framework for me as I've always done those kind of activities relying on "manual" tools like netcat and nmap, documenting and categorizing data with ~~in~~practical text files. While this simple toolbox has given me a very methodical approach to operations and has forced me to adapt and not rely on stuff like metasploit (which makes you very lazy), it isn't professional. Furthermore, when the amount of data starts to grow (and it usually happens pretty fast) I regularly struggled to find old pieces of information scattered through the different __.txt__s
