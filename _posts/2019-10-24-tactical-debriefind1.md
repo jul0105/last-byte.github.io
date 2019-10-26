@@ -29,8 +29,8 @@ One of the things I found really valuable about this lab is that, contrary to th
   
   
 There are also a few sidequests here and there, mainly about reverse engineering, web exploitation and cryptography. Having played in CTFs before helped a lot as these challenges were very CTF-like. The crypto one kept me busy for __<u>three days</u>__ as I usually don't even look at crypto challenges in CTFs (contrary to my fine mate [TheZer0](https://twitter.com/Th3Zer0) who should definitely [update his bio](https://twitter.com/last0x00/status/1187450723069583360)), but in the end I learned a ton about ECDSA and ElGamal encryption algorithm.
-  
-  
+<br>
+<br>
 ## Choosing and setting up a C2 Framework
 Now that I've laid down the environment I want to tell you what was the process I went through to decide if and which Command and Control (C2) Framework to use for the operation and why I chose [Covenant](https://github.com/cobbr/Covenant) in the end. I want to stress out it was the first time using a C2 Framework for me as I've always done those kind of activities relying on "manual" tools like netcat and nmap, documenting and categorizing data with ~~im~~practical text files. While this simple toolbox has given me a very methodical approach to operations and has forced me to adapt and not rely on stuff like metasploit (which makes you very lazy), it isn't professional. Furthermore, when the amount of data started to grow (and it usually happened pretty fast) I regularly struggled to find old pieces of information scattered through the different .txt files. This, coupled with my need to not have my command and control tied to a single laptop, pushed me to evaluate what the infosec community had to offer when it comes to free and open source C2 Frameworks.
 
