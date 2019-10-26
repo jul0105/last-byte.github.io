@@ -35,7 +35,7 @@ Now that I've laid down the environment I want to tell you what was the process 
 
 But first, the hell's a C2 framework? At its core it's a combination of server and client software designed to help with post exploitation tasks, data organization and team cooperation. C2 frameworks usually pack all the necessary components to setup a basic red team infrastructure like a C2 server (which is the keystone of the infrastructure) and a implant, which is the client software that's going to connect back to the C2 server and execute commands sent by the operator through the C2 server itself.
 
-![C2 structure]({{site.baseurl}}/img/c2structure.jpg)
+![C2 structure]({{site.baseurl}}/img/redteam.png)
 
 There is a multitude of C2 framework around, but before choosing it I jotted down a list of requirements that my ideal framework should have:
 - Web UI: the server must be accessible and manageable through a web browser;
@@ -66,4 +66,4 @@ Covenant's feature don't end here as I have not mentioned all the commands its g
 <br>
 <br>
 ## Pivoting and SSH tunneling
-Ok I have to say I thought I knew a lot about SSH tunneling and how to use it to pivot to other networks, before starting this lab. 
+Ok I have to say I thought I knew a lot about SSH tunneling and how to use it to pivot to other networks, before starting this lab.
