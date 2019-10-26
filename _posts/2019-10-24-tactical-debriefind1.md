@@ -51,7 +51,7 @@ Having also implant pivoting and automatic intelligence data management would ha
 <br>
 <br>
 ## Covenant usage
-After setting up Covenant it was time to get used to it. The first thing you see when you log into the server is 
+After setting up Covenant it was time to get used to it. The first thing you see when you log into the server is the dashboard. It's nothing more than a quick overview of the three major components of the operation: grunts, listeners and taskings. A grunt is how Covenant calls a implant. Listeners are what they sound like: the daemons through which Covenant listens for incoming connection from grunts. You can see in the screenshot below I have two listeners on, I'll explain later why. Taskings instead are the command the C2 ordered the implants to execute.
   
   
 ![covenant2]({{site.baseurl}}/img/covenant2.PNG)
