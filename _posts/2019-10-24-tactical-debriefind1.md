@@ -50,11 +50,11 @@ Having also implant pivoting and automatic intelligence data management would ha
 <br>
 <br>
 ## Covenant usage
-After setting up Covenant it was time to get used to it. The first thing you see when you log into the server is the dashboard. It's nothing more than a quick overview of the three major components of the operation: grunts, listeners and taskings. A grunt is how Covenant calls a implant. Listeners are what they sound like: the daemons through which Covenant listens for incoming connection from grunts. You can see in the screenshot below I have two listeners on, I'll explain later why. Taskings instead are the command the C2 ordered the implants to execute.
+After setting up Covenant it was time to get used to it. The first thing you see when you log into the server is the dashboard. It's nothing more than a quick overview of the three major components of the operation: grunts, listeners and taskings. A grunt is how Covenant calls a implant. Listeners are what they sound like: the daemons through which Covenant listens for incoming connection from grunts. You can see in the screenshot below I have two active listeners. Taskings instead are the command the C2 ordered the implants to execute.
   
   
 ![covenant2]({{site.baseurl}}/img/covenant2.PNG)
 
   
-Through Covenant's web interface 
+On the left panel of the web UI you can choose on which tab to focus: if you switch to listeners for example you can spawn another listener, while the "launchers" tab provides you with a series of options for spawning grunts, ranging from powershell one-liners to compiled .Net binaries and a bunch of other techniques. This provides you with a lot of freedom of movement. My preferred way of spawning a grunt for example was to get powershell code execution and send a one-liner, but there were times in the lab where I could not use powershell. On a machine for example I had write permissions on the file system and I could overwrite a service binary. Knowing that I dropped a compiled grunt binary in place of the service binary. 
 
