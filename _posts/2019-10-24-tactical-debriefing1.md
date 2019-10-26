@@ -108,7 +108,7 @@ Let's say now I have to access a resource that's listening locally on the SSH ga
 ssh -L 1337:127.0.0.1:80 root@10.0.0.1
 ```  
   
-This basically means "Mr 10.0.0.1, please forward all the traffic I'm sending to my 1337 to yourself on port 80".  
+This basically means "Mr 10.0.0.1, please forward all the traffic I'm sending from my 1337 to yourself on port 80".  
   
   
 This kind of forwarding is also very useful in those situation where you manage to compromise a machine which has access to a subnet where there are Windows hosts that can be accessed through Remote Desktop. Instead of forwarding port 1337 to port 80 on the target server you could forward local port 3389 to port 3389 on the target server. By doing that you can then try to Remote Desktop to yourself and the SSH tunnel would route that to the remote Windows host. Alright, enough with this silly trickery, now let's move on to remote port forwarding.
