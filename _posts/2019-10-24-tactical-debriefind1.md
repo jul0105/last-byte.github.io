@@ -12,8 +12,7 @@ Here's a overview of what I'm going to cover in this post:
  - Introduction and lab description
  - Choosing and setting up a C2 Framework
  - Covenant usage
- - Pivoting techniques
- - SSH tunneling done the right way
+ - Pivoting and SSH tunneling
  - Bloodhound
   
 <br>
