@@ -5,8 +5,8 @@ title: Tactical Debriefing I - Offshore
 subtitle: Lessons learned by pwning the Offshore pro lab by HTB
 ---
 Greetings everyone, last is back! So, on the 28th of September I played the [RomHack](https://romhack.io) CTF with my fellow mates from [JBZ](https://jbz.team/) and we arrived third, thanks to a flag submitted at the last second (a typical CTF tactic to make the other teams relax and then pwn them at the very last moment [;)](https://xkcd.com/541/). The prize for our ~~awkward~~ outstanding performance was a set of coupons for HTB's pro labs, either Rasta Labs or Offshore. I chose to go with Offshore, as I had read online reviews saying it is more realistic and less CTF-like than Rastamouse's one. This post is going to cover what I learned in the process from a "tactical" perspective, I won't write any spoilers about the lab itself because that would be unfair to others who are still going through it (and against HTB's rules, I think).  
-  
-
+<br>
+<br>
 ## Table of contents
 Here's a overview of what I'm going to cover in this post:
  - Introduction and lab description
@@ -15,7 +15,8 @@ Here's a overview of what I'm going to cover in this post:
  - Pivoting techniques
  - SSH tunneling done the right way
  - Bloodhound
- 
+<br>
+<br>
 ## Introduction and lab description
 The lab is made of 17 machines, 16 of which in scope (technically the firewall is not in scope, but they say noone is going to keep you from trying to pwn it so, ¯\\\_(ツ)\_/¯). While Windows is the preferential host (as you can see from the screenshot right below this paragraph) you will also find a few Linux machines. There are 29 flags in total (yes, 29, which is not a round number. Yes, I contacted them to make sure there wasn't a extra hidden flag). Here's a list taken from HTB's website containing all of the flags' tasks and machine names:
   
