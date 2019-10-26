@@ -100,8 +100,18 @@ As written in the image, the command to spawn a SSH tunnel for local port forwar
 ```
 ssh -L 1337:10.0.0.2:80 root@10.0.0.1
 ```
+  
+  
+Let's say now I have to access a resource that's listening locally on the SSH gateway. It happened on a couple of occasions that a machine I compromised had a webserver listening locally. That meant I couldn't access it through the browser by trying to contact the machine IP directly. I had SSH access but no means of accessing the webserver remotely. Through local port forwarding I was able to reach the local webserver by putting the IP address of the SSH server as the target:
 
-Alright, now let's move on to remote port forwarding.
+```
+ssh -L 1337:127.0.0.1:80 root@10.0.0.1
+```  
+  
+This basically means "Mr 10.0.0.1, please forward all the traffic I'm sending to my 1337 to yourself on port 80".  
+  
+  
+This kind of forwarding is also very useful in those situation where you manage to compromise a machine which has access to a subnet where there are Windows hosts that can be accessed through Remote Desktop. Instead of forwarding port 1337 to port 80 on the target server you could forward local port 3389 to port 3389 on the target server. By doing that you can then try to Remote Desktop to yourself and the SSH tunnel would route that to the remote Windows host. Alright, enough with this silly trickery, now let's move on to remote port forwarding.
   
   
   
