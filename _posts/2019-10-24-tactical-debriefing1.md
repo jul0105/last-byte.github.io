@@ -71,9 +71,11 @@ Ok I have to say I thought I knew a lot about SSH tunneling and how to use it to
 There are two main forms of SSH port forwarding:
 - Local port forwarding
 - Remote port forwarding
+  
+  
 
 ### Local port forwarding
-When the operator employes local port forwarding, he creates a proxy on his device, listening on a certain port, which will route traffic hrough an SSH tunnel to a remote host he has SSH access to. From there the host will send traffic to the remote host the operator specified while setting up the tunnel. Ok, theory is all well and good, but how do you actually use local port forwarding? The command syntax is:
+When the operator employes local port forwarding, he creates a proxy on his device, listening on a certain port, which will route traffic hrough an SSH tunnel to a remote host he has SSH access to. From there the host will send traffic to the remote host the operator specified while setting up the tunnel. It's called "local" because it creates a local proxy (hosted on the operator's machine) to forward traffic to a remote resource. Ok, theory is all well and good, but how do you actually use local port forwarding? The command syntax is:
   
   
 ```
@@ -87,7 +89,22 @@ With:
 - `user` being the user he has the credential of
 - `sshgateway` being the device the operator has SSH access to
 
-Let's have a look at a typical scenario. In the following image our operator is denied access to a webserver located at the IP address 10.0.0.2 on port 80. The firewall however allows SSH connections and the operator manages to connect to a server located at 10.0.0.1. From there he sees the server he has logged on can "see" the webserver. 
+Let's have a look at a typical scenario. In the following image our operator is denied access to a webserver located at the IP address 10.0.0.2 on port 80. The firewall however allows SSH connections and the operator manages to connect to a server located at 10.0.0.1 as root. From there he sees the server he has logged on can "see" the webserver. 
   
   
 ![localforw]({{site.baseurl}}/img/localforw.png)
+  
+  
+As written in the image, the command to spawn a SSH tunnel for local port forwarding is:
+
+```
+ssh -L 1337:10.0.0.2:80 root@10.0.0.1
+```
+
+Alright, now let's move on to remote port forwarding.
+  
+  
+  
+### Remote port forwarding
+
+To do.
