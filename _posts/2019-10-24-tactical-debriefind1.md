@@ -45,7 +45,7 @@ There is a multitude of C2 framework around, but before choosing it I jotted dow
 - Powershell integration: I did not want to fight with uploading PS script to target machines so the implants must be executable directly with a PS one-liner;
 - Built-in red teaming toolkit: for the same reason of the powershell integration requirement, I wanted the implants to already have support for the important tools of trade, like Mimikatz, Rubeus etc.;
 
-Having also implant pivoting and automatic intelligence management would have been a plus, so with these requirements at hand I started looking around and testing various C2 frameworks. After a few days tinkering and trying out different platforms I decided to opt for [Covenant](https://github.com/cobbr/Covenant). 
+Having also implant pivoting and automatic intelligence data management would have been a plus, so with these requirements at hand I started looking around and testing various C2 frameworks. After a few days tinkering and trying out different platforms I decided to opt for [Covenant](https://github.com/cobbr/Covenant). 
 
 ![covenant]({{site.baseurl}}/img/covenant.PNG)
   
