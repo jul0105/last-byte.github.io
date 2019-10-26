@@ -48,8 +48,9 @@ There is a multitude of C2 framework around, but before choosing it I jotted dow
 Having also implant pivoting and automatic intelligence data management would have been a plus, so with these requirements at hand I started looking around and testing various C2 frameworks. After a few days tinkering and trying out different platforms I decided to opt for [Covenant](https://github.com/cobbr/Covenant). 
 
 ![covenant]({{site.baseurl}}/img/covenant.PNG)
-  
-  
+<br>
+<br>
+## Choosing and setting up a C2 Framework
 What pushed me towards Covenant is that it ticked all my requirements. It's got a slick Web UI which is really well designed, with only a few bugs (which [cobbr](https://cobbr.io/about/) and the other devs usually fix promptly once a issue has been opened). The server runs on .Net and is cross platform, mine runs on Ubuntu server for example. Installing and running it is as simple as `dotnet build && dotnet run` but there's also a docker container if you don't want to get your hands dirty. 
   
   
