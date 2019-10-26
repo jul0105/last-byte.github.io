@@ -15,8 +15,7 @@ Here's a overview of what I'm going to cover in this post:
  - Pivoting techniques
  - SSH tunneling done the right way
  - Bloodhound
-
-  
+<br>
 ## Introduction and lab description
 The lab is made of 17 machines, 16 of which in scope (technically the firewall is not in scope, but they say noone is going to keep you from trying to pwn it so, ¯\\\_(ツ)\_/¯). While Windows is the preferential host (as you can see from the screenshot right below this paragraph) you will also find a few Linux machines. There are 29 flags in total (yes, 29, which is not a round number. Yes, I contacted them to make sure there wasn't a extra hidden flag). Here's a list taken from HTB's website containing all of the flags' tasks and machine names:
   
