@@ -66,4 +66,23 @@ Covenant's feature don't end here as I have not mentioned all the commands its g
 <br>
 <br>
 ## Pivoting and SSH tunneling
-Ok I have to say I thought I knew a lot about SSH tunneling and how to use it to pivot to other networks, before starting this lab.
+Ok I have to say I thought I knew a lot about SSH tunneling and how to use it to pivot to other networks, before starting this lab. First and foremost, what is SSH tunneling and how does it work? SSH tunneling is a technique which allows traffic to be routed through a endpoint which the operator can access through SSH. SSH allows many forms of tunneling, from simple port forwarding to creating tap interfaces and basically establish a VPN connection. I'll lay down here the various forms of SSH port forwarding and then I'll explain a tool I learned while going through Offshore.  
+  
+There are two main forms of SSH port forwarding:
+- Local port forwarding
+- Remote port forwarding
+
+### Local port forwarding
+When the operator employes local port forwarding, he creates a proxy on his device, listening on a certain port, which will route traffic hrough an SSH tunnel to a remote host he has SSH access to. From there the host will send traffic to the remote host the operator specified while setting up the tunnel. Ok, theory is all well and good, but how do you actually use local port forwarding? The command syntax is:
+  
+  
+```
+ssh -L localport:targetaddress:targetport user@sshgateway
+```
+  
+With:
+- `localport` being the port on the operator's device on which the proxy will be created
+- `targetaddress` being the remote host the operator wants to reach through the tunnel
+- `targetport` being the port on the remote host the operator wants to reach through the tunnel
+- `user` being the user he has the credential of
+- `sshgateway` being the device the operator has SSH access to
