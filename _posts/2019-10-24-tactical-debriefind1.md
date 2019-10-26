@@ -50,5 +50,11 @@ Having also implant pivoting and automatic intelligence management would have be
 ![covenant]({{site.baseurl}}/img/covenant.PNG)
   
   
+What pushed me towards Covenant is that it ticked all my requirements. It's got a slick Web UI which is really well designed, with only a few bugs (which [cobbr](https://cobbr.io/about/) and the other devs usually fix promptly once a issue has been opened). The server runs on .Net and is cross platform, mine runs on Ubuntu server for example. Installing and running it is as simple as `dotnet build && dotnet run` but there's also a docker container if you don't want to get your hands dirty. 
+  
+  
+![covenant2]({{site.baseurl}}/img/covenant2.PNG)
 
+  
+Through Covenant's web interface 
 
