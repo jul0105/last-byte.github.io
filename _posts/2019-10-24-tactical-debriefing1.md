@@ -86,3 +86,8 @@ With:
 - `targetport` being the port on the remote host the operator wants to reach through the tunnel
 - `user` being the user he has the credential of
 - `sshgateway` being the device the operator has SSH access to
+
+Let's have a look at a typical scenario. In the following image our operator is denied access to a webserver located at the IP address 10.0.0.2 on port 80. The firewall however allows SSH connections and the operator manages to connect to a server located at 10.0.0.1. From there he sees the server he has logged on can "see" the webserver. 
+  
+  
+![localforw]({{site.baseurl}}/img/localforw.PNG)
