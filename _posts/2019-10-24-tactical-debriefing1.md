@@ -151,6 +151,38 @@ Take notice that, unlike local port forwarding, here the IP on which the server 
 <p class="alert alert-warning">
     <span class="label label-warning">NOTE:</span> I learned the hard way (== swearing like hell because connections didn't work) that the directive "GatewayPorts clientspecified" MUST be present inside the server's /etc/ssh/sshd_config otherwise the SSH server is going to listen for connection on 127.0.0.1, thus making the tunnel useless. Make sure this directive is present inside the config, otherwise add it (needs root privileges) and make sure to restart the SSH server! 
 </p>
+  
+  
+### Dynamic port forwarding and SSHuttle
+The last kind of port forwarding SSH provides is called dynamic port forwarding. This technique is kinda similar to local port forwarding, but instead of specifying a single host/port pair to which traffic will be routed, it's the SSH gateway which gets to decide where to route the traffic. That means if you send a packet to a host in the same subnet of the SSH server, this one is going to automatically route it to the destination you specified, provided you have instructed your OS to proxy traffic through the SSH gateway. Its syntax is like this:
+  
+  
+```
+ssh -D localPort user@sshGateway
+```
 
+  
+With:
+- `-D` being the option to instruct SSH to instantiate a dynamic port forwarding tunnel
+- `localPort` being the port on the operator's machine on which the proxy will be created
+- `user` being the user he has the credential of
+- `sshGateway` being the device the operator has SSH access to
+  
+  
+Let's have a look at the following scenario:
+  
+  
+![dynamicforw]({{site.baseurl}}/img/dynamicforw.png)
+  
+  
+In this case the operator wants to access the 10.0.0.0/24 subnet from outside the network. If he manages to get SSH access to the SSH gateway he can use the following command to instantiate a proxy on his machine on port 1337 and then use proxychains to proxy traffic through that port to reach the machines in the subnet:
+  
+  
+```
+ssh -D 1337 root@10.0.0.1
+```
+  
+  
+This technique is really useful but it has a huge downside: it often messes up the traffic and interferes with tools like nmap. Scanning networks through a SSH gateway using dynamic port forwarding is a huge PITA most of the times.
 
 
