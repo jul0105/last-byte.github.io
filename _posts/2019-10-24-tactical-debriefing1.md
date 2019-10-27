@@ -13,6 +13,8 @@ Here's a overview of what I'm going to cover in this post:
  - Choosing and setting up a C2 Framework
  - Covenant usage
  - Pivoting and SSH tunneling
+ - Chaining it all together
+ - Conclusions
 
 <br>
 ## Introduction and lab description
@@ -205,6 +207,12 @@ sshuttle -r user@sshGateway network/netmask -e 'ssh -i /path/to/private_key'
 ```
   
 The `-e` option is used to specify ssh commands to execute with SSHuttle. In this case the operator can specify the `-i` SSH flag with the path to the private key in order to access the SSH gateway without prividing a password.
-
+<br>
+<br>
+## Chaining it all together
+Ok, we have seen all this cool techniques and tools (that everyone knew and I did not...) and now it's the time to see how I chained them together. First thing, the C2 server. I created an instance of Covenant on my server at c2.notso.pro and I setup OpenVPN to connect to the lab. After fully compromising the first machine in the DMZ I decided to use it as pivot inside the network, so I setup SSHuttle to access the internal network and remote port forwarding to 
+  
+  
+![finaldiagram]({{site.baseurl}}/img/finaldiagram.png)
 
 
