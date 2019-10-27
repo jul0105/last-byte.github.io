@@ -210,7 +210,7 @@ The `-e` option is used to specify ssh commands to execute with SSHuttle. In thi
 <br>
 <br>
 ## Chaining it all together
-Ok, we have seen all this cool techniques and tools (that everyone knew and I did not...) and now it's the time to see how I chained them together. First thing, the C2 server. I created an instance of Covenant on my server at c2.notso.pro and I setup OpenVPN to connect to the lab. After fully compromising the first machine in the DMZ I decided to use it as pivot inside the network, so I setup SSHuttle to access the internal network and remote port forwarding to 
+Ok, we have seen all this cool techniques and tools (that everyone knew and I did not...) and now it's the time to see how I chained them together. First thing, the C2 server. I created an instance of Covenant on my server at c2.notso.pro and I setup OpenVPN to connect to the lab. After fully compromising the first machine in the DMZ I decided to use it as pivot inside the network, so I setup SSHuttle to access the internal network and remote port forwarding to route grunt traffic from the internal network through the pivot and to my C2 server. This is the diagram of the infrastructure:
   
   
 ![finaldiagram]({{site.baseurl}}/img/finaldiagram.png)
