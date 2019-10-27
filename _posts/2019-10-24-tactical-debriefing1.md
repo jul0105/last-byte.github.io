@@ -116,5 +116,7 @@ This kind of forwarding is also very useful in those situation where you manage 
   
   
 ### Remote port forwarding
-
-To do.
+Remote port forwarding is kind of the opposite of local port forwarding. While local port forwarding saw the operator initiate a connection through the tunnel, remote port forwarding is kind of similar to the NAT port forwarding you configure on your home router.
+  
+  
+![remoteforw]({{site.baseurl}}/img/remoteforw.png)
