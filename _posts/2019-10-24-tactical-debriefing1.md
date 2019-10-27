@@ -39,7 +39,7 @@ But first, the hell's a C2 framework? At its core it's a combination of server a
 
 ![C2 structure]({{site.baseurl}}/img/redteam.png)
 
-There is a multitude of C2 frameworks around, but before choosing it I jotted down a list of requirements that my ideal framework should have:
+There is a multitude of C2 frameworks around, but before choosing one I jotted down a list of requirements that my ideal framework should have:
 - Web UI: the server must be accessible and manageable through a web browser;
 - Windows implants: given the prevalence of Windows machines in the lab the implant must be Windows compatible;
 - Powershell integration: I did not want to fight with uploading PS script to target machines so the implants must be executable directly with a PS one-liner;
