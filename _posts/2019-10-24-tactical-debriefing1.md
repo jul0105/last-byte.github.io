@@ -116,7 +116,7 @@ This kind of forwarding is also very useful in those situation where you manage 
   
   
 ### Remote port forwarding
-Remote port forwarding is kind of the opposite of local port forwarding. While local port forwarding saw the operator initiate a connection through the tunnel, remote port forwarding is kind of similar to the NAT port forwarding you configure on your home router.
+Remote port forwarding is kind of the opposite of local port forwarding. While local port forwarding saw the operator initiate a connection through the tunnel, remote port forwarding is more similar to the NAT port forwarding you configure on your home router. Employing remote port forwarding the operator can instruct an SSH server to route traffic it receives on a certain port to another host on the network. It's most common use, when it comes to offensive security, is routing reverse shell traffic to and from a listener. Let's see an example:
   
   
 ![remoteforw]({{site.baseurl}}/img/remoteforw.png)
