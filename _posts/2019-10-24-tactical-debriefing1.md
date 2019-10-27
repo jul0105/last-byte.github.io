@@ -188,7 +188,7 @@ ssh -D 1337 root@10.0.0.1
 ```
   
   
-This technique is really useful but it has a huge downside: it often messes up the traffic and interferes with tools like nmap. Scanning networks through a SSH gateway using dynamic port forwarding is a huge PITA most of the times. While searching for a solution to this during my time in the lab I came across [SSHuttle](https://sshuttle.readthedocs.io/en/stable/). This tool creates a tun interface on the operator's machine (much like a VPN) and then sets rules to forward traffic for the specified subnet through the tun interface. The cool thing about it is that it does not need root access to the SSH gateway (only on the operator machine). It's syntax is the following:
+This technique is really useful but it has a huge downside: it often messes up the traffic and interferes with tools like nmap. Scanning networks through a SSH gateway using dynamic port forwarding is a huge PITA most of the times. While searching for a solution to this during my time in the lab I came across [SSHuttle](https://sshuttle.readthedocs.io/en/stable/). This tool creates a tun interface on the operator's machine (much like a VPN) and then sets rules to forward traffic for the specified subnet through the tun interface. The cool thing about it is that it does not need root access to the SSH gateway (only on the operator machine). Its syntax is the following:
   
   
 ```
