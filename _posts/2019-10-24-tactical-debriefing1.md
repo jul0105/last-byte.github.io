@@ -79,15 +79,16 @@ When the operator employes local port forwarding, he creates a proxy on his devi
   
   
 ```
-ssh -L localport:targetaddress:targetport user@sshgateway
+ssh -L localPort:targetIp:targetPort user@sshGateway
 ```
   
 With:
-- `localport` being the port on the operator's device on which the proxy will be created
-- `targetaddress` being the remote host the operator wants to reach through the tunnel
-- `targetport` being the port on the remote host the operator wants to reach through the tunnel
+- `-L` being the option to instruct SSH to instantiate a local port forwarding tunnel
+- `localPort` being the port on the operator's device on which the proxy will be created
+- `targetIp` being the remote host the operator wants to reach through the tunnel
+- `targetPort` being the port on the remote host the operator wants to reach through the tunnel
 - `user` being the user he has the credential of
-- `sshgateway` being the device the operator has SSH access to
+- `sshGateway` being the device the operator has SSH access to
 
 Let's have a look at a typical scenario. In the following image our operator is denied access to a webserver located at the IP address 10.0.0.2 on port 80. The firewall however allows SSH connections and the operator manages to connect to a server located at 10.0.0.1 as root. From there he sees the server he has logged on can "see" the webserver. 
   
@@ -120,3 +121,26 @@ Remote port forwarding is kind of the opposite of local port forwarding. While l
   
   
 ![remoteforw]({{site.baseurl}}/img/remoteforw.png)
+  
+  
+Here our operator managed to get SSH access to the same host we saw in the previous example, but this time he needs the server to route a reverse shell he executed on the target back to himself. The syntax to make this happen is the following:
+  
+  
+```
+ssh -R sshGatewayIp:sshGatewayPort:localIp:localPort user@sshGateway
+```
+  
+With:
+- `-R` being the option to instruct SSH to instantiate a remote port forwarding tunnel
+- `sshGatewayIp` being the IP address of the SSH server that will route the traffic
+- `sshGatewayPort` being the port of the SSH server that will receive the traffic that needs to be routed
+- `localIp` being IP address to which the traffic will be routed. Most of the times it's going to be the operator's one
+- `localPort` being the port to which the traffic will be routed. Most of the times it's going to be the operator's listener's port
+- `user` being the user he has the credential of
+- `sshGateway` being the device the operator has SSH access to
+  
+  
+<p class="alert alert-info">
+    <span class="label label-info">NOTE:</span> I learned the hard way (== swearing like hell because connections didn't work) that the directive "GatewayPorts clientspecified" MUST be present inside the server's /etc/ssh/sshd_config otherwise the SSH server is going to listen for connection on 127.0.0.1, thus making the tunnel useless. Make sure this directive is present inside the config, otherwise add it (needs root privileges) and make sure to restart the ssh server! 
+</p>
+
