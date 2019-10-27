@@ -32,6 +32,9 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
       })();
   </script>
 <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/13051381">
+  
+  
+  
 ![offshore]({{site.baseur}}/img/offshore.jpg)
 
 
