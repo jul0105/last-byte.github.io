@@ -148,8 +148,8 @@ ssh -R 10.0.0.1:1234:localhost:1337 root@10.0.0.1
 Take notice that, unlike local port forwarding, here the IP on which the server listens must be specified. That's because otherwise the server will automatically start to listen on IP 127.0.0.1, hence remote connections from the target pointing to its IP address will fail has no daemon is listening on its real IP.
 
   
-<p class="alert alert-info">
-    <span class="label label-info">NOTE:</span> I learned the hard way (== swearing like hell because connections didn't work) that the directive "GatewayPorts clientspecified" MUST be present inside the server's /etc/ssh/sshd_config otherwise the SSH server is going to listen for connection on 127.0.0.1, thus making the tunnel useless. Make sure this directive is present inside the config, otherwise add it (needs root privileges) and make sure to restart the SSH server! 
+<p class="alert alert-warning">
+    <span class="label label-warning">NOTE:</span> I learned the hard way (== swearing like hell because connections didn't work) that the directive "GatewayPorts clientspecified" MUST be present inside the server's /etc/ssh/sshd_config otherwise the SSH server is going to listen for connection on 127.0.0.1, thus making the tunnel useless. Make sure this directive is present inside the config, otherwise add it (needs root privileges) and make sure to restart the SSH server! 
 </p>
 
 
