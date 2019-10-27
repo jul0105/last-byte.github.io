@@ -199,7 +199,7 @@ In the previous scenario the command to spawn a tun interface with SSHuttle and 
 sshuttle -r root@10.0.0.1 10.0.0.0/24
 ```
 
-A thing which I couldn't find in the documentation but that I really needed in the lab was the ability to use public key authentication with SSHuttle. The correct way to do it is by employing the following syntax
+A thing which I couldn't find in the documentation but that I really needed in the lab was the ability to use public key authentication with SSHuttle. The correct way to do it is by employing the following syntax:
   
   
 ```
@@ -214,5 +214,10 @@ Ok, we have seen all this cool techniques and tools (that everyone knew and I di
   
   
 ![finaldiagram]({{site.baseurl}}/img/finaldiagram.png)
-
-
+  
+  
+I know it's pretty basic, I know everyone could do that and I know it's nothing exceptional, but I like it and I find it so cool!
+<br>
+<br>
+## Conclusions
+Finally, the conclusions. I have to say I loved this lab and how it pushed me to learn a ton of stuff. Aside from one or two challenges I think it was pretty realistic. I did not talk about the Active Directory part of the lab as it would have been too much of a spoiler.
