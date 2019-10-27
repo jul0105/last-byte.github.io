@@ -219,7 +219,7 @@ Ok, we have seen all these cool techniques and tools (that everyone knew and I d
 ![finaldiagram]({{site.baseurl}}/img/finaldiagram.png)
   
   
-I know it's pretty basic, I know everyone could do that and I know it's nothing exceptional, but I like it and I find it so cool!
+I know it's pretty basic, I know everyone can do that and I know it's nothing exceptional, but I like it and I find it really cool!
 <br>
 <br>
 ## Conclusions
