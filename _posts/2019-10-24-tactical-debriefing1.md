@@ -183,6 +183,28 @@ ssh -D 1337 root@10.0.0.1
 ```
   
   
-This technique is really useful but it has a huge downside: it often messes up the traffic and interferes with tools like nmap. Scanning networks through a SSH gateway using dynamic port forwarding is a huge PITA most of the times.
+This technique is really useful but it has a huge downside: it often messes up the traffic and interferes with tools like nmap. Scanning networks through a SSH gateway using dynamic port forwarding is a huge PITA most of the times. While searching for a solution to this during my time in the lab I came across [SSHuttle](https://sshuttle.readthedocs.io/en/stable/). This tool creates a tun interface on the operator's machine (much like a VPN) and then sets rules to forward traffic for the specified subnet through the tun interface. The cool thing about it is that it does not need root access to the SSH gateway (only on the operator machine). It's syntax is the following:
+  
+  
+```
+sshuttle -r user@sshGateway network/netmask
+```
+  
+
+In the previous scenario the command to spawn a tun interface with SSHuttle and route traffic to the subnet would have been:
+
+```
+sshuttle -r root@10.0.0.1 10.0.0.0/24
+```
+
+A thing which I couldn't find in the documentation but that I really needed in the lab was the ability to use public key authentication with SSHuttle. The correct way to do it is by employing the following syntax
+  
+  
+```
+sshuttle -r user@sshGateway network/netmask -e 'ssh -i /path/to/private_key'
+```
+  
+The `-e` option is used to specify ssh commands to execute with SSHuttle. In this case the operator can specify the `-i` SSH flag with the path to the private key in order to access the SSH gateway without prividing a password.
+
 
 
