@@ -7,20 +7,6 @@ published: true
 
 My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I am a [OSCP](https://www.offensive-security.com/information-security-certifications/oscp-offensive-security-certified-professional/), [OSCE](https://www.offensive-security.com/information-security-certifications/osce-offensive-security-certified-expert/), and [OSWE](https://www.offensive-security.com/awae-oswe/). I enjoy lockpicking and [acrobatic quadcopter ~~crashing~~ flying](https://www.youtube.com/watch?v=DpP_eaYOmxg). I also play CTFs with my mates @ [JBZ Team](https://jbz.team/about/) and I'm a huge fan of [XKCD](https://xkcd.com/1243/). Other than that I don't have much to showcase to be honest so ¯\\\_(ツ)\_/¯  
 
- /* Three image containers (use 25% for four, and 50% for two, etc) */
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 5px;
-}
-
-/* Clear floats after image containers */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-} 
-
  <div class="row">
   <div class="column">
     <img src="/img/oscp.jpg" height="300" />
