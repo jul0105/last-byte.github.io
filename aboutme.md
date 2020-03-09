@@ -14,15 +14,17 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
   <div class="column">
     <img src="/img/osce.png" />
   </div>
-  <div class="column">
-    <img src="/img/crtp.png" />
-  </div>
-    </div>
-   <div class="row">
-   <div class="column">
-    <img src="/img/offshore.png"  />
-  </div>
-   <div class="column">
+ </div>
+  <div class="row">
+  	<div class="column">
+    	<img src="/img/crtp.png" />
+  	</div> 
+   	<div class="column">
+    	<img src="/img/offshore.png"  />
+  	</div>
+  </div> 
+  <div class="row">
+    <div class="column">
     <img src="/img/rastalabs.png" />
   </div>
   <div class="column">
