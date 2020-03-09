@@ -8,28 +8,30 @@ published: true
 My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I am a [OSCP](https://www.offensive-security.com/information-security-certifications/oscp-offensive-security-certified-professional/), [OSCE](https://www.offensive-security.com/information-security-certifications/osce-offensive-security-certified-expert/), and [OSWE](https://www.offensive-security.com/awae-oswe/). I enjoy lockpicking and [acrobatic quadcopter ~~crashing~~ flying](https://www.youtube.com/watch?v=DpP_eaYOmxg). I also play CTFs with my mates @ [JBZ Team](https://jbz.team/about/) and I'm a huge fan of [XKCD](https://xkcd.com/1243/). Other than that I don't have much to showcase to be honest so ¯\\\_(ツ)\_/¯  
 
  <div class="row">
-  <div class="column">
-    <img src="/img/oscp.jpg" />
-  </div>
-  <div class="column">
-    <img src="/img/osce.png" />
-  </div>
+ 	<div class="column">
+    	<img src="/img/oscp.jpg"/>
+  	</div>
+ 	<div class="column">
+ 		<img src="/img/osce.png"/>
+ 	</div>
  </div>
-  <div class="row">
-  	<div class="column">
-    	<img src="/img/crtp.png" />
+ 
+<div class="row">
+	<div class="column">
+    	<img src="/img/crtp.png"/>
   	</div> 
    	<div class="column">
-    	<img src="/img/offshore.png"  />
-  	</div>
-  </div> 
-  <div class="row">
+    	<img src="/img/offshore.png"/>
+	</div>
+</div> 
+  
+<div class="row">
     <div class="column">
-    <img src="/img/rastalabs.png" />
-  </div>
-  <div class="column">
-    <img src="/img/ecptx.png"  />
-  </div>
+    	<img src="/img/rastalabs.png"/>
+  	</div>
+	<div class="column">
+    	<img src="/img/ecptx.png"/>
+	</div>
 </div> 
 
 
