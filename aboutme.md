@@ -17,6 +17,8 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
   <div class="column">
     <img src="/img/crtp.png" height="300" />
   </div>
+    </div>
+   <div class="row">
    <div class="column">
     <img src="/img/offshore.png" height="300" />
   </div>
