@@ -9,16 +9,16 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
   
   
   
-![oscp]({{site.baseurl}}/img/oscp.jpg)
+![oscp]({{site.baseurl}}/img/oscp.jpg | width=50)
 <br>
-![osce]({{site.baseurl}}/img/osce.png)
+![osce]({{site.baseurl}}/img/osce.png | width=50)
 <br>
-![crtp]({{site.baseurl}}/img/crtp.png)
+![crtp]({{site.baseurl}}/img/crtp.png | width=50)
 <br>
-![offshore]({{site.baseurl}}/img/offshore.png)
+![offshore]({{site.baseurl}}/img/offshore.png | width=50)
 <br>
-![rastalabs]({{site.baseurl}}/img/rastalabs.png)
+![rastalabs]({{site.baseurl}}/img/rastalabs.png | width=50)
 <br>
-![ecptx]({{site.baseurl}}/img/ecptx.png)
+![ecptx]({{site.baseurl}}/img/ecptx.png | width=50)
 
 You can find me at [last AT notso DOT pro](mailto:last@notso.pro) or on [Twitter](https://twitter.com/last0x00), [here's my public key]({{site.baseurl}}/pubkey.txt).
