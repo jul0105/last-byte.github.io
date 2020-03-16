@@ -3,7 +3,7 @@
 # url is the full website URL
 # baseurl is the website's URL without the hostname
 plugins:
-  - jekyll-seo-tag
+  #- jekyll-seo-tag
 # If you are building a simple GitHub user page (https://username.github.io) then use these settings:
 url: "https://blog.notso.pro"
 baseurl: ""
