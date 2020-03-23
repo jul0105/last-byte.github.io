@@ -39,9 +39,8 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
     	<img src="/img/ecptx.png"/>
 	</div>
   	<div class="column">
-<blockquote class="badgr-badge" style="font-family: Helvetica, Roboto, &quot;Segoe UI&quot;, Calibri, sans-serif;"><a href="https://api.badgr.io/public/assertions/JMGMVoJ8QmqEkA9g0dbohw?identity__email=fed.lag%40protonmail.ch"><img src="https://api.badgr.io/public/assertions/JMGMVoJ8QmqEkA9g0dbohw/image" width="120px" height="120px"></a><p class="badgr-badge-name" style="hyphens: auto; overflow-wrap: break-word; word-wrap: break-word;margin: 0; font-size: 16px; font-weight: 600; font-style: normal; font-stretch: normal; line-height: 1.25; letter-spacing: normal; text-align: left; color: #05012c;">Certified Red Team Operator</p><p class="badgr-badge-date" style="margin: 0; font-size: 12px; font-style: normal; font-stretch: normal; line-height: 1.67; letter-spacing: normal; text-align: left; color: #555555;"><strong style="font-size: 12px; font-weight: bold; font-style: normal; font-stretch: normal; line-height: 1.67; letter-spacing: normal; text-align: left; color: #000;">Awarded:</strong> Feb 22, 2020</p><script async="async" src="https://badgr.com/assets/widgets.bundle.js"></script></blockquote>
+<iframe src="https://api.badgr.io/public/assertions/JMGMVoJ8QmqEkA9g0dbohw?embedVersion=1&amp;embedWidth=330&amp;embedHeight=186&amp;identity__email=fed.lag%40protonmail.ch" style="width: 330px; height: 186px; border: 0px none;" title="Badge: Certified Red Team Operator"></iframe>
 	</div>
-
 </div>
 
 You can find me at [last AT notso DOT pro](mailto:last@notso.pro) or on [Twitter](https://twitter.com/last0x00), [here's my public key]({{site.baseurl}}/pubkey.txt).
