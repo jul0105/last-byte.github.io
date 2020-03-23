@@ -33,5 +33,13 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
     	<img src="/img/ecptx.png"/>
 	</div>
 </div> 
+<div class="row">
+  	<div class="column">
+<blockquote class="badgr-badge" style="font-family: Helvetica, Roboto, &quot;Segoe UI&quot;, Calibri, sans-serif;"><a href="https://api.badgr.io/public/assertions/JMGMVoJ8QmqEkA9g0dbohw?identity__email=fed.lag%40protonmail.ch"><img src="https://api.badgr.io/public/assertions/JMGMVoJ8QmqEkA9g0dbohw/image" width="120px" height="120px"></a><p class="badgr-badge-name" style="hyphens: auto; overflow-wrap: break-word; word-wrap: break-word;margin: 0; font-size: 16px; font-weight: 600; font-style: normal; font-stretch: normal; line-height: 1.25; letter-spacing: normal; text-align: left; color: #05012c;">Certified Red Team Operator</p><p class="badgr-badge-date" style="margin: 0; font-size: 12px; font-style: normal; font-stretch: normal; line-height: 1.67; letter-spacing: normal; text-align: left; color: #555555;"><strong style="font-size: 12px; font-weight: bold; font-style: normal; font-stretch: normal; line-height: 1.67; letter-spacing: normal; text-align: left; color: #000;">Awarded:</strong> Feb 22, 2020</p><p style="margin: 16px 0; padding: 0;"><a class="badgr-badge-verify" target="_blank" href="https://badgecheck.io?url=https://api.badgr.io/public/assertions/JMGMVoJ8QmqEkA9g0dbohw?identity__email=fed.lag%40protonmail.ch" style="box-sizing: content-box; display: flex; align-items: center; justify-content: center; margin: 0; font-size:14px; font-weight: bold; width: 48px; height: 16px; border-radius: 4px; border: solid 1px black; text-decoration: none; padding: 6px 16px; margin: 16px 0; color: black;">VERIFY</a></p><script async="async" src="https://badgr.com/assets/widgets.bundle.js"></script></blockquote>
+	</div>
+	<div class="column">
+    	<img src="/img/oswe.jpg"/>
+	</div>
+</div>
 
 You can find me at [last AT notso DOT pro](mailto:last@notso.pro) or on [Twitter](https://twitter.com/last0x00), [here's my public key]({{site.baseurl}}/pubkey.txt).
