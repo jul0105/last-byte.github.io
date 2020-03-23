@@ -35,12 +35,7 @@ My name is Federico Lagrasta a.k.a. last, I'm an Italian security researcher. I 
 	
 </div> 
 <div class="row">
-	<div class="column">
     	<img src="/img/ecptx.png"/>
-	</div>
-  	<div class="column">
-<iframe src="https://api.badgr.io/public/assertions/JMGMVoJ8QmqEkA9g0dbohw?embedVersion=1&amp;embedWidth=330&amp;embedHeight=186&amp;identity__email=fed.lag%40protonmail.ch" style="width: 330px; height: 186px; border: 0px none;" title="Badge: Certified Red Team Operator"></iframe>
-	</div>
 </div>
 
 You can find me at [last AT notso DOT pro](mailto:last@notso.pro) or on [Twitter](https://twitter.com/last0x00), [here's my public key]({{site.baseurl}}/pubkey.txt).
