@@ -5,7 +5,7 @@
 plugins:
   - jekyll-seo-tag
   - jekyll-paginate
-  - jekull-sitemap
+  - jekyll-sitemap
   
 # If you are building a simple GitHub user page (https://username.github.io) then use these settings:
 url: "https://blog.notso.pro"
@@ -21,7 +21,7 @@ baseurl: ""
 title: not so pro
 
 # Short description of your site
-description: information security & stuff
+description: Welcome to last's blog! Here I will discuss my studies and stuff related to information security, offensive cyber security, and my life. Feel free to stick around.
 # --- Navigation bar options --- #
 
 # List of links in the navigation bar
