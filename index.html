@@ -1,6 +1,6 @@
 ---
 layout: page
-title: not so pro ¯\\_(ツ)_/¯
+title: not so pro<br>¯\_(ツ)_/¯
 subtitle: Study hard what interests you the most in the most undisciplined, irreverent and original manner possible.
 use-site-title: true
 ---
@@ -9,7 +9,7 @@ use-site-title: true
   {% for post in paginator.posts %}
   <article class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
-	  <h2 class="post-title">not so pro<br>¯\_(ツ)_/¯</h2>
+	  <h2 class="post-title">{{ post.title }}</h2>
 
 	  {% if post.subtitle %}
 	  <h3 class="post-subtitle">
