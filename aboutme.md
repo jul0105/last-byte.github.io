@@ -5,7 +5,7 @@ subtitle: You really don't want to know this stuff
 published: true
 ---
 
-My name is [Federico Lagrasta](https://www.linkedin.com/in/federico-last-lagrasta/) a.k.a. [last](https://twitter.com/last0x00), I'm an Italian security researcher. I am a [OSCP](https://www.offensive-security.com/information-security-certifications/oscp-offensive-security-certified-professional/), [OSCE](https://www.offensive-security.com/information-security-certifications/osce-offensive-security-certified-expert/), and [OSWE](https://www.offensive-security.com/awae-oswe/). I enjoy lockpicking and [acrobatic quadcopter ~~crashing~~ flying](https://www.youtube.com/watch?v=DpP_eaYOmxg). I also play CTFs with my mates @ [JBZ Team](https://jbz.team/about/) and I'm a huge fan of [XKCD](https://xkcd.com/1243/). Other than that I don't have much to showcase to be honest so ¯\\\_(ツ)\_/¯  
+My name is [Federico Lagrasta](https://www.linkedin.com/in/federico-last-lagrasta/) a.k.a. [last](https://twitter.com/last0x00), I'm an Italian security researcher. I am [OSCP](https://www.offensive-security.com/information-security-certifications/oscp-offensive-security-certified-professional/), [OSCE](https://www.offensive-security.com/information-security-certifications/osce-offensive-security-certified-expert/), and [OSWE](https://www.offensive-security.com/awae-oswe/) certified. I enjoy lockpicking and [acrobatic quadcopter ~~crashing~~ flying](https://www.youtube.com/watch?v=DpP_eaYOmxg). I also play CTFs with my mates @ [JBZ Team](https://jbz.team/about/) and I'm a huge fan of [XKCD](https://xkcd.com/1243/). Other than that I don't have much to showcase to be honest so ¯\\\_(ツ)\_/¯  
 
  <div class="row">
  	<div class="column">
