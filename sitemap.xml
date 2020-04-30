@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://blog.notso.pro/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/aboutme/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-10-24-tactical-debriefing1/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-08-06-my-path-to-cybersec/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-06-04-crtp-review/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-04-10-angr-introduction-part3/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-04-03-angr-introduction-part2.1/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/page2/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-03-25-angr-introduction-part1/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-03-26-angr-introduction-part2/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-03-13-Enigma2017-Crackme0-writeup/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-03-20-angr-introduction-part0/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-01-27-grip-0.1/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/page3/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/downloads/SymbolicExecution.pdf</loc>
+  <lastmod>2020-04-30T09:54:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-01-24-securing-your-macbook3/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-01-23-securing-your-macbook2/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-01-21-securing-your-macbook/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://blog.notso.pro/2019-01-21-first-post/</loc>
+  <lastmod>2020-04-30T09:54:17+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
