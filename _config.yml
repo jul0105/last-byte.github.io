@@ -15,10 +15,10 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-# title: not so pro
+ title: not so pro
 
 # Short description of your site
-# description: security & stuff
+ description: security & stuff
 # --- Navigation bar options --- #
 
 # List of links in the navigation bar
