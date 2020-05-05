@@ -1,5 +1,4 @@
 ---
-layout: post
 published: true
 image: /img/ad.jpg
 title: Offensive Operations in Active Directory
