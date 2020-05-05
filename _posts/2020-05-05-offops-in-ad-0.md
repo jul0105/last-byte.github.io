@@ -1,6 +1,6 @@
 ---
 layout: post
-published: true
+published: false
 image: /img/offad.jpg
 title: Offensive Operations in Active Directory - Part 0x00
 subtitle: Taming the three headed dog and making it our loyal companion
@@ -26,7 +26,7 @@ And here we arrive at the reason for this (short?) blog post series. Despite wha
 
 At its core, Kerberos is an authentication protocol, period. It was first devised by the MIT, then Microsoft decided to use it (after customizing it a bit) as the basis for authentication across Active Directory. 
 
-| ![kerberos mechanism]({{site.baseurl}}/img/kerberos.png?s=800) |
+| ![kerberos mechanism]({{site.baseurl}}/img/kerberos.png) |
 |:-:|
 | *I suck at Visio, don't hate me* |
 
