@@ -1,9 +1,9 @@
 ---
 layout: post
 published: true
+image: /img/ad.jpg
 title: Offensive Operations in Active Directory
 subtitle: Taming the three headed dog and making it our loyal companion
-image: /img/ad.jpg
 ---
 There is a [well known thought experiment](https://en.wikipedia.org/wiki/If_a_tree_falls_in_a_forest) that makes one wonder whether a tree falling in a forest, with no one around to hear the sound of it hitting the ground, actually makes a sound at all. Well, I don't know about you my friend, but I know nothing about trees falling and botany in general! What I do know however is the sound some people make (sysadmins, mostly) when they see a entire forest go down. Yep, I'm talking Active Directory forests. Trust me, it's traumatic.
 
