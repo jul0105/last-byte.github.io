@@ -26,13 +26,9 @@ And here we arrive at the reason for this (short?) blog post series. Despite wha
 
 At its core, Kerberos is an authentication protocol, period. It was first devised by the MIT, then Microsoft decided to use it (after customizing it a bit) as the basis for authentication across Active Directory. 
 
-<p align="center">
-  
-| ![kerberos]({{site.baseurl}}/img/cerbero.jpg) |
+| ![kerberos]({{site.baseurl}}/img/cerbero.jpg){: .align-center} |
 |:--:|
 | *Kerberos, named after the three-headed bigass dog guarding hell's entrance* |
-
-</p>
 
 At first it can seem complicated, but it really isn't
 
