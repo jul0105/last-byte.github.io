@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-image: /img/ad.jpg
+image: /img/defense2.png
 title: Offensive Operations in Active Directory
 subtitle: Taming the three headed dog and making it our loyal companion
 ---
