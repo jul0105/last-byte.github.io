@@ -1,4 +1,5 @@
 ---
+layout: post
 published: true
 image: /img/ad.jpg
 title: Offensive Operations in Active Directory
@@ -12,4 +13,4 @@ I expected some sort of a challenge, but what I found instead was a complete mes
 
 | ![watchdogs screens]({{site.baseurl}}/img/screens.jpg) |
 |:--:|
-| *You'd like to be this cool, uh?* |
+| *Yep, that's how it felt* |
