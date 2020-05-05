@@ -26,7 +26,7 @@ And here we arrive at the reason for this (short?) blog post series. Despite wha
 
 At its core, Kerberos is an authentication protocol, period. It was first devised by the MIT, then Microsoft decided to use it (after customizing it a bit) as the basis for authentication across Active Directory. 
 
-| ![kerberos mechanism]({{site.baseurl}}/img/kerberos.png =10000x) |
+| ![kerberos mechanism|512x397]({{site.baseurl}}/img/kerberos.png) |
 |:--:|
 | *I suck at Visio, don't hate me* |
 
