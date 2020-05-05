@@ -35,4 +35,6 @@ At first it can seem complicated, but it really isn't. Kerberos revolves around 
 - A shared secret
 - Tickets
 
+Let's briefly discuss them. 
+
 
