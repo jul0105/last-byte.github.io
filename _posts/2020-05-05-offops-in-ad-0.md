@@ -3,7 +3,7 @@ layout: post
 published: false
 title: Offensive Operations in Active Directory
 subtitle: Taming the three headed dog and making it our loyal companion
-image: /img/cybersoldier.PNG
+image: /img/ad.jpg
 ---
 ## A New Post
 
