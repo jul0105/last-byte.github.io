@@ -1,6 +1,6 @@
 ---
 layout: post
-published: true
+published: false
 image: /img/offad.jpg
 title: 'Offensive Operations in Active Directory #0'
 subtitle: Taming Kerberos and making it our loyal companion
