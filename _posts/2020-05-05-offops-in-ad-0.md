@@ -50,7 +50,7 @@ Which stands for the MD4 digest of the string encoded in the UTF-16 little endia
 
 ## Kerberos authentication step by step
 
-Ok, now that terminology is out of the way, let's get to the authentication mechanism. As we already said, before accessing a resource, a client needs to interact with the DC to get the information he needs in order to show the service server who he is (or, more precisely, claims to be). As you saw in the previous image, the Kerberos authentication mechanism is comprised of six mandatory step and two optional steps (I didn't draw the optional ones, as they are out of the scope of this series). The steps are numbered from 1 to 6:
+Ok, now that terminology is out of the way, let's get to the authentication mechanism. I suggest you follow this while keeping along a tab with the [RFC 1510](https://tools.ietf.org/html/rfc1510), which is Kerberos' RFC, open. As we already said, before accessing a resource, a client needs to interact with the DC to get the information he needs in order to show the service server who he is (or, more precisely, claims to be). As you saw in the previous image, the Kerberos authentication mechanism is comprised of six mandatory step and two optional steps (I didn't draw the optional ones, as they are out of the scope of this series). The steps are numbered from 1 to 6:
 1. Authentication Service - Request (AS-REQ)
 2. Authentication Service - Response (AS-REP)
 3. Ticket Granting Service - Request (TGS-REQ)
@@ -64,7 +64,7 @@ Now let's check what every single step does and how it appears from a network pe
 
 ### Authentication Service - Request (AS-REQ)
 
-The Authentication Service - Request (AS-REQ) is the first step. You can see it by opening packet number 3 of the sample we are analyzing. 
+The Authentication Service - Request (AS-REQ) is the first step. You can see it by opening packet number 3 of the sample we are analyzing. Here we have a packet which holds two pieces of information. The first piece can be found inside the "padata" header and contains a timestamp encrypted with the NTLM hash of the user's password. The second piece is inside the "req-body" field and contains cleartext information regarding the username, the domain, the client hostname and so on. Let's take a deeper look.
 
 ```
 Kerberos
@@ -107,5 +107,15 @@ Kerberos
                     NetBIOS Name: XP1<20> (Server service)
 ```
 
-Don't worry, we are not going to focus on every single byte of the 
+Don't worry, we are not going to focus on every single byte of the packet, but there are a few fields you have to understand:
+- as-req: this line tells us this is a AS-REQ Kerberos packet
+- pvno: stands for Protocol Version Number, which is version 5 (the recurring KRB5)
+- padata: holds the Pre-Authentication data. Here we have the "PA-DATA PA-ENC-TIMESTAMP" section. Which type of data this section holds is explained by the "padata-type" field, that tells us it's a "kRB5-PADATA-ENC-TIMESTAMP", our encrypted timestamp. The encrypted value is held by the "padata-value" of this section
+- req body: this is where the cleartext part of the request is kept
+- kdc-options: this is a collection of flags used to enable certain features for the ticket which will be returned by the KDC (spoilers)
+- cname: this section holds the username the client is trying to authenticate. To be more specific, the exact username in this case is "des" and the data is held in the "CNameString" field
+- realm: this is the domain name in the netbios format. Its value is "DENYDC"
+- sname: this section holds the service the client is targeting. Since this is an AS-REQ packet, the service will be the krbtgt (which is the domain user who manages most of the Kerberos operations, we'll get to him later) of the domain (DENYDC)
+- till: (valid unTILL) this is the expiration date of the ticket which will be issued by the DC (spoilers)
+- rtime: this is the absolute expiration time
 
