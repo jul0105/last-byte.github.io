@@ -108,6 +108,7 @@ Kerberos
 ```
 
 Don't worry, we are not going to focus on every single byte of the packet, but there are a few fields you have to understand:
+```
 - as-req: this line tells us this is a AS-REQ Kerberos packet
 - pvno: stands for Protocol Version Number, which is version 5 (the recurring KRB5)
 - padata: holds the Pre-Authentication data. Here we have the "PA-DATA PA-ENC-TIMESTAMP" section. Which type of data this section holds is explained by the "padata-type" field, that tells us it's a "kRB5-PADATA-ENC-TIMESTAMP", our encrypted timestamp. The encrypted value is held by the "padata-value" of this section
@@ -119,4 +120,5 @@ Don't worry, we are not going to focus on every single byte of the packet, but t
 - till: (valid unTILL) this is the expiration date of the ticket which will be issued by the DC (spoilers)
 - rtime: this is the absolute expiration time of the ticket which will be issued if the renewable flag was set (other spoilers)
 - addresses: this section contains the host address. In this case the address is a NETBIOS type address (addr-type) and its value is "XP1", which can be read in the "NetBIOS Name" field
+```
 
