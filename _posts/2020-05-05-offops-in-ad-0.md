@@ -24,6 +24,8 @@ With the last forest compromised I really had it all, including the servers' iLO
 
 And here we arrive at the reason for this (short?) blog post series. Despite what some good friends of mine say (gne, [@Th3Zer0](https://twitter.com/Th3Zer0) and [@Smaury](https://twitter.com/smaury92)?) Active Directory is really interesting as a target, as it's a complicated mess of technologies and practices which technicians get wrong a Shitton™ of times! What I want to cover in these ~~useless rants~~ posts is the workings of the components that make (and often break) Active Directory environments. In this part (which is the zeroth one) we will have a look at how the ~~in~~famous Microsoft's implementation of the Kerberos authentication mechanism work, step by step. The idea of the series is to analyze each step, understand the assumptions behind it and how to turn those assumptions against our target. But first, da fuq's Kerberos?
 
+## High level overview and terminology
+
 At its core, Kerberos is an authentication protocol, period. It was first devised by the MIT, then Microsoft decided to use it (after customizing it a bit) as the basis for authentication across Active Directory. 
 
 | ![kerberos mechanism]({{site.baseurl}}/img/kerberos.png) |
@@ -32,9 +34,10 @@ At its core, Kerberos is an authentication protocol, period. It was first devise
 
 At first it can seem complicated, but it really isn't. Kerberos revolves around three main concepts:
 - The Key Distribution Center (KDC)
-- A shared secret
 - Tickets
+- Shared secret
 
-Let's briefly discuss them. 
+Let's briefly discuss them. The KDC is the server responsible for authenticating the clients. In Microsoft's implementation of Kerberos, the KDC and the Domain Controller (DC) are the same machine, and from now on we will refer to the KDC as simply the DC. In Kerberos, clients do not directly connect to the service server (the machine that has the resource they want to access), they first have to request a ticket from the KDC. So what's a ticket? Simply put, a ticket is a piece of information, structured in a particular way, the client holds in memory. It becomes an authentication token the client provides to the service server so that the server can verify whether the client can access the resource or not. But how does a client request a ticket? It makes a special request encrypted with a shared secret that only the client and the DC can know. This shared secret, in Microsoft's implementation of Kerberos, is the NTHash of the user's password. For those of you wondering what a NTHash is: it's the official name of what's misleadingly known as NTLM hash. We will use NTLM from now on as its usage is widespread, but check [this post](https://medium.com/@petergombos/lm-ntlm-net-ntlmv2-oh-my-a9b235c58ed4) for a more complete overview of the different hashes algorithms Windows implements. How does the client and the DC know the shared secret without exchanging it before? Well, the client knows is as, as we said before, it is the NTLM hash of the user's password, while the DC knows it because it knows all the passwords of all the users' of the domain (duh?). 
+
 
 
