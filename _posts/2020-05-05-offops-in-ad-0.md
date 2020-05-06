@@ -2,7 +2,7 @@
 layout: post
 published: true
 image: /img/offad.jpg
-title: 'Offensive Operations in Active Directory - #0'
+title: 'Offensive Operations in Active Directory #0'
 subtitle: Taming Kerberos and making it our loyal companion
 date: '2020-05-07'
 ---
