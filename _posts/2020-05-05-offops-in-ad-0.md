@@ -1,9 +1,10 @@
 ---
 layout: post
-published: false
+published: true
 image: /img/offad.jpg
 title: 'Offensive Operations in Active Directory - #0'
 subtitle: Taming Kerberos and making it our loyal companion
+date: '2020-05-07'
 ---
 _To all the evil men doing good things_  
 _And to my friend [Vito](https://twitter.com/Trust_No_001)_  
