@@ -2,7 +2,7 @@
 layout: post
 published: true
 image: /img/offad.jpg
-title: Offensive Operations in Active Directory - Part 0x00
+title: Offensive Ops in Active Directory - Part 0
 subtitle: Taming the three headed dog and making it our loyal companion
 ---
 _To all the evil men doing good things_  
