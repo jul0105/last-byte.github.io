@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 image: /img/offad.jpg
 title: Offensive Operations in Active Directory - Part 0x00
 subtitle: Taming the three headed dog and making it our loyal companion
@@ -42,3 +42,7 @@ Let's briefly discuss them. The KDC is the server responsible for authenticating
 So what's a ticket? Simply put, a ticket is a piece of information, structured in a particular way, the client holds in memory. It becomes an authentication token the client provides to the service server so that the server can verify whether the client can access the resource or not. But how does a client request a ticket? It makes a special request encrypted with a shared secret that only the client and the DC can know. 
 
 The shared secret, in Microsoft's implementation of Kerberos, is the NTHash of the user's password. For those of you wondering what a NTHash is: it's the official name of what's misleadingly known as NTLM hash. We will use the name "NTLM hash" from now on as its usage is widespread, but check [this post](https://medium.com/@petergombos/lm-ntlm-net-ntlmv2-oh-my-a9b235c58ed4) for a more complete overview of the different hashes algorithms Windows implements. How does the client and the DC know the shared secret without exchanging it before? Well, the client knows it as it is the NTLM hash of the user's password, while the DC knows it because it stores the passwords' hashes of all the users of the domain (duh?).
+
+## Kerberos authentication step by step
+
+Ok, now that terminology is out of the way, let's get to 
