@@ -41,8 +41,21 @@ Let's briefly discuss them. The KDC is the server responsible for authenticating
 
 So what's a ticket? Simply put, a ticket is a piece of information, structured in a particular way, the client holds in memory. It becomes an authentication token the client provides to the service server so that the server can verify whether the client can access the resource or not. But how does a client request a ticket? It makes a special request encrypted with a shared secret that only the client and the DC can know. 
 
-The shared secret, in Microsoft's implementation of Kerberos, is the NTHash of the user's password. For those of you wondering what a NTHash is: it's the official name of what's misleadingly known as NTLM hash. We will use the name "NTLM hash" from now on as its usage is widespread, but check [this post](https://medium.com/@petergombos/lm-ntlm-net-ntlmv2-oh-my-a9b235c58ed4) for a more complete overview of the different hashes algorithms Windows implements. How does the client and the DC know the shared secret without exchanging it before? Well, the client knows it as it is the NTLM hash of the user's password, while the DC knows it because it stores the passwords' hashes of all the users of the domain (duh?).
+The shared secret, in Microsoft's implementation of Kerberos, is the NT hash of the user's password. For those of you wondering what a NT hash is: it's the official name of what's misleadingly known as NTLM hash. We will use the name "NTLM hash" from now on as its usage is widespread, but check [this post](https://medium.com/@petergombos/lm-ntlm-net-ntlmv2-oh-my-a9b235c58ed4) for a more complete overview of the different hashes algorithms Windows implements. How does the client and the DC know the shared secret without exchanging it before? Well, the client knows it as it is the NTLM hash of the user's password, while the DC knows it because it stores the passwords' hashes of all the users of the domain (duh?). As a reminder, the NTLM hash of a string is calculated using the following formula:
+```
+MD4(UTF-16-LE(string))
+```
+Which stands for the MD4 digest of the string encoded in the UTF-16 little endian format.
 
 ## Kerberos authentication step by step
 
-Ok, now that terminology is out of the way, let's get to 
+Ok, now that terminology is out of the way, let's get to the authentication mechanism. As we already said, before accessing a resource, a client needs to interact with the DC to get the information he needs in order to show the service server who he is (or, more precisely, claims to be). As you saw in the previous image, the Kerberos authentication mechanism is comprised of six mandatory step and two optional steps (I didn't draw the optional ones, we will take a look at them later). The steps are numbered from 1 to 6:
+1. Authentication Service - Request (AS-REQ)
+2. Authentication Service - Request (AS-REQ)
+3. Ticket Granting Service - Request (TGS-REQ)
+4. Ticket Granting Service - Response (TGS-REP)
+5. Application Server - Request (AP-REQ)
+6. Application Server - Response (AP-REP)
+
+The odd numbered steps are sent by the client, while the even ones are sent by the server.
+
