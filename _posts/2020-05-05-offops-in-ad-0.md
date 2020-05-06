@@ -49,13 +49,13 @@ Which stands for the MD4 digest of the string encoded in the UTF-16 little endia
 
 ## Kerberos authentication step by step
 
-Ok, now that terminology is out of the way, let's get to the authentication mechanism. As we already said, before accessing a resource, a client needs to interact with the DC to get the information he needs in order to show the service server who he is (or, more precisely, claims to be). As you saw in the previous image, the Kerberos authentication mechanism is comprised of six mandatory step and two optional steps (I didn't draw the optional ones, we will take a look at them later). The steps are numbered from 1 to 6:
+Ok, now that terminology is out of the way, let's get to the authentication mechanism. As we already said, before accessing a resource, a client needs to interact with the DC to get the information he needs in order to show the service server who he is (or, more precisely, claims to be). As you saw in the previous image, the Kerberos authentication mechanism is comprised of six mandatory step and two optional steps (I didn't draw the optional ones, as they are out of the scope of this series). The steps are numbered from 1 to 6:
 1. Authentication Service - Request (AS-REQ)
-2. Authentication Service - Request (AS-REQ)
+2. Authentication Service - Response (AS-REP)
 3. Ticket Granting Service - Request (TGS-REQ)
 4. Ticket Granting Service - Response (TGS-REP)
 5. Application Server - Request (AP-REQ)
 6. Application Server - Response (AP-REP)
 
-The odd numbered steps are sent by the client, while the even ones are sent by the server.
+The odd numbered steps are initiated by the client, while the even ones by the DC. The two optional steps involve the service server verifying certain information provided by the client but this check is rarely enabled as it adds a ton of overhead to the overall authentication mechanism, potentially slowing down domain operations.
 
