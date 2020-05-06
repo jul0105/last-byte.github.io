@@ -111,14 +111,14 @@ Don't worry, we are not going to focus on every single byte of the packet, but t
 
 - `as-req`: this line tells us this is a AS-REQ Kerberos packet
 - `pvno`: stands for Protocol Version Number, which is version 5 (the recurring KRB5)
-- `padata`: holds the Pre-Authentication data. Here we have the "PA-DATA PA-ENC-TIMESTAMP" section. Which type of data this section holds is explained by the "padata-type" field, that tells us it's a "kRB5-PADATA-ENC-TIMESTAMP", our encrypted timestamp. The encrypted value is held by the "padata-value" of this section
+- `padata`: holds the Pre-Authentication data. Here we have the `PA-DATA PA-ENC-TIMESTAMP` section. Which type of data this section holds is explained by the `padata-type` field, that tells us it's a "kRB5-PADATA-ENC-TIMESTAMP", our encrypted timestamp. The encrypted value is held by the `padata-value` field of this section
 - `req body`: this is where the cleartext part of the request is kept
 - `kdc-options`: this is a collection of flags used to enable certain features for the ticket which will be returned by the KDC (spoilers)
-- `cname`: this section holds the username the client is trying to authenticate. To be more specific, the exact username in this case is "des" and the data is held in the "CNameString" field
+- `cname`: this section holds the username the client is trying to authenticate. To be more specific, the exact username in this case is "des" and the data is held in the `CNameString` field
 - `realm`: this is the domain name in the netbios format. Its value is "DENYDC"
 - `sname`: this section holds the service the client is targeting. Since this is an AS-REQ packet, the service will be the krbtgt (which is the domain user who manages most of the Kerberos operations, we'll get to him later) of the domain (DENYDC)
 - `till`: (valid unTILL) this is the expiration date of the ticket which will be issued by the DC (spoilers)
 - `rtime`: this is the absolute expiration time of the ticket which will be issued if the renewable flag was set (other spoilers)
-- `addresses`: this section contains the host address. In this case the address is a NETBIOS type address (addr-type) and its value is "XP1", which can be read in the "NetBIOS Name" field
+- `addresses`: this section contains the host address. In this case the address is a NETBIOS type address, as specified by the `addr-type` field, and its value is "XP1", which can be read in the `NetBIOS Name` field
 
 
