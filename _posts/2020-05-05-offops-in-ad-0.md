@@ -64,5 +64,48 @@ Now let's check what every single step does and how it appears from a network pe
 
 ### Authentication Service - Request (AS-REQ)
 
-The Authentication Service - Request (AS-REQ) is the first step. 
+The Authentication Service - Request (AS-REQ) is the first step. You can see it by opening packet number 3 of the sample we are analyzing. 
+
+```
+Kerberos
+    as-req
+        pvno: 5
+        msg-type: krb-as-req (10)
+        padata: 2 items
+            PA-DATA PA-ENC-TIMESTAMP
+                padata-type: kRB5-PADATA-ENC-TIMESTAMP (2)
+                    padata-value: 3049a003020103a106020400a2f790a23a0438233b4272aa…
+                        etype: eTYPE-DES-CBC-MD5 (3)
+                        kvno: 10680208
+                        cipher: 233b4272aa93727221facfdbdcc9d1d9a0c43a2798c81060…
+            PA-DATA PA-PAC-REQUEST
+                padata-type: kRB5-PADATA-PA-PAC-REQUEST (128)
+                    padata-value: 3005a0030101ff
+                        include-pac: True
+        req-body
+            Padding: 0
+            kdc-options: 40810010
+            cname
+                name-type: kRB5-NT-PRINCIPAL (1)
+                cname-string: 1 item
+                    CNameString: des
+            realm: DENYDC
+            sname
+                name-type: kRB5-NT-SRV-INST (2)
+                sname-string: 2 items
+                    SNameString: krbtgt
+                    SNameString: DENYDC
+            till: 2037-09-13 02:48:05 (UTC)
+            rtime: 2037-09-13 02:48:05 (UTC)
+            nonce: 197451134
+            etype: 2 items
+                ENCTYPE: eTYPE-DES-CBC-MD5 (3)
+                ENCTYPE: eTYPE-DES-CBC-CRC (1)
+            addresses: 1 item XP1<20>
+                HostAddress XP1<20>
+                    addr-type: nETBIOS (20)
+                    NetBIOS Name: XP1<20> (Server service)
+```
+
+Don't worry, we are not going to focus on every single byte of the 
 
