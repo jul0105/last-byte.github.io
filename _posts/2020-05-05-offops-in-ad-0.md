@@ -117,5 +117,6 @@ Don't worry, we are not going to focus on every single byte of the packet, but t
 - realm: this is the domain name in the netbios format. Its value is "DENYDC"
 - sname: this section holds the service the client is targeting. Since this is an AS-REQ packet, the service will be the krbtgt (which is the domain user who manages most of the Kerberos operations, we'll get to him later) of the domain (DENYDC)
 - till: (valid unTILL) this is the expiration date of the ticket which will be issued by the DC (spoilers)
-- rtime: this is the absolute expiration time
+- rtime: this is the absolute expiration time of the ticket which will be issued if the renewable flag was set (other spoilers)
+- addresses: this section contains the host address. In this case the address is a NETBIOS type address (addr-type) and its value is "XP1", which can be read in the "NetBIOS Name" field
 
