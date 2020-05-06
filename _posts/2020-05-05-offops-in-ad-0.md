@@ -1,9 +1,9 @@
 ---
 layout: post
-published: true
+published: false
 image: /img/offad.jpg
-title: Offensive Ops in Active Directory - Part 0
-subtitle: Taming the three headed dog and making it our loyal companion
+title: 'Offensive Operations in Active Directory - #0'
+subtitle: Taming Kerberos and making it our loyal companion
 ---
 _To all the evil men doing good things_  
 _And to my friend [Vito](https://twitter.com/Trust_No_001)_  
