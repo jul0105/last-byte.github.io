@@ -60,3 +60,9 @@ Ok, now that terminology is out of the way, let's get to the authentication mech
 
 The odd numbered steps are initiated by the client, while the even ones by the DC. The two optional steps involve the service server verifying certain information provided by the client but this check is rarely enabled as it adds a ton of overhead to the overall authentication mechanism, potentially slowing down domain operations.
 
+Now let's check what every single step does and how it appears from a network perspective with the help of our good friend Wireshark. You can find the PCAP file I'm using as example [right here](https://wiki.wireshark.org/SampleCaptures) in the Wireshark samples page. I'm using the [krb-816](https://wiki.wireshark.org/SampleCaptures?action=AttachFile&do=get&target=krb-816.zip) sample.
+
+### Authentication Service - Request (AS-REQ)
+
+The Authentication Service - Request (AS-REQ) is the first step. 
+
