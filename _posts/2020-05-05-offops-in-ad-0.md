@@ -300,7 +300,8 @@ I won't go too much into details on how this part of the authentication work as 
 
 ## End of the beginning
 
-Ok, I think it's enough for this first post. In the next one we will take a look at how the first and second step of the authentication process can be exploited by an attacker. See you soon.
+Ok, I think it's enough for this first post. In the next one we will take a look at how the first and second step of the authentication process can be exploited by an attacker. See you soon.  
+<br>
 last, out.
 
 
