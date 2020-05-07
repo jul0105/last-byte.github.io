@@ -296,7 +296,7 @@ Now, what is it we need to do with this TGS thing?
 
 ### Application Server - Request & Response (AP-REQ & AP-REP)
 
-I won't go too much into details on how this part of the authentication work as it's not very interesting from an offensive perspective (plus, this post is getting long. And I'm getting bored. Yay for self-discipline). There are some insights, but we can skip them for now. What you need to know regarding this part of the authentication is that once the client holds a TGS for a particulare service, he can use it to prove to the service his identity (well, in theory).
+I won't go too much into details on how this part of the authentication work as it's not very interesting from an offensive perspective (plus, this post is getting long. And I'm getting bored. Yay for self-discipline). There are some insights, but we can skip them for now as we will get to them when discussing Silver tickets (spoilers!). What you need to know regarding this part of the authentication is that once the client holds a TGS for a particulare service, he can use it to prove to the service his identity (well, in theory).
 
 ## End of the beginning
 
