@@ -7,7 +7,7 @@ subtitle: Taming Kerberos and making it our loyal companion
 date: '2020-05-07'
 ---
 _To all the evil men doing good things_  
-_And to my friend [Vito](https://twitter.com/Trust_No_001)_  
+_And to my good friend [Vito](https://twitter.com/Trust_No_001)_  
 _Who started me down the path_  
 _Of AD black wizardry_
 
