@@ -6,10 +6,8 @@ title: 'Offensive Operations in Active Directory #0'
 subtitle: Taming Kerberos and making it our loyal companion
 date: '2020-05-07'
 ---
-_To all the evil men doing good things_  
-_And to my good friend [Vito](https://twitter.com/Trust_No_001)_  
-_Who started me down the path_  
-_Of AD black wizardry_
+_To my good friend [Vito](https://twitter.com/Trust_No_001) and to the league of evil men._  
+_Let's do some black wizardry, shall we?_
 
 ![dedsec]({{site.baseurl}}/img/dedsec2.jpg)
 
@@ -295,3 +293,15 @@ For more information I suggest you take a look at [Microsoft's documentation on 
 What you need to know however is that AD ties the SPN of a service with its logon account. Most of the times this account is a machine account. Machine accounts have long and complex, randomly-generated passwords. But what happens if a SPN is tied to a user account? Humans are often sloppy and their passwords can be easily guessed (or cracked). As we said before, the content of a TGS is deterministic and the client knows it, which means we can try to bruteforce it by trying to decrypt it and comparing the result with the data we know. No shit Sherlock, you just [re-discovered Kerberoasting](https://adsecurity.org/?p=2293). Don't worry, we will have a look at attack techniques in later posts.
 
 Now, what is it we need to do with this TGS thing?
+
+### Application Server - Request & Response (AP-REQ & AP-REP)
+
+I won't go too much into details on how this part of the authentication work as it's not very interesting from an offensive perspective (plus, this post is getting long. And I'm getting bored. Yay for self-discipline). There are some insights, but we can skip them for now. What you need to know regarding this part of the authentication is that once the client holds a TGS for a particulare service, he can use it to 
+
+
+
+
+
+
+
+
