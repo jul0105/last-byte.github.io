@@ -182,7 +182,7 @@ TGTs, as the name suggests, don't grant access to services, they grant access to
 Say you want to access a share on a domain joined server. First you request a TGT from the DC, then you show that very same TGT to the DC asking for a TGS targeting the CIFS service (the one responsible for filesystem access) of the server on which the share is located. At this point the DC forges a TGS, encrypted with the NTLM hash of the account to which the service is tied (I'll explain that in a moment) and sends it to the client requesting it.
 
 <p class="alert alert-warning">
-    <span class="label label-warning">NOTE:</span> When issuing a TGS, the Domain Controller does not check whether the user requesting it has the clearance to access the service. It's up the the Service Server which will receive the TGS from the client to make sure the user should have access to the resource.
+    <span class="label label-warning">NOTE:</span> When issuing a TGS, the Domain Controller does not check whether the user requesting it has the clearance to access the service. It's up the the Service Server which will receive the TGS from the client to make sure the user should have access to the resource. That means when you receive an "Access denied" error, it's the Service Server speaking, not the Domain Controller (unless the service is hosted on the DC itself).
 </p>
 
 
