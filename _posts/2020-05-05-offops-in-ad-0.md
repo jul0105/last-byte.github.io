@@ -187,6 +187,57 @@ Say you want to access a share on a domain joined server. First you request a TG
     <span class="label label-warning">NOTE:</span> When issuing a TGS, the Domain Controller does not check whether the user requesting it has the clearance to access the service. It's up the the Service Server which will receive the TGS from the client to make sure the user should have access to the resource. That means when you receive an "Access denied" error, it's the Service Server speaking, not the Domain Controller (unless the service is hosted on the DC itself).
 </p>
 
+Let's check how a TGS is requested from a network point of view. You can view the TGS request in packet number 5.
+
+```
+Kerberos
+    tgs-req
+        pvno: 5
+        msg-type: krb-tgs-req (12)
+        padata: 1 item
+            PA-DATA PA-TGS-REQ
+                padata-type: kRB5-PADATA-TGS-REQ (1)
+                    padata-value: 6e82041830820414a003020105a10302010ea20703050000…
+                        ap-req
+                            pvno: 5
+                            msg-type: krb-ap-req (14)
+                            Padding: 0
+                            ap-options: 00000000
+                            ticket
+                                tkt-vno: 5
+                                realm: DENYDC.COM
+                                sname
+                                    name-type: kRB5-NT-SRV-INST (2)
+                                    sname-string: 2 items
+                                        SNameString: krbtgt
+                                        SNameString: DENYDC.COM
+                                enc-part
+                                    etype: eTYPE-ARCFOUR-HMAC-MD5 (23)
+                                    kvno: 2
+                                    cipher: 76873a46dedc5b7de4cd702aef30ae79cbd8aa172b9d167e…
+                            authenticator
+        req-body
+            Padding: 0
+            kdc-options: 40800000
+            realm: DENYDC.COM
+            sname
+                name-type: kRB5-NT-SRV-HST (3)
+                sname-string: 2 items
+                    SNameString: host
+                    SNameString: xp1.denydc.com
+            till: 2037-09-13 02:48:05 (UTC)
+            nonce: 197296424
+            etype: 7 items
+```
+As we said before, we don't need to understand every single field in this packet. The important fields are:
+- `msg-type`: as the value `krb-tgs-req` says, this is a Kerberos TGS request
+- `enc-part`: if you skip up to the previous packet and compare the `cipher` of the first `enc-part` with the `cipher` of this section, you will notice they store the same value. This is the TGT the client is sending back to the DC while asking for a TGS
+- `req-body`: this section holds the TGS request data
+- `realm`: this is the domain to which the Service Server belongs
+- `SNameString`: these two fields hold the service name, which is `host`, and the hostname of the Service Server, which is `xp1.denydc.com`
+- `till`: the date until which the client wants the TGS to be valid
+
+Based on the information gathered this far from the packets we analyzed, we understand the user DENYDC\des, logged on the workstation xp1.denydc.com, is asking the DC to access the HOST service of his workstation. We should point out this far that it's perfectly possible for a user to access a local service through Kerberos authentication. It actually happens a lot in normal domain operations.
 
 
 
