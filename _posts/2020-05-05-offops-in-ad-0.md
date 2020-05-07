@@ -171,6 +171,7 @@ The fields we have to focus on here are:
 - `enc-part`: the first `enc-part` section contains the ticket data encrypted with krbtgt's NTLM hash. The ticket data is nothing more than the domain name, the username the ticket is issued for and a couple more bytes of stuff (we will see it later)
 - `enc-part`: the second `enc-part` section contains more or less the same data the first `enc-part` contains, but it is encrypted with the user's NTLM hash, instead of the krbtgt's one
 
+Once the client receives the AS-REP packet it proceeds to decrypt the second `enc-part` and, if the data it contains corresponds with the `crealm` and the `CNameString`, the encrypted ticket (that is, the TGT) is imported as-is into the current session. Take note, the client **_does not and cannot_** decrypt the TGT, as it is encrypted with krbtgt's NTLM hash. If the client were able to decrypt it, [he could forge a TGT with an arbitrary username and domain](https://pentestlab.blog/2018/04/09/golden-ticket/)
 
 
 
@@ -178,4 +179,5 @@ The fields we have to focus on here are:
 
 
 
- 
+
+ ,
