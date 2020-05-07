@@ -237,9 +237,51 @@ As we said before, we don't need to understand every single field in this packet
 - `SNameString`: these two fields hold the service name, which is `host`, and the hostname of the Service Server, which is `xp1.denydc.com`
 - `till`: the date until which the client wants the TGS to be valid
 
-Based on the information gathered this far from the packets we analyzed, we understand the user DENYDC\des, logged on the workstation xp1.denydc.com, is asking the DC a TGS to access the HOST service of his workstation. We should point out this far that it's perfectly possible for a user to access a local service through Kerberos authentication. It actually happens a lot in normal domain operations.
+Based on the information gathered this far from the packets we analyzed, we understand the user `DENYDC\des`, logged on the workstation `xp1.denydc.com`, is asking the DC a TGS to access the HOST service of his workstation. We should point out this far that it's perfectly possible for a user to access a local service through Kerberos authentication. It actually happens a lot in normal domain operations.
 
+If the TGT provided by the client is valid, the DC should issue a TGS.
 
+### Ticket Granting Service - Response (TGS-REP)
+
+We are at the point where the DC has received the TGS request. Let's check packet 6 and see if it replied with a valid TGS for the HOST service.
+
+```
+Kerberos
+    tgs-rep
+        pvno: 5
+        msg-type: krb-tgs-rep (13)
+        crealm: DENYDC.COM
+        cname
+            name-type: kRB5-NT-PRINCIPAL (1)
+            cname-string: 1 item
+                CNameString: des
+        ticket
+            tkt-vno: 5
+            realm: DENYDC.COM
+            sname
+                name-type: kRB5-NT-SRV-HST (3)
+                sname-string: 2 items
+                    SNameString: host
+                    SNameString: xp1.denydc.com
+            enc-part
+                etype: eTYPE-ARCFOUR-HMAC-MD5 (23)
+                kvno: 2
+                cipher: e63bb88dd1d8f8b5aafe7b76e59e4f42e5e090b679e8a945…
+        enc-part
+            etype: eTYPE-DES-CBC-MD5 (3)
+            cipher: 70e024fdb23293198556e63ca27554cf3dd36d0a548e9215…
+```
+
+The interesting fields here are:
+- `msg-type`: this is TGS response, as the value `krb-tgs-rep` tells us
+- `ticket`: this section holds the TGS information
+- `realm`: the domain the TGS is issued for
+- `SNameString`: these fields are identical to their twins from the TGS-REQ packet
+- `enc-part`: the first `enc-part` section holds the encrypted TGS
+- `cipher`: the encrypted TGS itself
+- `enc-part`: the second `enc-part` contains information encrypted with the NTLM hash of the user requesting the TGS. Like the one in the AS-REQ, it gets decrypted by the client which double checks the username and domain
+
+If the response is valid, the TGS is imported into the current session. Imported TGTs and TGSs can be seen from the CLI using the `klist` command.
 
 
 
