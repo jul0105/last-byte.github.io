@@ -123,4 +123,16 @@ Don't worry, we are not going to focus on every single byte of the packet, but t
 
 Upon receiving this packet the DC reads the username of the user from the `cname` section, takes his hash from its local database and tries to decrypt the value held by the `padata-value` field of the `PA-DATA PA-ENC-TIMESTAMP`. If the decryption succeeds and the timestamp is valid, the next step of the Kerberos authentication mechanism begins.
 
+The key takeway here is the fact that this entire step relies on the secrecy of the NTLM hash, not the password, nor the timestamp. Obtain a valid NTLM hash and you can do some nasty stuff, but we will have a look at it later, let's move on to the second step.
 
+### Authentication Service - Response (AS-REP)
+
+The Authentication Service - Response (or Reply, the RFC uses both), aka AS-REP, is the packet the DC sends right after a valid AS-REQ has been received. Through this packet the DC issues what's known as a Ticket Granting Ticket (TGT). The TGT is a piece of information tied to the identity of the user who requested it. Part of it is encrypted using the NTLM hash of the krbtgt domain user. As we said before, krbtgt (pronounced kərbɪtɪdʒɪtɪ', change my mind) is a very special account used by the DC to manage certain Kerberos operations. It's considered a High Value Target (HVT) by attackers as compromising it destroys the trust foundations upon which Kerberos itself is built.
+
+
+
+
+
+
+
+ 
