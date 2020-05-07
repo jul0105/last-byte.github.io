@@ -289,17 +289,9 @@ Something to consider here is the fact that the TGS itself is encrypted using th
 <service class>/<host>[:<port>/<service name>]
 MSSQLSvc/workstation.domain.com:1433/MyUberDB
 HTTP/server.domain.com
-
 ```
 For more information I suggest you take a look at [Microsoft's documentation on SPNs](https://docs.microsoft.com/en-us/windows/win32/ad/name-formats-for-unique-spns). 
 
 What you need to know however is that AD ties the SPN of a service with its logon account. Most of the times this account is a machine account. Machine accounts have long and complex, randomly-generated passwords. But what happens if a SPN is tied to a user account? Humans are often sloppy and their passwords can be easily guessed (or cracked). As we said before, the content of a TGS is deterministic and the client knows it, which means we can try to bruteforce it by trying to decrypt it and comparing the result with the data we know. No shit Sherlock, you just [re-discovered Kerberoasting](https://adsecurity.org/?p=2293). Don't worry, we will have a look at attack techniques in later posts.
 
 Now, what is it we need to do with this TGS thing?
-
-
-
-
-
-
- 
