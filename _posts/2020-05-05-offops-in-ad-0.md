@@ -237,7 +237,7 @@ As we said before, we don't need to understand every single field in this packet
 - `SNameString`: these two fields hold the service name, which is `host`, and the hostname of the Service Server, which is `xp1.denydc.com`
 - `till`: the date until which the client wants the TGS to be valid
 
-Based on the information gathered this far from the packets we analyzed, we understand the user DENYDC\des, logged on the workstation xp1.denydc.com, is asking the DC to access the HOST service of his workstation. We should point out this far that it's perfectly possible for a user to access a local service through Kerberos authentication. It actually happens a lot in normal domain operations.
+Based on the information gathered this far from the packets we analyzed, we understand the user DENYDC\des, logged on the workstation xp1.denydc.com, is asking the DC a TGS to access the HOST service of his workstation. We should point out this far that it's perfectly possible for a user to access a local service through Kerberos authentication. It actually happens a lot in normal domain operations.
 
 
 
