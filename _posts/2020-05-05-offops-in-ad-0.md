@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 image: /img/offad.jpg
 title: 'Offensive Operations in Active Directory #0'
 subtitle: Taming Kerberos and making it our loyal companion
@@ -50,7 +50,7 @@ Which stands for the MD4 digest of the string encoded in the UTF-16 little endia
 
 ## Kerberos authentication step by step
 
-Ok, now that terminology is out of the way, let's get to the authentication mechanism. I suggest you follow this while keeping along a tab with the [RFC 1510](https://tools.ietf.org/html/rfc1510), which is Kerberos' RFC, open. As we already said, before accessing a resource, a client needs to interact with the DC to get the information he needs in order to show the service server who he is (or, more precisely, claims to be). As you saw in the previous image, the Kerberos authentication mechanism is comprised of six mandatory step and two optional steps (I didn't draw the optional ones, as they are out of the scope of this series). The steps are numbered from 1 to 6:
+Ok, now that terminology is out of the way, let's get to the authentication mechanism. I suggest you follow this while keeping along a tab with the [RFC 4120](https://tools.ietf.org/html/rfc4120), which is Kerberos' RFC, open. As we already said, before accessing a resource, a client needs to interact with the DC to get the information he needs in order to show the service server who he is (or, more precisely, claims to be). As you saw in the previous image, the Kerberos authentication mechanism is comprised of six mandatory step and two optional steps (I didn't draw the optional ones, as they are out of the scope of this series). The steps are numbered from 1 to 6:
 1. Authentication Service - Request (AS-REQ)
 2. Authentication Service - Response (AS-REP)
 3. Ticket Granting Service - Request (TGS-REQ)
@@ -109,13 +109,13 @@ Kerberos
 
 Don't worry, we are not going to focus on every single byte of the packet, but there are a few fields you have to understand:
 
-- `as-req`: this line tells us this is a AS-REQ Kerberos packet
 - `pvno`: stands for Protocol Version Number, which is version 5 (the recurring KRB5)
+- `msg-type`: this line tells us this is a `krb-as-req` AS-REQ Kerberos packet
 - `padata`: holds the Pre-Authentication data. Here we have the `PA-DATA PA-ENC-TIMESTAMP` section. Which type of data this section holds is explained by the `padata-type` field, that tells us it's a "kRB5-PADATA-ENC-TIMESTAMP", our encrypted timestamp. The encrypted value is held by the `padata-value` field of this section
 - `req body`: this is where the cleartext part of the request is kept
 - `kdc-options`: this is a collection of flags used to enable certain features for the ticket which will be returned by the KDC (spoilers)
 - `cname`: this section holds the username the client is trying to authenticate. To be more specific, the exact username in this case is "des" and the data is held in the `CNameString` field
-- `realm`: this is the domain name in the netbios format. Its value is "DENYDC"
+- `realm`: Realms in Microsoft's Kerberos implementation are the domains. This is the domain name in the netbios format. Its value is "DENYDC"
 - `sname`: this section holds the service the client is targeting. Since this is an AS-REQ packet, the service will be the krbtgt (which is the domain user who manages most of the Kerberos operations, we'll get to him later) of the domain (DENYDC)
 - `till`: (valid unTILL) this is the expiration date of the ticket which will be issued by the DC (spoilers)
 - `rtime`: this is the absolute expiration time of the ticket which will be issued if the renewable flag was set (other spoilers)
@@ -127,7 +127,50 @@ The key takeway here is the fact that this entire step relies on the secrecy of 
 
 ### Authentication Service - Response (AS-REP)
 
-The Authentication Service - Response (or Reply, the RFC uses both), aka AS-REP, is the packet the DC sends right after a valid AS-REQ has been received. Through this packet the DC issues what's known as a Ticket Granting Ticket (TGT). The TGT is a piece of information tied to the identity of the user who requested it. Part of it is encrypted using the NTLM hash of the krbtgt domain user. As we said before, krbtgt (pronounced kərbɪtɪdʒɪtɪ', change my mind) is a very special account used by the DC to manage certain Kerberos operations. It's considered a High Value Target (HVT) by attackers as compromising it destroys the trust foundations upon which Kerberos itself is built.
+The Authentication Service - Response (or Reply, the RFC uses both), aka AS-REP, is the packet the DC sends right after a valid AS-REQ has been received and decrypted. Through this packet the DC issues to the client what's known as a Ticket Granting Ticket (TGT). The TGT is a piece of information tied to the identity of the user who requested it. Part of it is encrypted using the NTLM hash of the krbtgt domain user. As we said before, krbtgt (pronounced kərbɪtɪdʒɪtɪ', change my mind) is a very special account used by the DC to manage certain Kerberos operations. It's considered a High Value Target (HVT) by attackers as compromising it destroys the trust foundations upon which Kerberos itself is built. Let's examine the AS-REP packet, which is number 4 of our sample.
+
+```
+Kerberos
+    as-rep
+        pvno: 5
+        msg-type: krb-as-rep (11)
+        padata: 1 item
+            PA-DATA PA-PW-SALT
+                padata-type: kRB5-PADATA-PW-SALT (3)
+                    padata-value: 44454e5944432e434f4d646573
+                        pw-salt: 44454e5944432e434f4d646573
+        crealm: DENYDC.COM
+        cname
+            name-type: kRB5-NT-PRINCIPAL (1)
+            cname-string: 1 item
+                CNameString: des
+        ticket
+            tkt-vno: 5
+            realm: DENYDC.COM
+            sname
+                name-type: kRB5-NT-SRV-INST (2)
+                sname-string: 2 items
+                    SNameString: krbtgt
+                    SNameString: DENYDC.COM
+            enc-part
+                etype: eTYPE-ARCFOUR-HMAC-MD5 (23)
+                kvno: 2
+                cipher: 76873a46dedc5b7de4cd702aef30ae79cbd8aa172b9d167e…
+        enc-part
+            etype: eTYPE-DES-CBC-MD5 (3)
+            kvno: 3
+            cipher: edbcc0d67f3a645254f086e6e2bfe2b7bbac72b346ad05ab…
+```
+The fields we have to focus on here are:
+- `msg-type`: this line tells us this is a `krb-as-rep` AS-REP Kerberos packet
+- `crealm`: this field holds the domain FQDN (DENYDC.COM) to which the client belongs
+- `CNameString`: this field specifies the client username to which the TGT is issued. The user in this case is "des". His netbios domain name will be DENYDC\des
+- `ticket`: this section contains the TGT itself
+- `tkt-vno`: this is the TGT version number, which is 5
+- `realm`: this is the domain the TGT is valid for
+- `enc-part`: the first `enc-part` section contains the ticket data encrypted with krbtgt's NTLM hash. The ticket data is nothing more than the domain name, the username the ticket is issued for and a couple more bytes of stuff (we will see it later)
+- `enc-part`: the second `enc-part` section contains more or less the same data the first `enc-part` contains, but it is encrypted with the user's NTLM hash, instead of the krbtgt's one
+
 
 
 
