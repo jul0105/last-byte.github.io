@@ -25,7 +25,9 @@ With the last forest compromised I really had it all, including the servers' iLO
 |:--:|
 | *Yep, that's how it felt!* |
 
-And here we arrive at the reason for this (short?) blog post series. Despite what some good friends of mine say (gne, [@Th3Zer0](https://twitter.com/Th3Zer0) and [@Smaury](https://twitter.com/smaury92)?) Active Directory is really interesting as a target, as it's a complicated mess of technologies and practices which technicians get wrong a Shitton™ of times! What I want to cover in these ~~useless rants~~ posts is the workings of the components that make (and often break) Active Directory environments. In this part (which is the zeroth one) we will have a look at how the ~~in~~famous Microsoft's implementation of the Kerberos authentication mechanism work, step by step. The idea of the series is to analyze each step, understand the assumptions behind it and how to turn those assumptions against our target. But first, da fuq's Kerberos?
+And here we arrive at the reason for this (short?) blog post series. Despite what some good friends of mine say (gne, [@Th3Zer0](https://twitter.com/Th3Zer0) and [@Smaury](https://twitter.com/smaury92)?) Active Directory is really interesting as a target, as it's a complicated mess of technologies and practices which technicians get wrong a Shitton™ of times! What I want to cover in these posts is the workings of the components that make (and often break) Active Directory environments. We will start slow, analyzing the components themselves and then how they fit in the grand scheme of (offensive) things.
+
+In this part (which is the zeroth one) we will have a look at how the ~~in~~famous Microsoft's implementation of the Kerberos authentication protocol works, step by step. The idea of the series is to analyze each step, understand the assumptions behind it and how to turn those assumptions against our target. But first, da fuq's Kerberos?
 
 ## High level overview and terminology
 
@@ -184,6 +186,7 @@ Say you want to access a share on a domain joined server. First you request a TG
 <p class="alert alert-warning">
     <span class="label label-warning">NOTE:</span> When issuing a TGS, the Domain Controller does not check whether the user requesting it has the clearance to access the service. It's up the the Service Server which will receive the TGS from the client to make sure the user should have access to the resource. That means when you receive an "Access denied" error, it's the Service Server speaking, not the Domain Controller (unless the service is hosted on the DC itself).
 </p>
+
 
 
 
