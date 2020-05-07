@@ -175,7 +175,13 @@ The fields we have to focus on here are:
 
 Once the client receives the AS-REP packet it proceeds to decrypt the second `enc-part` and, if the data it contains corresponds with the `crealm` and the `CNameString`, the encrypted ticket (that is, the TGT) is imported as-is into the current session. Take note, the client **_does not and cannot_** decrypt the TGT, as it is encrypted with krbtgt's NTLM hash. If the client were able to decrypt it, [he could forge a TGT with an arbitrary username and domain](https://pentestlab.blog/2018/04/09/golden-ticket/). And yes, that's cool and all, but what's the purpose of a TGT?
 
-TGTs, as the name suggest, don't grant access to services, they grant access to other tickets. The type of ticket which grants you access to a service is called TGS, short for Ticket Granting Service.
+TGTs, as the name suggests, don't grant access to services, they grant access to other tickets. The type of ticket which grants you access to a service is called TGS, short for Ticket Granting Service. 
+
+Say you want to access a share on a domain joined server. First you request a TGT from the DC, then you show that very same TGT to the DC asking for a TGS targeting the CIFS service (the one responsible for filesystem access) of the server on which the share is located. At this point the DC forges a TGS, encrypted with the NTLM hash of the account to which the service is tied (I'll explain that in a moment) and sends it to the client requesting it.
+
+<p class="alert alert-warning">
+    <span class="label label-warning">NOTE:</span> When issuing a TGS, the Domain Controller does not check whether the user requesting it has the clearance to access the service. It's up the the Service Server which will receive the TGS from the client to make sure the user should have access to the resource.
+</p>
 
 
 
