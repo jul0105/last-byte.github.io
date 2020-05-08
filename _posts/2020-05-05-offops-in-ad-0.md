@@ -62,7 +62,7 @@ Now let's check what every single step does and how it appears from a network pe
 
 ### Authentication Service - Request (AS-REQ)
 
-The Authentication Service - Request (AS-REQ) is the first step. You can see it by opening packet number 3 of the sample we are analyzing. Here we have a packet which holds two pieces of information. The first piece can be found inside the "padata" header and contains a timestamp encrypted with the NTLM hash of the user's password. The second piece is inside the "req-body" field and contains cleartext information regarding the username, the domain, the client hostname and so on. Let's take a deeper look.
+The Authentication Service - Request (AS-REQ) is the first step. It's also called "Pre-Authentication Step". You can see it by opening packet number 3 of the sample we are analyzing. Here we have a packet which holds two pieces of information. The first piece can be found inside the "padata" header and contains a timestamp encrypted with the NTLM hash of the user's password. The second piece is inside the "req-body" field and contains cleartext information regarding the username, the domain, the client hostname and so on. Let's take a deeper look.
 
 ```
 Kerberos
