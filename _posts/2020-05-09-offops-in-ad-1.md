@@ -1,6 +1,6 @@
 ---
 layout: post
-published: true
+published: false
 image: /img/offad.jpg
 title: 'Offensive Operations in Active Directory #1'
 subtitle: Scatter the (h)ashes...
@@ -21,3 +21,9 @@ Jokes aside, _pass-the-hash_ (PtH) and _overpass-the-hash_ (OPtH) are actually t
 Quick recap: [as we discussed in the last post](https://blog.notso.pro/2020-05-07-offops-in-ad-0/), Kerberos is built upon shared secrets. When implementing Kerberos in Active Directory, Microsoft decided the shared secret would be the NTLM hash of the user trying to authenticate. So when a user wants to authenticate, the client machine takes the timestamp, encrypts it using the user's NTLM hash and sends it to the DC, alongside the unencrypted username and domain. Upon receiving the packet, the DC reads the username, fetches his password's NTLM hash from its local database and uses it to decrypt the timestamp. If it's valid, the DC generates a TGT for that user, encrypts it with krbtgt's password's NTLM hash and sends it back to the client, who can use that TGT to request TGSs on behalf of the user and authenticate to services.
 
 ![AS-REQ&REP]({{site.baseurl}}/img/asreqrep.png)
+
+As you may have realized by now, the entire security of this step relies on the secrecy of the NTLM hash of the user's password. I will repeat it, here security relies on the secrecy of the hash, not of the password. But hashes are secure right? They are only stored on the DC right? And on clients they are not stored but calculated on the fly when the user inputs his password, right? Wrong.
+
+
+
+
