@@ -292,18 +292,10 @@ Now, what is it we need to do with this TGS thing?
 
 ### Application Server - Request & Response (AP-REQ & AP-REP)
 
-I won't go too much into details on how this part of the authentication work as it's not very interesting from an offensive perspective (plus, this post is getting long. And I'm getting bored. Yay for self-discipline). There are some insights, but we can skip them for now as we will get to them when discussing Silver tickets (spoilers!). What you need to know regarding this part of the authentication is that once the client holds a TGS for a particulare service, he can use it to prove to the service his identity (well, in theory).
+I won't go too much into details on how this part of the authentication works as it's not very interesting from an offensive perspective (plus, this post is getting long. And I'm getting bored. Yay for self-discipline). There are some insights, but we can skip them for now as we will get to them when discussing Silver tickets (spoilers!). What you need to know regarding this part of the authentication is that once the client holds a TGS for a particular service, he can use it to prove to the service his identity (well, in theory).
 
 ## End of the beginning
 
 Ok, I think it's enough for this first post. In the next one we will take a look at how the first and second step of the authentication process can be exploited by an attacker. See you soon.  
 <br>
 last, out.
-
-
-
-
-
-
-
-
