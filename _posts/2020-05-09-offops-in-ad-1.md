@@ -1,16 +1,20 @@
 ---
 layout: post
-published: false
+published: true
 image: /img/offad.jpg
 title: 'Offensive Operations in Active Directory #1'
 subtitle: Scatter the (h)ashes...
 date: '2020-05-09'
 ---
-Greetings fellow hackers! Last here, today we will take a look at a well known techniques used by attackers in AD environments, the infamous *overpass-the-hash*.
+Greetings fellow hackers! Last here, today we will take a look at a well known technique used by attackers in AD environments, the infamous *overpass-the-hash*.
 
 "bUt lAsT, pAsS tHe HaSh iS sO 1997!11!1!!" you could say. And you would be right, partly. Time for an anecdote! It was the beginning of 2018 and I was attending a conference with some teammates. A guy was giving a talk about attacking Active Directory and at some point he talked about the _pass-the-hash_ attack. One of my mates (who definitely was not [G](https://twitter.com/0x1911), I swear!) said "Come on, 2018 and people are still talking about passing the hash?". 
 
 Well G, here I am, Anno Domini 2020 and still talking about (over)passing the hash!
+
+| ![anatomy]({{site.baseurl}}/img/anatomylesson.jpg) |
+|:--:|
+| *Bro, do you even dissect?* |
 
 Jokes aside, _pass-the-hash_ (PtH) and _overpass-the-hash_ (OPtH) are actually two different attack techniques: the old PtH involved directly authenticating to a host by literally sending the password hash to the host during the authentication process, while OPtH is way more subtle as it abuses the first step of Kerberos authentication. 
 
