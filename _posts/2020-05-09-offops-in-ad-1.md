@@ -6,5 +6,12 @@ title: 'Offensive Operations in Active Directory #1'
 subtitle: Scatter the (h)ashes...
 date: '2020-05-09'
 ---
+Greetings fellow hackers! Last here, today we will take a look at a well known techniques used by attackers in AD environments, the infamous *overpass-the-hash*.
 
-# Placeholder
+"bUt lAsT, pAsS tHe HaSh iS sO 1997!11!1!!" you could say. And you would be right, partly. Time for an anecdote! It was the beginning of 2018 and I was attending a conference with some teammates. A guy was giving a talk about attacking Active Directory and at some point he talked about the _pass-the-hash_ attack. One of my mates (who definitely was not [G](https://twitter.com/0x1911), I swear!) said "Come on, 2018 and people are still talking about passing the hash?". 
+
+Well G, here I am, Anno Domini 2020 and still talking about (over)passing the hash!
+
+Jokes aside, _pass-the-hash_ (PtH) and _overpass-the-hash_ (OPtH) are actually two different attack techniques: the old PtH involved directly authenticating to a host by literally sending the password hash to the host during the authentication process, while OPtH is way more subtle as it abuses the first step of Kerberos authentication. 
+
+Quick recap: [as we discussed in the last post](https://blog.notso.pro/2020-05-07-offops-in-ad-0/), Kerberos is built upon shared secrets. When implementing Kerberos in Active Directory, Microsoft decided the shared secret would be the NTLM hash of the user trying to authenticate. So when a user wants to authenticate, the client machine takes the timestamp, encrypts it using the user's NTLM hash and sends it to the DC, alongside the unencrypted username and domain. Upon receiving the packet, the DC reads the username, fetches his password's NTLM hash from its local database and uses it to decrypt the timestamp. If it's valid, the DC generates a TGT for that user, encrypts it with krbtgt's password's NTLM hash and sends it back to the client, who can use that TGT request TGSs on behalf of the user and authenticate to services.
