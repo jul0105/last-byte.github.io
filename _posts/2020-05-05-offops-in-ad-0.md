@@ -119,7 +119,7 @@ Don't worry, we are not going to focus on every single byte of the packet, but t
 - `rtime`: this is the absolute expiration time of the ticket which will be issued if the renewable flag was set (other spoilers)
 - `addresses`: this section contains the host address. In this case the address is a NETBIOS type address, as specified by the `addr-type` field, and its value is "XP1", which can be read in the `NetBIOS Name` field
 
-Upon receiving this packet the DC reads the username of the user from the `cname` section, takes his hash from its local database and tries to decrypt the value held by the `padata-value` field of the `PA-DATA PA-ENC-TIMESTAMP`. If the decryption succeeds and the timestamp is valid, the next step of the Kerberos authentication mechanism begins.
+Upon receiving this packet the DC reads the username of the user from the `cname` section, takes his hash from its local database and tries to decrypt the value held by the `padata-value` field of the `PA-DATA PA-ENC-TIMESTAMP`. If the decryption succeeds and the timestamp is valid (valid == the time difference is less than 5 minutes, by default), the next step of the Kerberos authentication mechanism begins.
 
 The key takeway here is the fact that this entire step relies on the secrecy of the NTLM hash, not the password, nor the timestamp. Obtain a valid NTLM hash and you can do some nasty stuff, but we will have a look at it later, let's move on to the second step.
 
