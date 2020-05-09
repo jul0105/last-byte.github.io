@@ -48,5 +48,63 @@ The LSASS process can be spotted using Task Manager (or Process Explorer) if you
 
 One way to obtain the credentials stored in memory would be to dump the entire machine's memory, but that would be noisy and would generate a big DMP file. The cleaner way is to just target the LSASS process and selectively dump it. Still noisy and sketchy, but still way less than `cat /dev/motherfuckingeverything > memory.txt`. 
 
-As you can see, LSASS runs under the SYSTEM privilege context, so to dump its address space we need administrative privileges (life sucks, I know). One way it can be achieved is through Task Manager itself, by right clicking on lsass.exe and selecting "Create dump file". In this way we don't need to upload any suspicious executable on the target machine, as we can then download the DMP file and extract the credentials offline. This can be achieved through the Volatility Framework, Mimikatz or your own custom tools. Let's see an example: I dumped the credentials on my lab machine using Task Manager and exported the resulting lsass.DMP file on Windows VM on which I have Mimikatz. 
+As you can see, LSASS runs under the SYSTEM privilege context, so to dump its address space we need administrative privileges (life sucks, I know). One way it can be achieved is through Task Manager itself, by right clicking on lsass.exe and selecting "Create dump file". In this way we don't need to upload any suspicious executable on the target machine, as we can then download the DMP file and extract the credentials offline. This can be achieved through the Volatility Framework, Mimikatz or your own custom tools. 
+
+Let's see an example: I dumped the credentials on my lab machine using Task Manager and exported the resulting lsass.DMP file on a Windows VM on which I have Mimikatz.
+
+To extract credentials from the dump file we first have to tell Mimikatz to switch its context and target the dump. After that, we run the usual logon passwords dumping command. Here are the commands to execute:
+
+```
+mimikatz # sekurlsa::minidump <path_to_file>
+mimikatz # sekurlsa::logonpasswords
+```
+
+In my case the path to file was `C:\Users\last\Desktop\lsass.DMP`. That's the end result:
+
+![minidump1]({{site.baseurl}}/img/minidump1.PNG)
+
+On a normal domain-joined machine, Mimikatz's `sekurlsa::logonpassword` often returns a lot of output, so you need to sort through it to find what you are really looking for:
+
+![minidump2]({{site.baseurl}}/img/minidump2.PNG)
+
+Now that's the kind of stuff you, as an attacker, want to see. Let's dissect this output and see what we have here:
+
+```
+Authentication Id : 0 ; 301367 (00000000:00049937)
+Session           : Interactive from 1
+User Name         : Administrator
+Domain            : TARGETNET
+Logon Server      : DC1
+Logon Time        : 5/9/2020 4:35:15 AM
+SID               : S-1-5-21-2283460142-4117294090-2784357223-500
+        msv :
+         [00000003] Primary
+         * Username : Administrator
+         * Domain   : TARGETNET
+         * NTLM     : 007461b27da66eded419e8db22307c4f
+         * SHA1     : 5cf7a0c33b82ffe9f95ff8ed364b665aa2d1df93
+         * DPAPI    : 6b52635072d946e875936739e00bf004
+        tspkg :
+        wdigest :
+         * Username : Administrator
+         * Domain   : TARGETNET
+         * Password : (null)
+        kerberos :
+         * Username : Administrator
+         * Domain   : TARGETNET.NOTSO.PRO
+         * Password : (null)
+        ssp :
+        credman :
+```
+So here, what we really need to focus is:
+- Session: "Interactive" means this the user is physically logged on the machine
+- User Name: this is the UI rendered username, which can be different from the effective username used to login
+- Domain: this is the Kerberos realm we talked about in the last post.
+- Logon Server: this tells us the netbios name of the Domain Controller to which the user authenticated
+- Logon Time: this is the time at which the user authenticated
+- SID: this is the user Security Identifier of the account. You can read more about SIDs on the [official documentation](https://docs.microsoft.com/it-it/windows/security/identity-protection/access-control/security-identifiers). We will talk about them more in depth in later posts
+- Username: this is the string used as username, take note
+- NTLM: this is the NTLM hash of the password, the data we were looking for
+- 
+
 
