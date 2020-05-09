@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 image: /img/offad.jpg
 title: 'Offensive Operations in Active Directory #1'
 subtitle: Scatter the (h)ashes...
@@ -16,7 +16,7 @@ Well G, here I am, Anno Domini 2020 and still talking about (over)passing the ha
 |:--:|
 | *I was hoping for another kind of "internals"* |
 
-Jokes aside, _pass-the-hash_ (PtH) and _overpass-the-hash_ (OPtH) are actually two different attack techniques: the old PtH involved directly authenticating to a host by literally sending the password hash to the host during the authentication process, while OPtH is way more subtle as it abuses the first step of Kerberos authentication. 
+Jokes aside, _pass-the-hash_ (PtH) and _overpass-the-hash_ (OPtH) are actually two different attack techniques: the old PtH involved directly authenticating to a host by literally sending the password's hash to the host during the authentication process, while OPtH is way more subtle as it abuses Kerberos authentication. 
 
 ## The shared secret problem
 
@@ -27,6 +27,20 @@ Quick recap: [as we discussed in the last post](https://blog.notso.pro/2020-05-0
 As you may have realized by now, the entire security of this step relies on the secrecy of the NTLM hash of the user's password. I will repeat it, here security relies on the secrecy of the hash, not of the password. But hashes are secure right? They are only stored on the DC right? And on clients they are not stored but calculated on the fly when the user inputs his password, right? Wrong.
 
 ## Fantastic ~~beasts~~ hashes and where to find them
+
+In the Marvelous Cybersecurity Universe (not to be confused with the other and more famous MCU) hashes can be collected pretty much anywhere: data leaks, breaches, etc. However, the type of hash we are concerned with can actually be found inside domain-joined compromised machines on which we have administrative privileges. I'll skip the privilege escalation process, as it's out of scope for this post and as there are tons of ways to end up SYSTEM on a machine. For now, let's limit ourselves to think we have compromised a client inside our target network. Where are them hashes, yo? A very special process called Local Security Authority Subsystem Service (LSASS) can help us.
+
+To quote the [official and omniscient Microsoft documentation](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh994565(v=ws.11)):
+> The Local Security Authority Subsystem Service (LSASS) stores credentials in memory on behalf of users with active Windows sessions. This allows users to seamlessly access network resources, such as file shares, Exchange Server mailboxes, and SharePoint sites, without re-entering their credentials for each remote service.
+> LSASS can store credentials in multiple forms, including:
+> - Reversibly encrypted plaintext
+> - Kerberos tickets (TGTs, service tickets)
+> - NT hash
+> - LM hash
+
+If that's not the definition of gold mine, I don't know what is! ¯\\\_(ツ)_/¯
+
+
 
 
 
