@@ -1,6 +1,6 @@
 ---
 layout: post
-published: true
+published: false
 image: /img/offad.jpg
 title: 'Offensive Operations in Active Directory #1'
 subtitle: Scatter the (h)ashes...
@@ -39,3 +39,4 @@ To quote the [official and omniscient Microsoft documentation](https://docs.micr
 > - LM hash
 
 If that's not the definition of "goldmine", I don't know what is! ¯ \\\_(ツ)_/¯
+
