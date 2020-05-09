@@ -97,7 +97,7 @@ SID               : S-1-5-21-2283460142-4117294090-2784357223-500
         credman :
 ```
 So here, what we really need to focus is:
-- Session: "Interactive" means this the user is physically logged on the machine
+- Session: "Interactive" means this the user is physically logged on the machine. When you see "RemoteInteractive" for example it could mean someone might have logged in using RDP
 - User Name: this is the UI rendered username, which can be different from the effective username used to login
 - Domain: this is the Kerberos realm we talked about in the last post.
 - Logon Server: this tells us the netbios name of the Domain Controller to which the user authenticated
