@@ -38,7 +38,7 @@ To quote the [official and omniscient Microsoft documentation](https://docs.micr
 > - NT hash
 > - LM hash
 
-If that's not the definition of gold mine, I don't know what is! ¯\\\_(ツ)_/¯
+If that's not the definition of gold mine, I don't know what is! ¯ \\\_(ツ)_/¯
 
 
 
