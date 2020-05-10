@@ -130,7 +130,7 @@ The `pth` command of Mimikatz's `sekurlsa` module is the one responsible for exe
 > Mimikatz can perform the well-known operation 'Pass-The-Hash' to run a process under another credentials with NTLM hash of the user's password, instead of its real password.
 > For this, it starts a process with a fake identity, then replaces fake information (NTLM hash of the fake password) with real information (NTLM hash of the real password).
 
-So basically it injects the identity we provide inside a freshly spawned process. Here is how it happens: first we open an administrative level powershell (or cmd, it's the same) and execute Mimikatz. Once inside it, we execute the command listed above:
+So basically it injects the identity we provide inside a freshly spawned process. Here is how to do it: first we open an administrative level powershell (or cmd, it's the same) on the domain compromised machine and execute Mimikatz. Once inside it, we execute the command listed above:
 
 ![mimikatz1]({{site.baseurl}}/img/mimikatz1.PNG)
 
@@ -143,7 +143,7 @@ Mimikatz ran just fine and presented us with some information about the newly sp
 - PID: the Process Identifier of the new process
 - TID: the Thread Identifier of the main thread of the new process
 
-After the command ran a new powershell session opened. 
+After running the command, a new powershell console is opened. 
 
 ![mimikatz2]({{site.baseurl}}/img/mimikatz2.PNG)
 
