@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 image: /img/offad.jpg
 title: 'Offensive Operations in Active Directory #1'
 subtitle: Scatter the (h)ashes...
@@ -105,6 +105,4 @@ So here, what we really need to focus is:
 - SID: this is the user Security Identifier of the account. You can read more about SIDs on the [official documentation](https://docs.microsoft.com/it-it/windows/security/identity-protection/access-control/security-identifiers). We will talk about them more in depth in later posts
 - Username: this is the string used as username, take note
 - NTLM: this is the NTLM hash of the password, the data we were looking for
-- 
-
-
+-
