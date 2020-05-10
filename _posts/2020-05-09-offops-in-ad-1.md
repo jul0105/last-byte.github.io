@@ -48,7 +48,7 @@ The LSASS process can be spotted using Task Manager (or Process Explorer) if you
 
 One way to obtain the credentials stored in memory would be to dump the entire machine's memory, but that would be noisy and would generate a big DMP file. The cleaner way is to just target the LSASS process and selectively dump it. Still noisy and sketchy, but still way less than `cat /dev/motherfuckingeverything > memory.txt`. 
 
-As you can see, LSASS runs under the SYSTEM privilege context, so to dump its address space we need administrative privileges (life sucks, I know). One way it can be achieved is through Task Manager itself, by right clicking on lsass.exe and selecting "Create dump file". In this way we don't need to upload any suspicious executable on the target machine, as we can then download the DMP file and extract the credentials offline. This can be achieved through the Volatility Framework, Mimikatz or your own custom tools. 
+As you can see, LSASS runs under the SYSTEM privilege context, so to dump its address space we need administrative privileges (life sucks, I know). One way it can be achieved is through Task Manager itself, by right clicking on lsass.exe and selecting "Create dump file". In this way we don't need to upload any suspicious executable on the target machine, as we can then download the DMP file and extract the credentials offline. This can be achieved through the [Volatility Framework](https://github.com/volatilityfoundation/volatility), [Mimikatz](https://github.com/gentilkiwi/mimikatz) or your own custom tools. 
 
 Let's see an example: I dumped the credentials on my lab machine using Task Manager and exported the resulting lsass.DMP file on a Windows VM on which I have Mimikatz.
 
