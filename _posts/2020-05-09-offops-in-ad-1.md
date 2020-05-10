@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 image: /img/offad.jpg
 title: 'Offensive Operations in Active Directory #1'
 subtitle: Scatter the (h)ashes...
@@ -107,3 +107,11 @@ So here, what we really need to focus is:
 - NTLM: this is the NTLM hash of the password, the data we were looking for :D 
 
 By the way, check out [Mimikatz's wiki](https://github.com/gentilkiwi/mimikatz/wiki) as it's full of really useful information :)
+
+## Piecing it all together
+
+Let's recap what we needed to authenticate as a user:
+[x] Username
+[x] Domain name
+[x] Timestamp
+[x] NTLM hash
