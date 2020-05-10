@@ -104,7 +104,6 @@ So here, what we really need to focus is:
 - Logon Time: this is the time at which the user authenticated
 - SID: this is the user Security Identifier of the account. You can read more about SIDs on the [official documentation](https://docs.microsoft.com/it-it/windows/security/identity-protection/access-control/security-identifiers). We will talk about them more in depth in later posts, for now you just need to know it's a unique ID assigned to each object and used by Windows to manage security stuff
 - Username: this is the string used as username
-- NTLM: this is the NTLM hash of the password, the data we were looking for :D
-- 
+- NTLM: this is the NTLM hash of the password, the data we were looking for :D 
 
 By the way, check out [Mimikatz's wiki](https://github.com/gentilkiwi/mimikatz/wiki) as it's full of really useful information :)
