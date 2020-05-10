@@ -153,7 +153,14 @@ You may have noticed the output of the `whoami` command running locally is diffe
 
 ![skiddie](https://liveoverflow.com/content/images/2019/05/The_Origin_of_Script_Kiddie_Hacker_Etymology.gif)
 
-As you also may have seen I ran the `klist` command, which lists imported Kerberos tickets. The first and the second are TGTs (don't ask me why I have two, I'll ping a friend of mine who surely knows it), while the third one is a TGS. Let's break them down:
+As you also may have seen I ran the `klist` command, which lists imported Kerberos tickets. The first and the second are TGTs (don't ask me why I have two, I'll ping a friend of mine who surely knows it), while the third one is a TGS. 
+
+
+| ![tgs]({{site.baseurl}}/img/klist.png) |
+|:--:|
+| *The TGS issued to run PS Remoting commands* |
+
+Let's break them down:
 - Client: the user who requested the ticket. We can see it's `Administrator @ TARGETNET.NOTSO.PRO`, the Domain's Administrator account
 - Server: in the first and the second it's `krbtgt/TARGETNET.NOTSO.PRO @ TARGETNET.NOTSO.PRO` which is the krbtgt's service, the one responsible for Kerberos authentication and TGT issuing. In the third ticket it's `HTTP/dc1.targetnet.notso.pro @ TARGETNET.NOTSO.PRO`, meaning it's a TGS for the HTTP service of the DC. This has been issued because we ran `Invoke-Command`, which is a Powershell Remoting command, and PS Remoting uses a HTTP as protocol for trasmission of commands and output. Sometimes you may also see a TGS for the HOST service, always because of PS Remoting
 - Start Time: the time from which the ticket will become valid
