@@ -1,6 +1,6 @@
 ---
 layout: post
-published: true
+published: false
 image: /img/offad.jpg
 title: 'Offensive Operations in Active Directory #1'
 subtitle: Scatter the (h)ashes...
@@ -99,10 +99,12 @@ SID               : S-1-5-21-2283460142-4117294090-2784357223-500
 So here, what we really need to focus is:
 - Session: "Interactive" means this the user is physically logged on the machine. When you see "RemoteInteractive" for example it could mean someone might have logged in using RDP
 - User Name: this is the UI rendered username, which can be different from the effective username used to login
-- Domain: this is the Kerberos realm we talked about in the last post.
+- Domain: this is the Kerberos realm we talked about in [the last post](https://blog.notso.pro/2020-05-07-offops-in-ad-0/).
 - Logon Server: this tells us the netbios name of the Domain Controller to which the user authenticated
 - Logon Time: this is the time at which the user authenticated
-- SID: this is the user Security Identifier of the account. You can read more about SIDs on the [official documentation](https://docs.microsoft.com/it-it/windows/security/identity-protection/access-control/security-identifiers). We will talk about them more in depth in later posts
-- Username: this is the string used as username, take note
-- NTLM: this is the NTLM hash of the password, the data we were looking for
--
+- SID: this is the user Security Identifier of the account. You can read more about SIDs on the [official documentation](https://docs.microsoft.com/it-it/windows/security/identity-protection/access-control/security-identifiers). We will talk about them more in depth in later posts, for now you just need to know it's a unique ID assigned to each object and used by Windows to manage security stuff
+- Username: this is the string used as username
+- NTLM: this is the NTLM hash of the password, the data we were looking for :D
+- 
+
+By the way, check out [Mimikatz's wiki](https://github.com/gentilkiwi/mimikatz/wiki) as it's full of really useful information :)
