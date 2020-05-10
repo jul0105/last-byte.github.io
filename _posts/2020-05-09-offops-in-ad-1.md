@@ -38,7 +38,7 @@ To quote the [official and omniscient Microsoft documentation](https://docs.micr
 > - NT hash
 > - LM hash
 
-If that's not the definition of "goldmine", I don't know what is! ¯ \\\_(ツ)_/¯
+So basically, Windows' Local Security Authority (LSA) uses the LSASS process' address space to store the credentials of logged in users. That allows users with sufficiently high privileges to dump the address space of LSASS and extract the credentials of all the users who logged on the machine since the last restart. If that's not the definition of "goldmine", I don't know what is! ¯ \\\_(ツ)_/¯
 
 The LSASS process can be spotted using Task Manager (or Process Explorer) if you head to the "Details" tab.
 
