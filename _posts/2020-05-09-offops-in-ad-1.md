@@ -162,7 +162,7 @@ As you may have seen I also ran the `klist` command, which lists imported Kerber
 
 Let's break them down:
 - Client: the user who requested the ticket. We can see it's `Administrator @ TARGETNET.NOTSO.PRO`, the Domain's Administrator account
-- Server: in the first and the second it's `krbtgt/TARGETNET.NOTSO.PRO @ TARGETNET.NOTSO.PRO` which is the krbtgt's service, the one responsible for Kerberos authentication and TGT issuing. In the third ticket it's `HTTP/dc1.targetnet.notso.pro @ TARGETNET.NOTSO.PRO`, meaning it's a TGS for the HTTP service of the DC. This has been issued because we ran `Invoke-Command`, which is a Powershell Remoting command, and PS Remoting uses a HTTP as protocol for trasmission of commands and output. Sometimes you may also see a TGS for the HOST service, always because of PS Remoting
+- Server: in the first and the second tickets it's `krbtgt/TARGETNET.NOTSO.PRO @ TARGETNET.NOTSO.PRO` which is the krbtgt's service, the one responsible for Kerberos authentication and TGT issuing. In the third ticket it's `HTTP/dc1.targetnet.notso.pro @ TARGETNET.NOTSO.PRO`, meaning it's a TGS for the HTTP service of the DC. This has been issued because we ran `Invoke-Command`, which is a Powershell Remoting command, and PS Remoting uses HTTP as protocol for trasmission of commands and output. Sometimes you may also see a TGS for the HOST service, always because of PS Remoting
 - Start Time: the time from which the ticket will become valid
 - End Time: the time on which the ticket will expire unless renewed
 - Renew Time: the time on which renewed tickets will finally expire
@@ -170,7 +170,7 @@ Let's break them down:
 
 ## Conclusion
 
-Ok, I think it's enough as explaination for this attack. Attacks like this are "easy" because great professionals (like [Gentilkiwi](https://twitter.com/gentilkiwi)) go to great lengths to allow us to employ to wield tools like this and perform security assessments. As you may have seen there is always more than meets the eye and I'm convinced that knowing the basics behind attacks as "simple" as this one will always make us better professionals. And it also allows us to replicate the attack by writing our own custom ~~and undetectable~~ tools :)
+Ok, I think it's enough as explaination for this attack. Attacks like this are "easy" because great professionals (like [Gentilkiwi](https://twitter.com/gentilkiwi)) go to great lengths to allow us to wield tools like this and perform operations with ease. As you may have seen there is always more than meets the eye and I'm convinced that knowing the basics behind attacks as "simple" as this one will always make us better professionals. And it also allows us to replicate the attack by writing our own custom ~~and undetectable~~ tools :)
 
 See you soon,
 last, out.
