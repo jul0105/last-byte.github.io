@@ -125,9 +125,48 @@ EXAMPLE:
 mimikatz # sekurlsa::pth /user:Administrator /domain:targetnet.notso.pro /ntlm:007461b27da66eded419e8db22307c4f /run:powershell.exe
 ```
 
-The `pth` command of Mimikatz's `sekurlsa` module is the one responsible for executing _overpass-the-hash_ attacks. It spawns a new process belonging to the specified user, running the executable written after the `/run` option.
+The `pth` command of Mimikatz's `sekurlsa` module is the one responsible for executing _overpass-the-hash_ attacks. How does it do it? To quote [Mimikatz's wiki](https://github.com/gentilkiwi/mimikatz/wiki/module-~-sekurlsa):
 
+> Mimikatz can perform the well-known operation 'Pass-The-Hash' to run a process under another credentials with NTLM hash of the user's password, instead of its real password.
+> For this, it starts a process with a fake identity, then replaces fake information (NTLM hash of the fake password) with real information (NTLM hash of the real password).
 
+So basically it injects the identity we provide inside a freshly spawned process. Here is how it happens: first we open an administrative level powershell (or cmd, it's the same) and execute Mimikatz. Once inside it, we execute the command listed above:
+
+![mimikatz1]({{site.baseurl}}/img/mimikatz1.PNG)
+
+Mimikatz ran just fine and presented us with some information about the newly spawned process:
+- user: the username of the user owning the new process
+- domain: the domain of the user owning the new process
+- program: the executable that has been ran
+- impers.: this field tells us we didn't specify the `/impersonate` option, which doesn't spawn a new process, but directly injects the process running Mimikatz (the first powershell)
+- NTLM: the NTLM hash of the user owning the new process
+- PID: the Process Identifier of the new process
+- TID: the Thread Identifier of the main thread of the new process
+
+After the command ran a new powershell session opened. 
+
+![mimikatz2]({{site.baseurl}}/img/mimikatz2.PNG)
+
+As you can see, the PID of the new powershell process (contained within the `$PID` environment variable) is the same as the one specified by the previous screenshot. 
+
+You may have noticed the output of the `whoami` command running locally is different from the output of the `whoami` command ran through `Invoke-Command` on `dc1.targetnet.notso.pro` (the DC). That's because local `whoami` returns information on the user currently logged on, which is `targetnet\last`, while the remote one runs in the context of the user authenticated through Kerberos on the DC, which is `targetnet\administrator`. When at the beginning of my journey I remember I ran Mimikatz a thousand times, only to get angry and immediately close the new process as `whoami` returned the wrong user, because I did not know the difference and what was happening behind the scenes. To quote [LiveOverflow](https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w)
+
+![skiddie](https://liveoverflow.com/content/images/2019/05/The_Origin_of_Script_Kiddie_Hacker_Etymology.gif)
+
+As you also may have seen I ran the `klist` command, which lists imported Kerberos tickets. The first and the second are TGTs (don't ask me why I have two, I'll ping a friend of mine who surely knows it), while the third one is a TGS. Let's break them down:
+- Client: the user who requested the ticket. We can see it's `Administrator @ TARGETNET.NOTSO.PRO`, the Domain's Administrator account
+- Server: in the first and the second it's `krbtgt/TARGETNET.NOTSO.PRO @ TARGETNET.NOTSO.PRO` which is the krbtgt's service, the one responsible for Kerberos authentication and TGT issuing. In the third ticket it's `HTTP/dc1.targetnet.notso.pro @ TARGETNET.NOTSO.PRO`, meaning it's a TGS for the HTTP service of the DC. This has been issued because we ran `Invoke-Command`, which is a Powershell Remoting command, and PS Remoting uses a HTTP as protocol for trasmission of commands and output. Sometimes you may also see a TGS for the HOST service, always because of PS Remoting
+- Start Time: the time from which the ticket will become valid
+- End Time: the time on which the ticket will expire unless renewed
+- Renew Time: the time on which renewed tickets will finally expire
+- Kdc Called: the Key Distribution Center (aka the Domain Controller) which issued the ticket
+
+## Conclusion
+
+Ok, I think it's enough as explaination for this attack. Attacks like this are "easy" because great professionals (like [Gentilkiwi](https://twitter.com/gentilkiwi)) go to great lengths to allow us to employ to wield tools like this and perform security assessments. As you may have seen there is always more than meets the eye and I'm convinced that knowing the basics behind attacks as "simple" as this one will always make us better professionals. And it also allows us to replicate the attack by writing our own custom ~~and undetectable~~ tools :)
+
+See you soon,
+last, out.
 
 
 
