@@ -153,7 +153,7 @@ You may have noticed the output of the `whoami` command running locally is diffe
 
 ![skiddie](https://liveoverflow.com/content/images/2019/05/The_Origin_of_Script_Kiddie_Hacker_Etymology.gif)
 
-As you also may have seen I ran the `klist` command, which lists imported Kerberos tickets. The first and the second are TGTs (don't ask me why I have two, I'll ping a friend of mine who surely knows it), while the third one is a TGS. 
+As you may have seen I also ran the `klist` command, which lists imported Kerberos tickets. The first and the second are TGTs (don't ask me why I have two, I'll ping a friend of mine who surely knows it), while the third one is a TGS. 
 
 
 | ![tgs]({{site.baseurl}}/img/klist.png) |
