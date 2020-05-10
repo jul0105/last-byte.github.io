@@ -111,10 +111,10 @@ By the way, check out [Mimikatz's wiki](https://github.com/gentilkiwi/mimikatz/w
 ## Piecing it all together
 
 Let's recap what we needed to authenticate as a user:
-- [x] Username
-- [x] Domain name
-- [x] Timestamp
-- [x] NTLM hash
+- [x]  Username
+- [x]  Domain name
+- [x]  Timestamp
+- [x]  NTLM hash
 
 There are many ways to spawn a process as a new user, the quickiest and most common is to use Mimikatz once again. Here's the syntax:
 
