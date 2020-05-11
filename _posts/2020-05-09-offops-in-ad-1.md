@@ -46,8 +46,10 @@ The LSASS process can be spotted using Task Manager (or Process Explorer) if you
 |:--:|
 | *Kids, I'm a trained professional and this is a virtualized lab environment. Never ever log in as your Domain's Administrator.* |
 
-One way to obtain the credentials stored in memory would be to dump the entire machine's memory, but that would be noisy and would generate a big DMP file. The cleaner way is to just target the LSASS process and selectively dump it. Still noisy and sketchy, but still way less than 
-`cat /dev/motherfuckingeverything > memory.txt`. 
+One way to obtain the credentials stored in memory would be to dump the entire machine's memory, but that would be noisy and would generate a big DMP file. The cleaner way is to just target the LSASS process and selectively dump it. Still noisy and sketchy, but still way less than  
+```
+cat /dev/motherfuckingeverything > memory.txt
+```
 
 As we said before, to dump LSASS address space we need administrative privileges (life sucks, I know). One way it can be achieved is through Task Manager itself, by right clicking on `lsass.exe` and selecting "Create dump file". In this way we don't need to upload any suspicious executable on the target machine, as we can then download the DMP file and extract the credentials offline. This can be achieved through the [Volatility Framework](https://github.com/volatilityfoundation/volatility), [Mimikatz](https://github.com/gentilkiwi/mimikatz) or your own custom tools. 
 
